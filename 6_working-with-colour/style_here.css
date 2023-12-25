@@ -1,0 +1,19 @@
+* {
+    background-color: aquamarine;
+}
+
+.anycolor {
+    color: green;
+}
+
+.putcolor {
+    color: brown;
+}
+
+#main {
+    color: blue
+}
+
+h3[draggable] {
+    color: black;
+}

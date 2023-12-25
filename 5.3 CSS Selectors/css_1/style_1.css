@@ -1,0 +1,30 @@
+.colouring-red {
+    color: red;
+}
+
+.colouring-blue {
+    color: blue;
+}
+
+.colouring-green {
+    color: green;
+}
+
+.colouring-yellow {
+    color: yellow;
+}
+
+#main {
+    color: cyan;
+}
+
+p[draggable="true"] {
+    color: pink;
+}
+p[draggable="false"] {
+    color: navy
+    ;
+}
+*{
+    color: blueviolet;
+}
