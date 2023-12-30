@@ -1,0 +1,10 @@
+.container p{
+    color: darkgreen;
+}
+.container > p{
+    color: blueviolet;
+}
+/*here two same types of selectors are used so the .container > p has
+more priority then the .container p that is why the second text gets
+written in purple colour and the third text is written in green despite
+we are changing the text color in green first iot dosent matter */
