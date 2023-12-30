@@ -2,7 +2,7 @@
 h1,h2{
     color: blue;
 }
-/*HERE USED CHILD SELECTOR */
+/*HERE USED  parent,CHILD SELECTOR */
 .box > p{
     color: red;
 }
