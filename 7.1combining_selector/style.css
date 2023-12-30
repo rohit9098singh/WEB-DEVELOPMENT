@@ -1,0 +1,21 @@
+/*HERE USE COMBINATION SELECTOR FOR H1 AND H2 */
+h1,h2{
+    color: blue;
+}
+/*HERE USED CHILD SELECTOR */
+.box > p{
+    color: red;
+}
+/*using descendent selector */
+.box li {
+    color: blue;
+}
+/*using chaining selector*/
+li.done{
+    color: green
+     ;
+}
+/*using multiple comnbiner*/
+ul p.done{
+ font-size: 0.5rem;   
+}
