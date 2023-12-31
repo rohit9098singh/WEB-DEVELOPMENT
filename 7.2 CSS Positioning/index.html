@@ -8,15 +8,18 @@
     position: static; position: relative;
     position: initial;position: unset;
   -->
-<style>
+  <style>
     .red-circle {
       width: 200px;
       height: 200px;
       background-color: red;
       border-radius: 50%;
-      position:relative ;
+      position:absolute ;
       top: 150px;
       left: 250px;
+      border-width: 20px;
+      border: 5px solid darkgray;
+      z-index: -1;/*ye ek example hai zindex ko dekhne ka isko commment kar ke run the prg*/
     }
     
     .blue-box {
@@ -26,6 +29,7 @@
       position: relative;
       top: 200px;
       left: 200px;
+      border: 10px solid black;
     }
 
   </style>
