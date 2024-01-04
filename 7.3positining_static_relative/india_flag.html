@@ -8,9 +8,65 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>INDIAFLAG</title>
+        <style>
+    body{
+      margin: 0;
+     display: flex;
+     align-items: center;
+    justify-content: center;
+     min-height: 100vh; 
+     background-color: #fff;  
+    }      
+
+     .flag {
+        position: relative;
+      width: 300px; 
+      height: 200px; 
+    }
+
+    .striped {
+      height: 33.33%;
+      width: 100%;
+      position: absolute;
+      position: absolute;
+    }
+
+    .saffron {
+      background-color: #ff9933; 
+      top: 0;
+    }
+
+    .white {
+      background-color: whitesmoke; 
+      top: 33.33%;
+    }
+
+    .green {
+      background-color: green; 
+      top: 66.66%;
+    }
+    .inner_flag{
+        width: 65px;
+        height: 65px;
+        border-radius: 50px;
+        background-color: blue;
+        position: absolute;
+        top: 67px;
+        left: 110px;
+
+    }
+
+    </style>
          
     </head>
     <body>
-        
+        <div class="flag">
+            <div class="striped saffron"></div>
+            <div class="striped white"></div>
+            <div class="striped green"></div> 
+            <div class="chakra"></div>
+              <img src="/pictures/download.png" alt="indain flag">
+                      
+        </div>
     </body>
     </html>
