@@ -1,3 +1,4 @@
+<!--The float CSS property places an element on the left or right side of its container, allowing text and inline elements to wrap around it-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +12,21 @@
         }
         .cat{
             background-color: aqua;
+            float: left;
+        }
+        img{
+            float: left;
         }
         .dog{
             background-color: firebrick;
+            float: right;
         }
         footer{
             text-align: center;
             background-color: purple;
+            clear: both;/*IF I DONT USE THIS THEN WHAT HAPPENS IS FOOTER ASLO TRIES TO WRAP AROUND THE TEXT AND GOES ON THE TOP TO OVOID THAT WE USE THIS*/
         }
+        /*CLEAR CAN ALSO USE LEFT,RIGHT,NONE*/
     </style>
 </head>
 <body>

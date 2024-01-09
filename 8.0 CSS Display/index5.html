@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display-inherit</title>
+    <style>
+         div{
+            background-color: aqua;
+            background-attachment: fixed;
+            height: 800px;
+            width: 700px;
+         }
+         p{
+           font-size: 1rem;
+         }
+        /* p.one{
+            display: none;->none property just erase the content to which it is applied
+         }*/
+          p.one span {
+             background-color: red;
+             display: list-item;
+}
+
+            p.two span{
+                background-color: red;
+                display: list-item;
+            }
+         
+    </style>
+</head>
+<body>
+    <div>
+      <h1>Display</h1>
+      <p class="one">here i am trying to <span>improve</span>improve <span>myself</span> in every respect<br /></p>
+      <p class="two">heres the second <span>Paragraph</span> saying hello guys</p>
+      </div> 
+
+</body>
+</html>

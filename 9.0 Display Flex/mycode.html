@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>absolute and relative</title>
+    <style>
+        /* four types of position are there
+           1-static(defalt)
+           2-absolute
+           3-relative
+           4-fixed
+           5-sticky*/
+        .container{
+            border: 2px solid black;
+            background-color: khaki;
+            height: 3444px;
+        }   
+           
+        .box{
+            display: inline-block;
+            border: 2px solid black;
+            width: 150px;
+            height: 150px;
+            margin: 2px;/*margin just seperate the first box with the s econd one*/
+        }
+        #box3 {
+             /*position: static; - by default ye static he hota hai, therefore no change will be observed
+              position: absolute; - karne se vo 4th walle box ko delete kar dega*/
+             /* position: relative; matlab aapne normal position ke hisab se vo hilega 
+                                   -aisa karna se mai top, bottom, left, right sab use kar sakte hai*/
+             /* top: 34px;  ye original position se 34px neeche le aayega
+              left: 34px;*/
+              position: fixed;/*ye kya karega ek box ko fix kar dega or vo move nhi ho payega scroll karna pe bhi*/
+              right: 3px;
+              margin-top: 150px;
+        }
+        #box4{
+                 
+              position: sticky;
+              top: 3px; 
+              margin-top: 300px;
+           /* position: absolute;
+            top: 34px;
+            left: 34px; 
+            relative to its firstparent or global-parent change hoga vo absolute me therefore box2 ka 
+              parent hai container  therefore box2 me jo bhi change hoga vo container ke according hoga
+            */
+        }
+        
+
+    </style>    
+</head>
+<body>
+    <div class="container">
+       <div class="box" id="box1">1</div>
+       <div class="box" id="box2">2</div>
+       <div class="box" id="box3">3</div>
+       <div class="box" id="box4">4</div>
+    </div>   
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBSITE-MAKING</title>
+    <style>
+        .main{
+            display: grid;
+            gap: 30px;
+            
+        }
+        .image{
+            width: 300px;
+            height: 300px;
+            float: left;
+            flex: 4;
+            gap: 30px;  
+            text-align: center;
+
+        }
+        .image-title{
+            color: seagreen;
+        }
+        .write{
+            text-align: center;
+        }
+        p{
+            font: 4rem;
+            font-family:  sans-serif;;
+        }
+        .create{
+            color: brown;
+        }
+        .foot{
+            text-align: right;
+            color: midnightblue;
+        }
+        
+        @media (max-width: 680px) {
+          .logo {
+                 width: 100px;
+                }
+            }
+       
+      
+    </style>
+</head>
+<body>
+    <div class="main">
+        <img class="logo" src="./assets/images/logo.png" alt="logo">
+        <h1 class="write">we are a<span class="create"> creative</span> Design Dgency</h1>
+        <div>
+            <img class="image first" src="./assets/images/beautiful.jpg" alt="beautiful hand image">
+            <h2 class="image-title">Beauty</h2>
+            <p class="image-writing">We strive to create the most beautiful websites for all your needs.<br />
+                 Working closely with you to design and<br />
+            develop an amazing website for your business.</p>
+        </div>   
+        <div>
+            <img class="image second" src="./assets/images/construction.jpg" alt="construction">
+            <h2 class="image-title">construction</h2>
+            <p class="image writing1">Built by our team of professional developers, we ensure the most 
+                rigourous and modern websites. Built from
+                scratch using HTML and CSS. Only the best for you.</p>
+        </div>
+        <div>
+            <img class="image third" src="./assets/images/360_F_606797008_rGPPk6bFWDQydnX7g7w1w9dVVZ4mD22J.jpg" alt="scean">
+            <h2 class="image-title"> Nature Exploration</h2>
+            <p class="image-writing2">Nature's beauty unfolds in a mesmerizing tapestry of vibrant<br />
+                 hues and harmonious melodies, where every leaf whispers tales of resilience and<br /> 
+                 every sunrise paints a canvas of endless possibilities. In the gentle<br /> 
+                embrace of the natural world, tranquility and awe converge, inviting us<br /> 
+                to marvel at the timeless symphony of life.</p>
+        </div>
+        <div>
+            <img class="image fourth" src="./assets/images/photo-1570071677470-c04398af73ca.avif" alt="garage">
+            <h2 class="image-title">Garage</h2>
+            <p class="image-writing3">Thgarage, a hub of creative combustion, where tools and<br />
+                             engines harmonizein a symphony of innovation and automotive dreams.</p>
+        </div>
+
+        
+    </div>
+    
+</body>
+<footer class="foot">create develope design</footer>
+</html>

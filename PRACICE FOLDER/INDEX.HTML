@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Selector Example</title>
+  <style>
+    .parent > .child {
+      border: 2px solid blue;
+      margin: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child">
+      <p>This is a paragraph inside the first child.</p>
+      <div class="sub-child">This is a nested div inside the first child.</div>
+    </div>
+    <div class="child">
+      <p>This is a paragraph inside the second child.</p>
+    </div>
+  </div>
+</body>
+</html>

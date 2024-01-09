@@ -1,0 +1,59 @@
+
+  <!-- HINT:
+  https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
+  https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators 
+  -->
+  <!--Select all the elements that are the direct
+children of the .container class.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex direction</title>
+  <style>
+    .container{
+      display: inline-flex;
+      border: 7px solid gold;
+      width: 60px;
+      flex-direction: column;
+    }
+    .container  > *{
+       flex-basis: 100px;   
+    }
+   
+    .red{
+      background-color: red;
+    }
+    .orange{
+      background-color:orange;
+    }
+    .green{
+      background-color: green;
+    }
+    .blue{
+      background-color: blue;
+    }
+    .indigo{
+      background-color:indigo;
+    }
+    .yellow{
+      background-color: yellow;
+    }
+    .violet{
+      background-color: violet;
+    }
+  </style>
+</head>
+<body>
+      <div class="container">
+        <div class="red">red</div>
+        <div class="orange">orange</div>
+        <div class="green">green</div>
+        <div class="blue">blue</div>
+        <div class="indigo">indigo</div>
+        <div class="violet">violet</div>
+        <div class="yellow">yellow</div>
+      </div>
+</body>
+</html>

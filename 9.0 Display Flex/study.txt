@@ -1,0 +1,15 @@
+
+The difference between relative and absolute positioning in CSS lies in how elements are positioned within their containing elements.
+Relative Positioning:When you set an element's position to "relative," it is positioned relative to its normal position in the document flow.
+The element will be moved from its default position based on the values you provide for the top, right, bottom, or left properties.
+Other elements on the page will still occupy the space the element would have taken in its normal position.
+
+
+.When you set an element's position to "absolute," it is positioned relative to its nearest positioned ancestor 
+(an ancestor with a position other than "static") or to the containing block.
+Absolute positioned elements are taken out of the normal document flow, so they won't affect the layout of other elements.
+If there is no positioned ancestor, the element is positioned relative to the initial containing block (usually the <html> element)
+
+
+In summary, relative positioning adjusts an element's position based on its normal position in the document flow, whereas absolute
+ positioning positions an element relative to its containing block or nearest positioned ancestor, taking it out of the normal document flow.
