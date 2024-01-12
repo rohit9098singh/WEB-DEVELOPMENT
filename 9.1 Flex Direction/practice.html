@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pricing table</title>
+    <style>
+        .price-container{
+            display:flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: lightblue;
+            padding: 30px;
+        }
+        .price-plan{
+            width: 200px;
+            height: 250px;
+            padding: 30px;
+            background-color: lightslategray;
+            text-align: center;
+            margin: 10px;
+            
+        }
+        .border{
+        background-color:  transparent;
+            }
+        .border:hover{
+         background-color : rgb(135, 64, 10);
+            }
+        .plan-title{
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;         
+        }
+        .plan-price{
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom:10px ;
+        }
+        .plan-features > ul{ 
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .login{
+            background-color:black;
+            margin-top: 28px;
+            margin-bottom: 0px;
+            border-radius: 5px;
+            padding: 10px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="price-container">
+        <div class="price-plan">
+            <div class="plan-title">BASIS</div>
+            <div class="plan-price">$11.99/month</div>
+            <div class="plan-features">
+                <ul class="list">
+                    <li>✅10Gb storage</li>
+                    <li>✅1 User</li>
+                    <li>❌Support</li>
+                </ul>
+            </div>
+            <button class="login border">Signup</button>
+        </div>
+        <div class="price-plan">
+            <div class="plan-title">STANDARD</div>
+            <div class="plan-price">$19.99/month</div>
+            <div class="plan-features">
+                <ul class="list">
+                    <li>✅50Gb storage</li>
+                    <li>✅5 User</li>
+                    <li>❌Phone and Email support</li>
+                </ul>
+            </div>
+            <button class="login border">Signup</button>
+        </div>
+        <div class="price-plan">
+            <div class="plan-title">PREMIUM</div>
+            <div class="plan-price">$49.99/month</div>    
+            <div class="plan-features">
+                <ul class="list">
+                    <li>✅160GB storage</li>
+                    <li>✅10 users</li>
+                    <li>✅24/7 support</li>
+                </ul>
+            </div>
+            <button class="login border">Signup</button>
+        </div>
+    </div>    
+</body>
+</html>

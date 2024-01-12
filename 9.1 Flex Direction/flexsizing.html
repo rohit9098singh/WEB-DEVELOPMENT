@@ -1,0 +1,64 @@
+<!DO  CTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexing</title>
+    <style>
+        /*note-if we have flex-basis and max-width both then in that case if the width is less than the flex-basis then width value will be considerd or 
+               else the flex basis value will be considerd */
+        body{
+            margin: 0;
+            background-color: rgb(244, 219, 219);
+        }
+        .container {
+            display: flex; /* Change to flex */
+            gap: 10px;
+            flex-direction: row;
+            border: 3px solid black;
+            justify-content: flex-start;
+        }
+        .element{
+            max-width: 120px;
+            min-width: 50px;
+            /*note- WE CAN ALSO USE THIS FLEX-1 1 0 -->THE FIRST VALUE REPRESENT THE GROW 2ND SHRINK AND 3RD GROW OR FLEX:1 also means the same*/
+            flex-basis: 100px;/*if it is auto then uske content ke hisab se vo aapne width ko adjust karega*/
+            flex-grow: 5;/*flex-grow:It determines how much a flex item should grow relative to the rest of the flex items when there is extra space 
+                          along the main axis.*/
+            flex-shrink: 0;/*flex-shrink:It determines how much a flex item should shrink relative to the rest of the flex items when there is not 
+            enough space along the main axis.*/
+        }
+    
+        .container > * {
+            flex-basis: auto;/*here it is set to auto so that i can change the width and height 
+                               if i dont do that it will have no effect even if we specify any kind 
+                               of height and width*/
+           
+        }
+    
+        .one {
+            background-color: red;
+        }
+    
+        .two {
+            background-color: grey;
+        }
+    
+        .three {
+            background-color: greenyellow;
+        }
+        .four{
+            background-color: seagreen;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="element one">home</div>
+        <div class="element two">About</div>
+        <div class="element three">contact us</div>
+        <div class="element four">The best programmer in the world</div>
+    </div>  
+</body>
+</html>

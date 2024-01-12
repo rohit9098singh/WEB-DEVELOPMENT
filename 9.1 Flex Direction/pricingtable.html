@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pricing table</title>
+    <style>
+      body {
+        font-family: "sono", sans-serif;
+      }
+      /*The justify-content property aligns items along the main axis, which is horizontally 
+             in a row-oriented flex container (default). Setting it to center horizontally centers the child elements.
+
+            The align-items property aligns items along the cross axis, which is vertically in a row-oriented flex container.
+             Setting it to center vertically centers the child elements.*/
+      .pricing-container {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 2rem;
+        /*ispe color wagera isliye nhi lagae hai kyu ke ye to ek container hai jiske andar ek or
+             container jasia jo sare ke liye common hai jo hai pricing-plane to isme changes karnengy*/
+        background-image: url(/pictures/download.png);
+        /* background-size:cover; */
+        
+        background-repeat:round;
+        background-attachment: fixed;
+        flex-direction: column;
+      }
+      .pricing-plane {
+        /*equivalent to flex:1 1 0 1st is grow,2nd is shrink 3rd flex basis*/
+        height: 250px;
+        width: 300px;
+        padding: 30px;
+        background-color: rgba(217, 217, 199, 0.229);
+        border-radius: 5px;
+        align-items: center;
+        text-align: center;
+    }
+    /*both the class down used at here are not manditory but */  
+      .border{
+        border: 3px solid transparent;
+      }
+      .border:hover{
+         border :3px solid red;
+      }
+      .plane-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .plane-price {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .plane-features {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .plane-features li {
+        margin-bottom: 20px;
+      }
+      .list > ul {
+        display: flex;
+        align-items: start;
+        margin-left: 90px;
+        flex-direction: column;
+      }
+      .plane-button {
+        padding: 10px;
+        background-color: #365486;
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+      @media screen and (max-width: 800px) {
+        .pricing-container {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pricing-container">
+      <div class="pricing-plane ">
+        <div class="plane-title">Basic</div>
+        <div class="plane-price">$11.99/month</div>
+        <div class="list">
+          <ul class="plane-features">
+            <li>✅10Gb Storage</li>
+            <li>✅1 user</li>
+            <li>❌Support</li>
+          </ul>
+        </div>
+        <button class="plane-button">Sign Up</button>
+      </div>
+
+      <div class="pricing-plane">
+        <div class="first plane-title">Standard</div>
+        <div class="plane-price">$19.99/month</div>
+        <div class="list">
+          <ul class="plane-features">
+            <li>✅50Gb storage</li>
+            <li>✅5 User</li>
+            <li>❌Phone and Email support</li>
+          </ul>
+        </div>
+        <button class="plane-button">Sign Up</button>
+      </div>
+
+      <div class="pricing-plane">
+        <div class="first plane-title">Previous</div>
+        <div class="plane-price">$49.99/month</div>
+
+        <div class="list">
+          <ul class="plane-features">
+            <li>✅160GB storage</li>
+            <li>✅10 users</li>
+            <li>✅24/7 support</li>
+          </ul>
+        </div>
+        <button class="plane-button">Sign Up</button>
+      </div>
+    </div>
+  </body>
+</html>

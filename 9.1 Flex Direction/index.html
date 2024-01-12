@@ -13,35 +13,52 @@ children of the .container class.-->
   <title>flex direction</title>
   <style>
     .container{
-      display: inline-flex;
+      display: inline-flex;/*SO THAT IT TAKES ONLY THAT MUCH SPACE WHICH IS REQUIRED*/
+      width: 500px;
+      height: 300px;
       border: 7px solid gold;
-      width: 60px;
-      flex-direction: column;
+      flex-direction: column;/*ALSO KNOWN AS A CROSS A AXIS WHICH GOES FROM TOP TO BOTTOM*/
+      align-items:center ;
+      
     }
-    .container  > *{
-       flex-basis: 100px;   
+    /*THIS ONLY SELECT THE DIRECT CHILDREN INSIDE THE CONTAINER CLASS IF THERE WOULD HAVE BEEN NESTED THEN IT MAY NOT HAD ANY EFFECT ON THE
+     NESTED RAHTER EFFECTS ONLY THE DIRECT CHILDREN OF ITS*/
+    .container  > * 
+    {
+       flex-basis: 100px;  /*FLEXES AROUND THE MAIN AXIS WHICH IS COLUMN AT HERE*/ 
+       flex-wrap: wrap;/*what happens is when we small the window it just comes down or else it goes out of the window otherwise*/
+       
     }
    
     .red{
       background-color: red;
+      order: 1;/*ek ordering de deta hai vo*/
+      align-self: flex-start; /*ek particular elemet ko targer karne ke liye use kiya jat hai ye*/
     }
     .orange{
       background-color:orange;
+      order: 3;
     }
     .green{
       background-color: green;
+      order: 2;
+
     }
     .blue{
       background-color: blue;
+      order: 4;
     }
     .indigo{
       background-color:indigo;
+      order: 5;
     }
     .yellow{
       background-color: yellow;
+      order: 6;
     }
     .violet{
       background-color: violet;
+      order: 7;
     }
   </style>
 </head>
