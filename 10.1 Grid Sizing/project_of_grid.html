@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid project</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: 250px 400px minmax(200px,500px);
+            grid-template-rows: 1fr 1fr 2fr;
+            height: 450px;
+            width: 250px;
+            grid-auto-rows: 50px;
+            margin-top: 40px;
+            margin-left: 170px;
+
+        }
+        .parent{
+            display: flex;
+            flex-direction: column;
+         }
+        .container-child{
+            background-color: #1B4242;
+            border: 2px solid white;
+            color: white;
+           
+        }
+        .child{
+            background-color: #1B4242;
+            border: 2px solid white;
+            color: white;
+            flex-basis: 400px;
+            flex-shrink: 1;
+            max-width: 350px;
+        }
+        .tag{
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 20px;
+        }
+        @media screen and (max-width: 800px) {
+        .container,
+        .parent {
+            margin: 2px;
+            grid-template-rows: 100px 50px 25px; /* Adjust the margin for smaller screens */
+        }
+
+        .tag {
+            font-size: 1.5rem; /* Reduce the font size for smaller screens */
+        }
+    }
+        
+    </style>
+</head>
+<body>
+    <h1 class="tag">CSS Grid Sizing Exercise</h1>
+    <div class="container">
+        <div class="container-child">width expands to fill space</div>
+        <div class="container-child">400px wide</div>
+        <div class="container-child">min 200px max 500px wide</div>
+        <div class="container-child">width expands to fill space</div>
+        <div class="container-child">400px wide</div>
+        <div class="container-child">min 200px max 500px wide</div>
+        <div class="container-child">width expands to fill space</div>
+        <div class="container-child">400px wide</div>
+        <div class="container-child">min 200px max 500px wide</div>
+        <div class="container-child">width expands to fill space</div>
+    </div>    
+    <h1 class="tag">NOW FLEX</h1>
+    <div class="container parent">
+        <div class="child">width expands to fill space</div>
+        <div class="child">400px wide</div>
+        <div class="child">min 200px max 500px wide</div>
+        <div class="child">width expands to fill space</div>
+        <div class="child">400px wide</div>
+        <div class="child">min 200px max 500px wide</div>
+        <div class="child">width expands to fill space</div>
+        <div class="child">400px wide</div>
+        <div class="child">min 200px max 500px wide</div>
+        <div class="child">width expands to fill space</div>
+    </div>
+    
+</body>
+</html>

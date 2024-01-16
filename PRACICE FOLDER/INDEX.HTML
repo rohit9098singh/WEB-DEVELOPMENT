@@ -3,24 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Child Selector Example</title>
+  <title>grid placement</title>
   <style>
-    .parent > .child {
-      border: 2px solid blue;
-      margin: 5px;
-      padding: 10px;
+    .container{
+      display: grid;
+      height: 100vh;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr 1.5fr;
+      grid-template-rows: 1fr 1fr ;
+      background-color: black;
     }
+    .item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      background-color: seagreen;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .cowboy{
+      background-color:#7E6363 ;
+      grid-column: span 2;/*kuch nhi karta hai bas jo bhi direction specify kiya hua hota hai
+                            us direction me length ko increase kar deta hai jaise ke cowboy baki 
+                            dono se jada space consume kar r column wise */
+      /*grid-column-start: 3;
+      grid-column-end: 4;*/ /*ye dono kya karenge ke grid ko he start karenge given value se jaise yaha 3rd se ends at 4
+                             modified version of grid-column:span 2;*/                     
+    }
+  
   </style>
 </head>
 <body>
-  <div class="parent">
-    <div class="child">
-      <p>This is a paragraph inside the first child.</p>
-      <div class="sub-child">This is a nested div inside the first child.</div>
-    </div>
-    <div class="child">
-      <p>This is a paragraph inside the second child.</p>
-    </div>
-  </div>
+  <div class="container">
+    <div class="item cowboy"> 🤠</div>
+    <div class="item astronaut">👨‍🚀</div>
+    <div class="item book">📖</div>
+  </div>  
 </body>
 </html>

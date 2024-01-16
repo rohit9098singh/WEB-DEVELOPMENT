@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid_sizing</title>
+    <style>
+        .container{
+            display: grid;
+            /*FIXED FRAME SIZE*/
+            grid-template-rows: 200px 300px;
+            grid-template-columns: 100px 200px;
+            gap: 10px;
+            /*CAN BE REPRESENTED AS FOLLOW :-
+             1)grid-templet:200px 300px 200px/300px 600px 100px-->row or column dono ko sath me represent kar sakte hai
+             2) grid-templet-row:100px auto
+                grid-templet-column:200px auto -->auto means ye pura screen ko cover kar lega jo bachega */
+            /*ANOTEHR WAY TO REPRESENT IT :-
+             1)grid-template-rows:1fr 2fr; means 1 walla row ka jo size hoga 2nd walla row ka size double hoga first se and vice-versa
+               difference ye isme aata hai ke jab hum minimize karte hai to 2nd row ka jp size vo humesha 1st walle se double hoga
+             2)*/
+             
+        }
+        .gridclass{
+            background-color: bisque;
+            ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gridclass">1</div>
+        <div class="gridclass">2</div>
+        <div class="gridclass">3</div>
+        <div class="gridclass">4</div>
+   
+    </div>
+</body>
+</html>
