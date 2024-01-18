@@ -1,0 +1,21 @@
+BLOCK-LEVEL-ELEMENTS:
+
+<div>: Division or container for grouping content.
+<p>: Paragraph.
+<h1>, <h2>, ..., <h6>: Headings of different levels.
+<ul>: Unordered list.
+<ol>: Ordered list.
+<li>: List item.
+<table>: Table.
+<form>: Form container.
+Block-level elements typically start on a new line and take up the full width of their container.
+
+INLINE-LEVEL-ELEMENTS:
+<span>: Inline container for grouping text or other inline elements.
+<a>: Anchor for creating hyperlinks.
+<strong> or <b>: Bold text.
+<em> or <i>: Italicized text.
+<img>: Image.
+<br>: Line break.
+<input>: Input field.
+<button>: Button.

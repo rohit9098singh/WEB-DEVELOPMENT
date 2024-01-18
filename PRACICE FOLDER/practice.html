@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid placement</title>
+  <style>
+    .container{
+      display: grid;
+      height: 100vh;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr 1.5fr;
+      grid-template-rows: 1fr 1fr ;
+      background-color: black;
+    }
+    .item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      background-color: seagreen;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .cowboy{
+      background-color:#7E6363 ;
+      grid-column: span 2;/*kuch nhi karta hai bas jo bhi direction specify kiya hua hota hai
+                            us direction me length ko increase kar deta hai jaise ke cowboy baki 
+                            dono se jada space consume kar r column wise */
+      /*grid-column-start: 3;
+      grid-column-end: 4;*/ /*ye dono kya karenge ke grid ko he start karenge given value se jaise yaha 3rd se ends at 4
+                             modified version of grid-column:span 2;*/  
+       grid-area: 1/1/2/3;                                        
+    }
+    .astronaut{
+      background-color:#021e25 ;
+      order: 1;
+    grid-column: span 2;
+
+    }
+    .book{
+     /* grid-row: span 2;*/
+     /*OR*/
+      grid-area: 1/3/3/4;
+
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item cowboy"> 🤠
+        <p></p>
+    </div>
+    <div class="item astronaut">👨‍🚀</div>
+    <div class="item book">📖</div>
+  </div>  
+</body>
+</html>
