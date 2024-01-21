@@ -1,0 +1,117 @@
+*)body
+1-margin
+2-padding
+**)FLEX CONTAINRER PROPERTY:-
+1-flex-direction
+2-display
+3-flex-wrap//control the wrapping of items within a CONTAINRER
+4-flex-flow-shorthand for flex-direction and flex-wrap
+5-justify-content//align ites along the main axis 
+6-align-item// align items along the cross axis
+7-alin-content
+
+**)common class to all the items
+1-color
+2-font-size
+3-text-align
+4-padding
+
+***)DISPLAY
+1-display:flex;// TAKES THE WHOLE WIDTH OF THE CONTAINER AND MAY HAVE SOME EXTRA SPACES AROUND  
+2-display:inline-flex; // WRAPES AROUND THE WHOLE TEXT AND DOESNT LEAVES ANY KIND OF A EXTRA SPACES
+
+****)FLEX-direction // SPECIFIES THE WAY THE ITEMS IN THE CONTAINER SHOULD BE ARRANGED 
+                  //BY DEFAULT IT IS ALONG THE MAIN AXIS THAT IS LEFT TO RIGHT WHEN WE SET TO COLOM IT IS FROM TOP TO BOTTOM
+1-flex-direction:row;
+2-flex-direction:colom;
+3-flex-direction:row-reverse;// just oposite of the flex-direction:row;
+4:flex-direction:colom:reverse;// opposite of the flex-direction:colom;
+
+*****)FLEX-WRAPE// by default all the flex item tries to fix in a single line and if there is not enough spaces the content simply overflows 
+   --> display:flex; in container should be mentained for flex:wrap to be used;
+  
+   1-flex-wrap:nowrap; // by default value no change;
+   2-flex-wrap:wrap; // now the items in the container will change once we shrink the window;
+   3-flex-wrap:reverse;// what it does is window shrink karne pe items neeche nhi balki upper shrink karte hai
+
+// NOW SUPPOSE WE HAVE A FLEX-DIRECTION AS COLOUM AND HEIGHT OF THE CONTAINER IS 400PX ONLY AND WE HAVE MORE NO OF ITEMS SO THE ITEMS WILL OVER FLOW THE CONTAINER
+//SO IN THAT CASES ALSO WE USED THE FLEX-WRAP:WRAP; TO BEAUTIFULLY WRAP UP THE ITEMS WITHIN TH SPECIFIED HEIGHT.
+
+******)FLEX-FLOW: // short hand for flex-direction and flex-wrap: first value is <flex-direction> and the second value is <flex-wrap>
+1-flex-flow: colom wrap;
+1-flex-flow: colom-reverse wrap-reverse;
+
+*******)JUSTIFY-CONTENT:// justify the alignment along the main axis
+1-justify-content:flex-start;// by defalut value
+2-justify-content:flex-end;// place item at the end of the main axis
+3-justify-content:center;// items are arranged at the center of the container along the main axis
+4-justify-content:space-between;// distribute even spaces will was left out in the container and no matter
+                                // how many elements are there the space will be even between them
+5-justify-content:space-around; // does the same work as space-between but also leaves space at the begining and at the end of the boxes
+                                // spaces in between the items will be double the space at the beggining and at the end of the containe
+6-justify-content:flex-start;// same property as the space around only difference is it has the equal spaces in the begginig and at the end of container.
+//ALSO SAME PROPERTY CAN BE USED WHEN DIRECTION IS ALONG THE COLOM.
+
+********)ALIGN-ITEM:// justify the alignment along the cross axis to see the changes we need to specify  the height of the container
+1-align-item-stretch; this is a defalut value of align-item
+2-align-item-flex-start;// it ends up the stretchness of the items and makes them into small boxes
+3-align-item-flex-start;// pushes the item to the end of the cross axis opposite of flex-start
+4-align-item-center;// centers the element along the cross axis
+5-align-item-baseline;// it is the line where the letters sit simple matlab sare elemet ke neeche agar touch karte hue line khich de vahi hota hai
+
+*********)ALIGN-CONTENT://align lines of content along the cross axis mix of justify-content and align-item;
+1:more or less same as the align-item property
+ 
+//==================================================================FLEX-ITEMS=================================================================================
+  
+                            //......order->controls the order in which the item appears in the flex container..........
+1)which ever element order is specified that elemet will be arranged at the end of the container..
+  ex-item1:order1,item2:order2,item3:order3;
+  therefore arrangment will be like item3 will be at the end followed by item2 at second last and item1 at third last
+
+                          //.......2-flex-grow->defines the ability for the flex item to grow if necessary........
+1)what amount of space the item should take up if necessary.. and always related to size of the other items in the container  
+ex-flex-grow:1;it streathces the specified item of the container to fill up the additional spaces
+NOTE--> it is always adivisable to use flex group in the class which common to all the elements genrellay wwe have flex-item <div>class:"flex-item one"</div>  
+
+                          // ........flex-shrink->defines the ablitity of the flex item to shrink if necessary.....
+1) kuch nhi bas jab bhi hum display ko drag kar chota karte hai to items thoda sa reduce hota hai fir vo gayab hone lagta hai 
+therefore flex-shrink:0;kar dene se vo gayab ho jayega bina thoda bhi shrink kiye 
+NOTE-->use this in flex-item class only.
+
+2)we can also use this for <div>class:"flex-item one"</div> class one also like flex-shrink:5; this says that item one will decrease 5 times more than the other elemnts 
+
+         //.........-flex-basis-> which defines the initial main size of the flex item before the extra space in the container is distributed......
+1)used in place of width in the flex layout and can except values in % rem,em,pixel etc
+2)flex-basis:auto; is the default value
+3)flex-basis:200px; changes the width of the item
+4)flex-basis and flex-grow/shrink are independent of each other      
+.flex-container {
+   display: flex;
+ }
+ 
+ .flex-item {
+   flex-grow: 2;
+   flex-shrink: 1;
+   flex-basis: 100px;
+ }
+ The flex-basis sets the initial size of the item to 100px.
+ The flex-grow: 2 means that if there is extra space in the container, this item will grow at twice the rate of other items.
+ The flex-shrink: 1 means that if there's not enough space, this item will shrink at the same rate as other items.
+//NOTE-if flex-grow and shrink is written at the top of the flex-basis then the extra spaces will be applied to the item where flex-basis is applied inorder
+  to full fill the spaces around them                    
+
+                             //..........flex->short hand for flex-grow,shrink,basis..........
+1)  .flex-item {
+   flex-grow: 2;
+   flex-shrink: 1;
+   flex-basis: 100px;
+} 
+ insted of this use this
+.flex-item{
+   flex:2 1 100px
+}                         
+                          //...........align-self->which allows the allignment of individual flex item.........
+1)works same as align-item only takes attributes such as flexstart,flexend,center                          
+                         
+                          
