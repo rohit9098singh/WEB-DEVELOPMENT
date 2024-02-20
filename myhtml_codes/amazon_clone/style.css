@@ -1,0 +1,250 @@
+*{
+    margin: 0;
+    border: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.navbar{
+    height: 60px;
+    background-color: #131921;
+    color: white;
+    display: flex;
+    align-items: center;
+   justify-content: space-evenly;
+    cursor: pointer;
+}
+.border{
+    border: 1.5px solid transparent;/*jo bhi class border ho uske andar ek automatic sa border ho transparent walla or
+                                       ek alag sa hover bananyenge border ke liye suppose agar hum direct hover bana denge na 
+                                       to kam to karega but vo andar ke content hilne lagenge */
+}
+.border:hover{
+    border: 1.5px solid white;
+}
+/*box 2*/
+.nav-logo{
+    height: 50px;
+    width: 100px;
+}
+.logo{
+    background-image: url("../pictures-2/amazon_logo.png");
+    background-size: cover;
+    height: 50px;
+}
+.first-text{
+    font: size 0.6em;/*font size ko kosis karenge rem me dene ka ise hoga kya ke jab chotta karenge to vo root ke comparision chota hoga or vo responsive banega*/
+    color: #cccccc;
+    margin-left: 16px;
+}
+.second-text{
+    margin-left: 6px;
+    font-size: 1.5;
+    margin-left: 6px;
+}
+.address-icon{
+    display: flex;
+  
+}
+/*box-3*/
+.nav-search{
+    display: flex;
+    background-color: #febd69;
+    justify-content: center;
+    width: 750px;
+    height: 40px;
+    border-radius: 4px;    
+}
+.nav-search:hover{
+        border: 3px solid  #febd69;    
+}
+.search-select{
+    background-color: #e6e6e6;
+    text-align: center;
+    width:50px ;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px; 
+    border: none;
+}
+.search-input{
+    width: 900px;
+   font-size: 1rem;
+   border: none;
+}
+.search-icon{
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: black;
+}
+/*BOX-4*/
+.nav-signin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7REM;
+}
+.flag{
+    display: flex;
+    height: 16px;
+    width: 21px;
+    gap: 2px;
+}
+.flag-symbol{
+    display: flex;
+    font-size: 0.5rem;
+    align-items: center;
+}
+.hello{
+    display: flex;
+    gap: 7px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+/*box-5*/
+.nav-return {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+  }
+  .hello2{
+    font-size: 1rem;
+    font-size: bold;
+  }
+  .last-box{
+    display: flex;
+  }
+ /*box-6*/ 
+ .nav-cart i{
+    font-size: 32px;
+ }
+ .panel{
+    height: 39px;
+    background-color: #232f3e;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+ }
+ .panel-options p{
+    display: inline;
+    width: 70%;
+    font-size: 0.85rem;
+    margin-left: 15px;
+ }
+ .panel-options{
+    width: 70%;
+ }
+ .panel-deals{
+    font-size: 0.9rem;
+    font-weight: bold;
+ }
+ /*HERO SECTION*/
+ .hero-section{
+    background-image: url("../pictures-2/hero_image.jpg");
+    height: 350px;
+   background-size: cover;
+   display: flex;
+   justify-content: center;
+   align-items: flex-end;
+}
+.hero-message{
+    background-color: white;
+    color: black;
+    height: 40px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 35px;/*ye tab use hoga jab upper walla parent flex hojayega*/
+  /*  position: relative;
+    top: 250px;*//*USE THIS OR DO ONE THING MAKE THE PARENT CLASS FLEX*/
+}
+.hero-message a{
+    color: #6aaab6;
+}
+/*SHOP SECTION*/
+.shop-section{
+    display: flex;/*aisa isliye karte hai taki hum alag alag box bana sake as per clone jo ke x axis pe*/
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #e2e7e6;
+}
+.box{
+     height: 300px;
+     width: 23%;
+     margin-top: 25px;
+     
+     background-color: white;
+     padding: 20px 0px 15px ;
+}
+.box-image{
+    height: 200px;
+    background-size: cover;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.box-content{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.box-content p{
+    color:  #0f191a;
+    font-size: bolder;
+}
+/*footer*/
+footer{
+    margin-top: 15px;
+}
+.foot-panel1{
+    background-color: #37475a;
+    color: white;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+.foot-panel2{
+    background-color:#232f3e;
+    color: white;
+    height: 300px;
+    display: flex;/*neeche walle ko display block karne ke baadh aaya hai ye yaya par*/
+    justify-content: space-evenly;
+}
+ul{
+    margin: 10px;
+}
+ul a{
+   display: block;
+   font-size: 0.85rem;
+   margin: 10px;
+   color: #dddddd;
+}
+.foot-panel3{
+    background-color: #232f3e;
+    color: white;
+    border-top: 0.5px solid white;/*for line*/
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    background-image: url("../pictures-2/amazon_logo.png");
+    background-size: cover;
+    height: 50px;
+    width: 100px;
+}
+.foot-panel4{
+   background-color: #131a22; 
+   color: white;
+   height: 80px;
+   font-size: 0.7rem;
+    text-align: center;
+}
+.pages{
+    padding: 15px;
+}

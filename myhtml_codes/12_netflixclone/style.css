@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@600&display=swap');
+*{
+   margin: 0;
+   padding: 0; 
+   font-family: poppins,sans-serif;
+}
+body{
+    background-color: black;
+}
+.main{
+    background-image: url("/pictures-1/NETFLIX.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 85vh;
+    width: 100vw;
+    position: relative;
+}
+.main .box{
+    opacity: 0.644;
+    background-color: black;
+    height: 85vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+nav{
+    max-width: 75vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:80px;
+}
+
+.decorate-image{
+    margin-right: 30px;
+    height: 55px;
+    margin: 25px 35px;
+   
+}
+
+.content{
+    font-family: martel sans,sans-serif;
+    height:100%;/*iska matlab hai ke parent ke mutablik aapna height ko 100% lelo
+                   and major reson ye hai ke taki ko text hum beech me dale hai vo 
+                   vo image ke pure middle me aana chaheye*/
+    font-family: martel sans,sans-serif;               
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    gap: 30px;
+  
+}
+.content> :nth-child(1){/*.content :nth-child(1)-->aise bhi likh sakte hai magar is case me nhi likhe kyuke dusra walla div jo hai where we have made 
+                           buttons and the input vo bhi uska ek tarah se first child he hai na threrefore by writing this we are saying them to refere to the
+                           .content :nth-child(1) immediate first child*/
+    font-family: "POPPINS";                       
+    font-size: 56px;
+    font-weight:bolder;
+
+}
+.content> :nth-child(2){
+    font-size: 32px ;
+    font-weight: 400;
+}
+.content> :nth-child(3){
+    font-size: 22px ;
+    font-weight: 400;
+}
+.seperation{
+    height: 7px;
+    background-color:rgb(66, 65, 65);
+    position: absolute;/*ABSOLUTE DENE SE HOGA YE KE VO AAPNE PARENT KE HISAB SE CHANGE HOGA AGAR HUME USKE POSITION CHANGE KARNA HAI TO
+                         IS CASE ME PARENT MAIN HAI USKA ISLIYE VO CHIPAK GYA MAIN KE END ME KYUKE BOTTOM SE 0 HAI*/
+    bottom: 0;
+    width: 100%;
+    z-index: 20;
+}
+.buttons{
+    display: flex;
+    padding: 12px 20px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+    gap: 20px;
+}
+.btn{
+      padding: 3px 8px;
+      font-weight: bold;
+      background-color: white;
+      
+}
+.btn-red-lg{
+    background-color: red;
+    padding: 21px 39px;
+    border-radius: 8px;
+    font-size: 32px;
+    color: white;
+}
+.btn-red-sm{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 15px 32px;
+    border-radius: 8px ;
+    font-size: 20px
+}
+.btn-norm{
+    padding: 8px 46px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: rgba(17, 16, 16, 0.5);
+    border: 1px solid white;
+    color: white;
+    font-family: sans-serif;
+}
+.text-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+}
+.main input{
+    position: relative;
+    z-index: 10;
+    padding: 30px 94px;
+    background-color: rgba(17, 16, 16, 0.5);/*TO MAKE THE BACKGROUND TRANSPARENT*/
+    border: 2px solid rgb(57, 218, 57);
+    border-radius: 8px;
+    font-size: 18px;
+    float: left;
+    color: white;
+}
+
+.first-sec {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 5rem 0;
+}
+section.first-sec > div{
+    display: flex;
+    flex-direction: column;
+    white-space: normal;
+}
+.first-sec >div :nth-child(1){/*first-sec class me jo div hai uska first child*/
+    font-size: 60px;
+    font-family: "Netflix Sans";
+    font-weight: bolder;
+}
+.first-sec >div :nth-child(2){
+    font-size: 24px;
+    white-space: normal;
+    line-height: 2;
+    
+}
+.sec1-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec1-image img {
+    width: 100%;/* here 100% means according to the height of the container and the container is sec-image for this
+                   when you set width: 100%; for an image without specifying the height and 
+                   without a specific percentage height value, the height becomes dependent on the aspect ratio of the image.*/
+    max-width: 500px; /* Adjust the max-width as needed */
+}
+
+.sec1-image video {
+    position: absolute;
+    top: 83px;
+    left: 74px;
+    width: 70%;
+    max-width: 500px; /* Adjust the max-width as needed */
+    height: auto;
+    z-index: 1; /* Ensure the video is on top of the image */
+}
+.second-sec{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 5rem 0;
+}
+section.second-sec > div{
+    display: flex;
+    flex-direction: column;
+}
+.second-sec >div :nth-child(1){/*first-sec class me jo div hai uska first child*/
+    font-size: 60px;
+    font-family: "Netflix Sans";
+    font-weight: bolder;
+}
+.second-sec >div :nth-child(2){
+    font-size: 24px;
+    white-space: normal;
+    line-height: 2;
+    
+}
+.third-sec{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 5rem 0;
+}
+section.third-sec > div{
+    display: flex;
+    flex-direction: column;
+}
+.third-sec >div :nth-child(1){/*first-sec class me jo div hai uska first child*/
+    font-size: 60px;
+    font-family: "Netflix Sans";
+    font-weight: bolder;
+}
+.third-sec >div :nth-child(2){
+    font-size: 24px;
+    white-space: normal;
+    line-height: 2;
+    
+}
+.sec3-image{
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sec3-image img{
+    width: 100%;
+    max-width: 500px;
+ 
+}
+.sec3-image video{
+    position: absolute;
+    width: 58%;
+    top: 41px;
+    left: 102px;
+    height: auto;
+    max-width: 500px;
+    position: absolute;
+    z-index: -1;
+
+}
+.fourth-sec{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+}
+section.fourth-sec > div{
+    display: flex;
+    flex-direction: column;
+}
+.fourth-sec >div :nth-child(1){/*first-sec class me jo div hai uska first child*/
+    font-size: 60px;
+    font-family: "Netflix Sans";
+    font-weight: bolder;
+}
+.fourth-sec >div :nth-child(2){
+    font-size: 24px;
+    white-space: normal;
+    line-height: 2;
+    
+}
+.fifth-sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+    color: white;
+}
+.fifth-sec-heading{
+    font-size: 3rem;
+    font-weight: bolder;
+    font-family:  "Martel Sans", sans-serif;
+    
+}
+.fifth-sec{
+    background-color: #141414;
+    color: white;
+}
+.fifth-sec-heading{
+    font-size: 2.5rem; /* Adjust heading font size */
+    font-weight: bold; /* Bold font weight */
+    margin-bottom: 2rem;;
+}
+.last
+{
+    background-color: black;
+    color: white;
+    padding: 35px;
+    color: white;
+    position: relative;
+    padding: 8rem 0;
+}
+.last>h2{
+    text-align: center;
+    font-size: 3rem;
+}
+.table-box{
+    transition: all 1s ease-out;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(49, 48, 48);
+    padding: 28px;
+    margin: 34px auto;
+    max-width: 70vw;
+    font-size: 33px;
+}
+.table-box:hover {
+    background-color: #545151;
+    cursor: pointer; /* Light grey background color */
+  }
+  .fox{
+        text-align: center; 
+        font-size: 24px; 
+        line-height: 2;
+     }
+     .fox .tex-write {
+        /* Styles for the email input */
+        padding: 30px 94px;
+        background-color: rgba(17, 16, 16, 0.5);
+        border: 2px solid rgb(57, 218, 57);
+        border-radius: 8px;
+        font-size: 18px;
+        color: white;
+      }
+      
+      .fox .btn-red-lg {
+        /* Styles for the "Get Started" button */
+        background-color: red;
+        padding: 21px 39px;
+        border-radius: 8px;
+        font-size: 32px;
+        color: white;
+      }
+      
+
+  footer {
+    background-color: #000;
+    color: #fff;
+    max-width: 100%;
+    padding: 40px;
+}
+footer > .questions {
+    color: red;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: underline;
+    line-height: 2;
+}
+
+.footer-item a {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.footer-item a:hover {
+    font-weight: bold;
+}
+.fox .tex-write {
+    /* Styles for the email input */
+    padding: 30px 94px;
+    background-color: rgba(17, 16, 16, 0.5);
+    border: 2px solid rgb(57, 218, 57);
+    border-radius: 8px;
+    font-size: 18px;
+    float: left;
+    color: white;
+  }
+  .fox .btn-red-lg {
+    /* Styles for the "Get Started" button */
+    background-color: red;
+    padding: 21px 39px;
+    border-radius: 8px;
+    font-size: 32px;
+    color: white;
+ }
+@media screen and (max-width: 900px) {
+    main{
+        width: auto;
+        background-size: cover;
+        background-position: center center;
+    }
+    nav{
+        max-width: 70vw;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .first-sec,.second-sec,.third-sec,.fourth-sec {
+        flex-wrap: wrap;
+        padding: 2rem 0;
+      
+    }
+
+
+    .sec1-image,.sec3-image {
+        width: 305px;
+        
+    }
+
+    .sec1-image video,.sec3-image video {
+        width: 305px;
+        height: auto;
+        top: 0;
+        left:0;
+    }
+
+    .content> :nth-child(1) {
+        font-size: 32px;
+    }
+
+    .content> :nth-child(2) {
+        font-size: 18px;
+    }
+
+    .content> :nth-child(3) {
+        font-size: 18px;
+    }
+
+    .text-button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .questions h2 {
+        text-align: center;
+        font-size: 32px;
+    }
+
+    footer {
+        max-width: 90vw;
+        padding: 75px 0;
+    }
+    .footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+    .footer-item{
+        align-items: center;
+    }
+ 
+
+}
+
+@media screen and (max-width: 55%) {
+      .sec1-image ,.second-sec , .sec3-image{
+        display: flex;
+        flex-direction: column;
+      }
+
+}

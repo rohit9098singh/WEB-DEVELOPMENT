@@ -1,0 +1,19 @@
+1-->BACKGROUND-SIZE
+
+background-size: 200px 150px;
+background-size: cover;
+background-size: contain;
+
+2-->BACKGROUND-ATTACHMENT
+background-attachment: scroll;
+background-attachment: fixed;
+background-attachment: local;
+
+3-->BACKGROUND-REPEAT
+background-repeat: repeat;
+background-repeat: repeat-x;
+background-repeat: repeat-y;
+background-repeat: no-repeat;
+
+4-->
+background-position: top right;

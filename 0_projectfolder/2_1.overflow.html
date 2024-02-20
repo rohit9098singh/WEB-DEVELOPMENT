@@ -1,0 +1,39 @@
+<!--
+    1- overflow: visible;
+    2-overflow: hidden;
+    3- overflow: scroll;
+    4- overflow: auto;
+    5- overflow: inherit;
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overflow Example</title>
+  <style>
+    .container {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #ccc;
+      overflow: inherit; /* Try changing to 'visible,auto,scroll,inherit' to see the difference */
+    }
+
+    .content {
+      width: 300px;
+      height: 150px;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="content">
+      <!-- Content that exceeds the container's dimensions -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+    </div>
+  </div>
+
+</body>
+</html>
