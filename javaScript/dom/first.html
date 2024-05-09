@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Learning</title>
+    <style>
+        .bg-class{
+            background-color: #212121;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body class="bg-class">
+    <div >
+        <h1 id="title" class="heading">Hello world <span style="display: none;">test text</span></h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+        <h2>i dont know you for now part 1</h2>
+        <h2>i dont know you for now part 2</h2>
+        <h2>i dont know you for now part 3</h2>
+        <h2>i dont know you for now part 4</h2>
+
+        <input type="password" >
+
+        <ul>
+            <li class="list-item">one </li>
+            <li class="list-items">two</li>
+            <li class="list-items">three</li>
+        </ul>
+    </div>
+</body>
+<script>
+    //====================BY Id=========================
+    const title=document.getElementById("title")
+    console.log(title);
+    title.style.backgroundColor="green";
+    title.style.padding="5px";
+    title.style.borderRadius="12px";
+
+    // how to take out the text 
+
+   // Definition: Represents the plain text content inside an element, including all child nodes, but without any HTML tags.
+   //   Example: If an element contains a paragraph (<p>) and a list (<ul>), textContent will return only the plain text of both the paragraph and list, without the HTML tags.
+    console.log(title.textContent); // Output: "Hello world test text" (includes hidden text)
+    
+    //Definition: Represents the HTML content of an element, including any child elements and tags.
+    //Example: If an element contains another element inside it (like a <p> within a <div>), innerHTML includes the HTML tags as a string.
+    console.log(title.innerHTML); // Output: "Hello world <span style='display: none;'>test text</span>"
+
+    //innerText--> Represents the visible text inside an element, as seen by the user.
+    //Example: If a paragraph (<p>) has a part of its text hidden (using display: none), innerText won't include that hidden text.
+    console.log(title.innerText); // Output: "Hello world" (ignores hidden text)
+
+    //========================= BY CLASSNAME=======================================
+    const heading=document.getElementsByClassName("heading");
+    console.log(heading);
+
+
+    //==========================QUERYSELECTOR=====================================
+    const firstH2 = document.querySelector("h2"); // Selects the first <h2> element
+    console.log(firstH2);
+
+    const titleByQuery = document.querySelector("#title");
+    console.log(titleByQuery);
+
+     const input=document.querySelector('input[type="password"]');
+     console.log(input);
+    //========================SELECTING THE UL========================================
+     const ul_list=document.querySelector("ul");
+     const got_li= ul_list.querySelector("li");
+     got_li.style.backgroundColor="green"
+     got_li.style.padding="10px"
+     got_li.style.borderRadius="10px"
+    //now manipulating the inner text of first li
+     got_li.innerHTML="five";
+
+     //==========================QUERYSELECTORALL=====================================
+      const All_li =document.querySelectorAll('li');
+      console.log(All_li); // note that it gives a nodelist which looks like but not an array
+      All_li.style.color='green';//but it will not work gives an error because it is not an error
+      All_li[0].style.color='green';//it will do the text green
+
+       
+      const myH1=document.querySelectorAll('h1');
+      console.log(myH1);// returns a node list only 
+      myH1.style.color='green';// this cannot be done...
+      myH1[0].style.color='blue';// this will work
+
+      myH1.forEach(function(li){
+        li.style.backgroundColor="yellow"  
+      });
+
+      //=============================HTML_COLLECTION(cannot use for each loop at here)===================================
+      console.log("htmlcollections are different from the node list");
+      const elements = document.getElementsByClassName('list-items');
+      console.log(elements); // Outputs a NodeList of elements with class name 'list-items'
+
+      elements.forEach(function(li){//functions throuhs an error therefore we need to convert it into array
+        console.log(li);
+      });
+
+     const myConvertedArray= Array.from(elements);
+     console.log(myConvertedArray);
+
+     myConvertedArray.forEach(function(li){
+        li.style.backgroundColor="red"
+     })
+</script>
+</html>

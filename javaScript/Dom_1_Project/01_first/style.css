@@ -1,0 +1,60 @@
+*{
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100%;
+}
+nav{
+    background-color: #21212184;
+    height: 50px;
+    display: flex;
+    gap:1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+nav>a{
+    text-decoration: none;
+    border: 2px solid #212121;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+.canvas h1{
+    margin: 10px 5px;
+    text-align: center;
+    font-weight: bolder;
+}
+.canvas{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.button{
+    width: 20%;
+    height: 200px;
+    border: 2px solid #212121;
+    text-align: center;
+    margin: 20px;
+    border-radius: 4px;
+}
+footer{
+    text-align: center;
+    font-size: 18px;
+}
+#grey{
+    background-color: gray;
+}
+#white{
+    background-color: #fff;
+}
+#blue{
+    background-color: blue;
+}
+#yellow{
+    background-color: yellow;
+}

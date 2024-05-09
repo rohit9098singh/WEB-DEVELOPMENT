@@ -1,0 +1,26 @@
+<!-- Event Capturing:--" this is the phase where the event travels from the root of the DOM tree down to the target element.
+Event Bubbling:-- this is the phase where the event travels from the target element back up to the root of the DOM tree. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <button id="button"> Click me </button>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+
+</html>

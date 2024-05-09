@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav">
+        <a href="/" aria-current="page" class="home">Home</a>
+        <a href="https://www.youtube.com/watch?v=_TjtAyMkiTI&t=6s" class="channel" target="_blank">YouTube Channel</a>
+    </div>
+    <div class="main-container">
+        <div class="heading">
+            <h1>Number Guessing Game</h1>
+        </div>
+        <div class="text-content">
+            <p>Try and guess a random number between 1 and 100. <br>
+            You have 10 attempts to guess the right number!</p>
+        </div>
+        <div class="game-desc">
+            <h2>Guess a Number</h2>
+            <input type="text" placeholder="Enter a number" class="user-guess">
+            <button id="sub-btn">Submit Guess</button>
+        </div>
+        <div class="display-score">
+            <p>Previous guesses: <span class="guess"></span></p>
+            <p>Guesses remaining: <span class="guess-remaining">10</span></p>
+            <p class="LowOrHi"></p>
+
+           <!-- Add a button to reset the game -->
+           <button class="new-game-btn">Restart Game</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

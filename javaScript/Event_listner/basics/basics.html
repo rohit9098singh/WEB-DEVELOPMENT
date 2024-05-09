@@ -1,0 +1,82 @@
+<!-- ============================TO STUDY================================================
+   TYPE,TIMESTAMP,DEFAULTPREVENTED.
+   TARGET,TOELEMENT,SRCELEMENT,CURRENTTARGET.
+   CLIENTX,CLIENTY,SCREENX,SCREEENYALTKEY,CTRLKEY,SHIFTKEY,KE -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* styles.css */
+
+/* Container styling */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Inner container styling */
+.inner-container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* h1 styling */
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Button styling */
+button.click {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Button hover effect */
+button.click:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-contaier">
+            <h1 class="heading">Working With the Event listner</h1>
+            <img src="./pictures/clouds.png" alt="cloud" class="cloud">
+             <!-- <button class="click" onclick="alert('owl')">click me</button>  1st-> method of event which is not recomendable -->
+            <button class="click">click me</button>
+        </div>
+    </div>
+</body>
+ <script>
+
+    // document.querySelector('.click').onclick=function(){     2--> method click ke andar jo hum on onclick laga rahe to vaha pe kuch problems aa sakte hai
+    //     alert("owl clicked");                                no recomdable becasue it gives a very less features 
+    // }
+   
+  //  document.querySelector(".click").addEventListener("click",function(){},false) in this syntax they have 3 parameter but we write two bz last one is by default
+
+  document.querySelector(".click").addEventListener("click",function(e){
+    console.log(e);
+    alert("button clicked again")
+  },false) // event propogation only
+
+ </script>
+</html>

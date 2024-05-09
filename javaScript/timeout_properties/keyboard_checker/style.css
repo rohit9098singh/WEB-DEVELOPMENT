@@ -1,0 +1,32 @@
+body{
+    background-color: #212121;
+    color: white;
+    height: 100vh;
+    width: 100%;
+}
+
+#insert{
+    text-align: center;
+    margin-top: 60%;
+    font-size: 30px;
+    font-weight: bolder;
+
+}
+/* CSS styles for the table */
+table {
+    width: 100%; /* Set table width */
+    border-collapse: collapse; /* Merge borders between cells */
+    border: 3px double white; /* Double line border around the table */
+}
+
+/* Styles for table rows */
+tr {
+    border-bottom: 3px double white; /* Double line border between rows */
+}
+
+/* Styles for table cells */
+td, th {
+    padding: 10px; /* Add padding around cell content */
+    text-align: left; /* Align cell content to the left */
+    border: 3px double white; /* Double line border around cells */
+}

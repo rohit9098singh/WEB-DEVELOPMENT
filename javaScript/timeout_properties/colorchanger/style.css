@@ -1,0 +1,31 @@
+body{
+    background-color: #212121;
+    color: #fff;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(255, 0, 0, 0.567);
+    height: 70px;
+}
+a{
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bolder;
+    background-color: white;
+
+}
+#start ,#stop{
+    height: 25px;
+    width: 4rem;
+    padding: 2px 8px;
+    border: 2px solid grey;
+    border-radius: 4px;
+    margin-left: 1rem;
+    font-weight: bold;
+}
