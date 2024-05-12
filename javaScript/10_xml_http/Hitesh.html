@@ -23,11 +23,22 @@
     </p>
 </body>
 <script>
+    // note-> when ever we get a response fromt the url we get that data in the form of url....
+    
     const xhr= new XMLHttpRequest();
-    let url="https://randomuser.me/api/";
+    let url="https://api.github.com/users/hiteshchoudhary";
     xhr.open('GET',url);
+
     xhr.onreadystatechange=function(){
         console.log(xhr.readyState);
+        if(xhr.readyState===4){
+            // console.log(this.readyText); =>uncomment and watch the whole api is here
+
+            const data=JSON.parse(this.responseText);
+            console.log(typeof(data));
+            console.log(data);
+            console.log(data.followers);// any name in the place of response text and will have to add this in front of that as we are askig about is context me
+        }
     }
     xhr.send();
 </script>

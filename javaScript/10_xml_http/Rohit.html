@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: #212121;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Here I am trying to fetch my API data using GitHub</h1>
+    <h2>Best of luck for me</h2>
+
+    <script>
+        // GitHub API URL for fetching user data
+        const myUrl = 'https://api.github.com/users/rohit9098singh';
+
+        // Create a new XMLHttpRequest
+        const request = new XMLHttpRequest();
+
+        // Define the event handler for the request
+        request.onreadystatechange = function () {
+            // Check if the request is complete and was successful
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+                    // Parse the JSON response
+                    const data = JSON.parse(request.responseText);
+                    console.log(data);
+                    // Display some user data in the <h2> element (e.g., GitHub user name)
+                    document.querySelector('h2').textContent = `GitHub User: ${data.login}`;
+                    console.log("followers are:",data.followers);
+                } else {
+                    console.error(`Error: ${request.statusText}`);
+                }
+            }
+        };
+
+        // Open the request with the method GET and the URL
+        request.open('GET', myUrl, true);
+
+        // Send the request
+        request.send();
+    </script>
+</body>
+
+</html>

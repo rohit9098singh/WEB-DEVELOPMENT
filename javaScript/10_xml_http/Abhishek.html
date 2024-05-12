@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git_HUB-Fetch</title>
+    <style>
+            body {
+            height: 100vh;
+            background-color: #212121;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+      <h1>This is a git hub repositary of abhishek singh</h1>
+      <h2> i am rohit will i be getting the job or not very confused </h2>
+      <h3>hello by the way i am.....</h3>
+</body>
+<script>
+    // 1-->fetch the user data from the url first.....
+let url = "https://api.github.com/users/AASHISHAI";
+
+// Create a new XMLHttpRequest
+const abRequest = new XMLHttpRequest();
+
+// Define an event handler for when the request state changes
+abRequest.onreadystatechange = function() {
+    console.log(abRequest.readyState);
+    console.log('i am working');
+    // Check if the request is finished and the response is ready (readyState 4)
+    if (abRequest.readyState === 4) {
+        // Check if the response status is OK (status 200)
+        if (abRequest.status === 200) {
+            // Parse the JSON data from the response text
+            const asData = JSON.parse(abRequest.response);
+            console.log(asData);
+            console.log(asData.login);
+            
+            // Update the text content of the h2 element with the user's login name
+            document.querySelector("h2").textContent = `User name: ${asData.login}`;
+        } else {
+            console.log(`Failed to fetch data. Status: ${abRequest.status}`);
+        }
+    }
+};
+
+// Open a new GET request to the specified URL
+abRequest.open("GET", url);
+
+// Send the request
+abRequest.send();
+
+</script>
+</html>
