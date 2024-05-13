@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #212121;
+    color: white;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.title{
+    text-align: center;
+}
+.title h2{
+    font-size: 42px;
+    color: aqua;
+}
+.img-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+  }
+  #person-img {
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+  }
+  .underline {
+    width: 100px;
+    height: 3px; 
+    background-color: aqua; 
+    margin: 0 auto; 
+    margin-top: 10px; 
+  }
+
+.review {
+    text-align: center;
+}
+
+.review h4 {
+    margin-bottom: 0.5rem; 
+}
+
+.review p {
+    margin-bottom: 1rem; 
+}
+
+.button-container {
+    margin-top: 1rem; 
+}
+
+.prev-btn,
+.next-btn,
+.random-btn {
+    background-color: transparent;
+    border: none;
+    color: aqua;
+    font-size: 24px; 
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.prev-btn:hover,
+.next-btn:hover
+.random-btn:hover {
+    color: #64ffda;
+    /* font-weight: bolder; */
+}
+
+.random-btn {
+    margin-top: 2rem; 
+    padding: 0.5rem 1rem; 
+    border: 2px solid aqua; 
+    border-radius: 5px; 
+    background-color: transparent;
+    color: aqua; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.random-btn:hover {
+    background-color: aqua; /* Change background color on hover */
+    color: #212121; /* Change text color on hover */
+}

@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: #212121;
+}
+.container{
+     height: 100%;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container h1{
+    font-size: 50px;
+}
+.container span{
+    font-size: 5rem;
+}
+.btn{
+    height: 30px;
+    width: 100px;
+    border: none;
+    background-color:chocolate;
+    border: 8px;
+    font-weight: 400;
+}
