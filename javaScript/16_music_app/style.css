@@ -1,0 +1,498 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    display: flex;
+}
+.left-container{
+   width: 18%;
+   background-color: black;
+   color: #fff;
+}
+.main-container{
+    width: 82%;
+    background-color: #212121;
+   
+}
+
+/* main container where left and right exist */
+.mainarea{
+    display: flex;
+    width: 100vw;
+}
+
+
+/*================================== LEFT PART STYLING===============================*/
+.flex{
+    display: flex;
+    gap: 1rem;
+   margin: 1.5rem;
+   font-size: 16px;
+}
+.necessary{
+    margin-top: 2.5rem;
+}
+.bottom-line{
+   width: 100%;
+   background-color: grey;
+   height: 2px; 
+}
+.use-of-justify_content{
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    
+}
+.texts{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    list-style-type: none;
+}
+.bottom-photo{
+    background-position: center ;
+}
+.wolf{
+    height: 150px;
+    width: 100%;
+}
+/*==================================================== FIRST HEAD ===============================*/
+.head-box {
+    display: flex;
+   
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-right-scroll {
+    display: flex;
+    gap: 0.2rem; /* Adjust gap as needed */
+    padding: 14px;
+}
+
+.left, .right {
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    color: purple;
+    background-color: black;
+}
+
+.devedirect3 {
+    margin-right: 2rem;
+}
+
+.devedirect3 button {
+    padding: 4px 8px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/*==================================== SECOND BODY =======================================*/
+.heading{
+    color: white;
+    padding: 1rem;
+}
+.head-box_2 {
+    display: flex;
+}
+
+.informative-boxes,.informative-boxes-2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.boxes-1,.boxes-2 {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+.boxes-1 img,.boxes-2 img {
+    height: 60px;
+    width: 60px;
+    border-radius: 4px;
+}
+.boxes-1 p,.boxes-2 p {
+    background-color: #99999997;
+    height: 59px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    border-radius: 4px;
+    
+}
+
+/*==================================== fourth_songs-section ================================*/
+.fourth-heading{
+    display: flex;
+    padding: 1rem;
+    color: white;
+}
+.first-container{
+    display: flex;
+}
+.first{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.box-1,.box-2,.box-3,.box-4,.box-5{
+    background-color: rgba(0, 0, 0, 0.296); 
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.photo{
+    width:100px ;
+    height: 100px;
+    border-radius: 4px;
+}
+.about h3{
+    color: white;
+}
+.about p{
+    color: #FAFAFA;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+
+
+/*================================== LEFT PART STYLING===============================*/
+.flex{
+    display: flex;
+    gap: 1rem;
+   margin: 1.5rem;
+   font-size: 16px;
+}
+.necessary{
+    margin-top: 2.5rem;
+}
+.bottom-line{
+   width: 100%;
+   background-color: grey;
+   height: 2px; 
+}
+.texts{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    list-style-type: none;
+}
+.bottom-photo{
+    background-position: center ;
+}
+.wolf{
+    height: 150px;
+    width: 100%;
+}
+/*==================================================== FIRST HEAD ===============================*/
+.head-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-right-scroll {
+    display: flex;
+    gap: 0.2rem; /* Adjust gap as needed */
+    padding: 14px;
+}
+
+.left, .right {
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    color: purple;
+    background-color: black;
+}
+
+.devedirect3 {
+    margin-right: 2rem;
+}
+
+.devedirect3 button {
+    padding: 4px 8px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/*==================================== SECOND BODY =======================================*/
+.heading{
+    color: white;
+    padding: 1rem;
+}
+.head-box_2 {
+    display: flex;
+}
+
+.informative-boxes,.informative-boxes-2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.boxes-1,.boxes-2 {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+.boxes-1 img,.boxes-2 img {
+    height: 60px;
+    width: 60px;
+    border-radius: 4px;
+}
+.boxes-1 p,.boxes-2 p {
+    background-color: #99999997;
+    height: 59px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    border-radius: 4px;
+    
+}
+
+/*==================================== fourth_songs-section ================================*/
+.fourth-heading{
+    display: flex;
+    padding: 1rem;
+    color: white;
+    justify-content: space-between;
+}
+.fourth-heading p{
+    color: red;
+}
+.first-container{
+    display: flex;
+}
+.first{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.box-1,.box-2,.box-3,.box-4,.box-5{
+    background-color: rgba(0, 0, 0, 0.296); 
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.photo{
+    width:100px ;
+    height: 100px;
+    border-radius: 4px;
+}
+.about h3{
+    color: white;
+}
+.about p{
+    color: #FAFAFA;
+    font-size: 12px;
+    margin-top: 4px;
+}
+/*=========================================================== FOOTER ==================================================================================*/
+.bottom-part{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #181818;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    
+}
+.footer {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+  }
+  .gif-image img{
+    width: 60px;
+    border-radius: 4px;
+  }
+  .song-info {
+    display: flex;
+    align-items: center;
+  }
+  .song-info img{
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+  }
+ 
+  .song-info p{
+    font-size: 12px;
+    color: red;
+  }
+  .album-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .song-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .controls{
+    display: flex;
+    justify-content: center;
+  }
+  .controls i {
+    margin: 0 10px;
+  }
+  .progress-icons{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .progress-container {
+    display: flex;
+    align-items: center;
+  }
+  .progress-bar input{
+    width: 700px;
+    height: 8px;
+    margin: 0 10px;
+  }  
+  .soundbar{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ .soundbar input{
+    width: 200px;
+
+ }
+
+
+/*==================================== MEDIA QUERIES =======================================*/
+/* Adjustments for screen width 1050px */
+@media(max-width:1250){
+    .footer{
+        flex-direction: column;
+    } 
+    .song-info{
+        flex-direction: column;
+    }
+    .progress-bar input{
+        width: 50%;
+    }
+}
+@media (max-width: 1050px) {
+    .left-container {
+        width: 25%;
+    }
+    .main-container {
+        width: 75%;
+        overflow-x: auto;
+    }
+    .boxes-1 img, .boxes-2 img {
+        height: 50px;
+        width: 50px;
+    }
+    .boxes-1 p, .boxes-2 p {
+        height: 49px;
+        width: 167px;
+    }
+}
+
+/* Adjustments for screen width 768px */
+@media (max-width: 768px) {
+    .left-container {
+        width: 25%;
+    }
+    .main-container {
+        width: 75%;
+    }
+    .head-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .first-container{
+        gap: 4px;
+        overflow-x: auto;
+    }
+    .fourth-heading{
+        width: 100%;
+    }
+    .box-1,.box-2,.box-3,.box-4,.box-5{
+        background-color: black;
+    }
+    .left-right-scroll {
+        width: 100%;
+        justify-content: space-between;
+        padding: 10px;
+    }
+}
+
+/* Adjustments for screen width 490px */
+@media (max-width: 490px) {
+    .main-container {
+        width: 70%;
+    }
+    .left-container {
+        width: 30%;
+    }
+}
+
+/* Adjustments for screen width 420px */
+@media (max-width: 420px) {
+    .main-container {
+        width: 70%;
+        padding: 1rem;
+    }
+    .devedirect3 button {
+        color: red;
+    }
+    .left-container {
+       width: 30%; /* Hide the left-container for screens smaller than 420px */
+    }
+    .informative-boxes, .informative-boxes-2{
+        display: flex;
+        flex-direction: column;
+    }
+    .basic-items,.necessary{
+        font-size: 6px;
+        margin-right: 4px;
+    }
+}
+@media (max-width: 400px){
+    .left-container{
+        width: 0;
+        display: hidden;
+    }
+    .main-container{
+        width: 100%;
+        background-color: orange;
+    }
+}
+
+.for-gradient-color{
+    background: linear-gradient(180deg, #3333A3 10%, #121212 90%);
+    overflow-x: auto;
+} 
