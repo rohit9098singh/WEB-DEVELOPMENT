@@ -14,13 +14,12 @@ let songs=[
     {songname:"tum mile", filepath:"./songs/pehle_bhi_mai.mp3", logo:"pictures/covers/9.jpg"}
 ];
 
-
 //===================================== FOR SONGS ========================================
 let songIndex=0;
 let autoPlay = new Audio("./songs/BrokenAngel.mp3");
 let masterplay = document.querySelector("#masterplay");
 let play_controler = document.querySelector("#play-controler");
-let gif =document.querySelector("#gif")
+let gif =document.querySelector("#gif");
 
 //=================================== FOR CURRENT AND TOTAL DURATION=======================
 let currentTimeDisplay = document.getElementById("current-time");
@@ -43,6 +42,7 @@ play_controler.addEventListener("change", () => {
      autoPlay.currentTime = (play_controler.value * autoPlay.duration) / 100;
      currentTimeDisplay.textContent = formatTime(autoPlay.currentTime);
 });
+
 
 function formatTime(time) {
     let minutes = Math.floor(time / 60);
@@ -77,7 +77,7 @@ let masterSongName=document.querySelector("#masterSongName");
 let songItemPlay=document.querySelectorAll('.songItemPlay')
 let gif_inside=document.querySelector(".gif-inside");
 let previousicon=document.querySelector(".previous");
-let nexticon=document.querySelector(".next");
+let nexticon=document.querySelector(".front");
 
 songs.forEach((element,i)=>{
     console.log("second");

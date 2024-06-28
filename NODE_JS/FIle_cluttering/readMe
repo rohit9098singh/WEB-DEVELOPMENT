@@ -1,0 +1,58 @@
+item.split("."):
+
+This splits the string item into an array of substrings using the dot (.) as the delimiter.
+For example, if item is mw.jpg, item.split(".") would result in ['mw', 'jpg'].
+item.split(".").length:
+
+This gets the length of the array produced by the split operation.
+For mw.jpg, the length is 2.
+item.split(".").length - 1:
+
+This subtracts 1 from the length of the array to get the index of the last element.
+For mw.jpg, the index is 1 (since array indices are zero-based).
+item.split(".")[item.split(".").length - 1]:
+
+This accesses the last element in the array, which is the file extension.
+For mw.jpg, item.split(".")[1] is jpg.
+Examples
+Let's apply this to each of the given file names: ['mw.jpg', 'you.pdf', 'i.lop', 'p', 'japa'].
+
+mw.jpg:
+
+item.split(".") results in ['mw', 'jpg']
+item.split(".").length is 2
+item.split(".").length - 1 is 1
+item.split(".")[1] is jpg
+ext is jpg
+you.pdf:
+
+item.split(".") results in ['you', 'pdf']
+item.split(".").length is 2
+item.split(".").length - 1 is 1
+item.split(".")[1] is pdf
+ext is pdf
+i.lop:
+
+item.split(".") results in ['i', 'lop']
+item.split(".").length is 2
+item.split(".").length - 1 is 1
+item.split(".")[1] is lop
+ext is lop
+p:
+
+item.split(".") results in ['p'] (no dots to split on)
+item.split(".").length is 1
+item.split(".").length - 1 is 0
+item.split(".")[0] is p
+ext is p
+japa:
+
+item.split(".") results in ['japa'] (no dots to split on)
+item.split(".").length is 1
+item.split(".").length - 1 is 0
+item.split(".")[0] is japa
+ext is japa
+Summary
+The line let ext = item.split(".")[item.split(".").length - 1]; extracts the part of the filename after the last dot.
+For files with extensions like mw.jpg and you.pdf, it correctly identifies jpg and pdf.
+For filenames without an extension (or without a dot), it considers the whole name as the extension, which might not be the desired behavior.

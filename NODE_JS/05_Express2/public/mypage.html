@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Post Request</title>
+</head>
+<body>
+    <script>
+        // this is to test the post request
+        // will i be writing the post request everytime for handling this post request::NO;
+
+        // FOR THIS RESON ONLY THE POSTMAN IS USED
+        async function testpost(){
+            //  let a = await fetch("/",{method:"post"});
+                let a =await fetch("/",{method:"put"})
+                let b=await a.text();
+                console.log(b);
+        }    
+        testpost();
+    </script>
+</body>
+</html>
