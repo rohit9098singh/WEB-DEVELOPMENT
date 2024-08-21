@@ -1,0 +1,7 @@
+ls- to show all the files that are available in that folderc
+
+rm -> used to remove the file
+rm -r -> used to remove the directory
+start -> used to run the file
+codes filename -> opens in vscode
+rm * -> removes all the files in the current file

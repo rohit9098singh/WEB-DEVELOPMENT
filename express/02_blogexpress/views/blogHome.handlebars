@@ -1,0 +1,35 @@
+{{!-- 
+  
+   1==>    {{#each blogs}}
+             {{this.title}}<br>
+           {{/each}}
+
+    2==>   {{#each blogs}}
+               <div class="blog">
+                 <h2>{{this.title}}</h2>
+               </div>
+            {{/each}}
+
+    3==>    <div class="container">
+              {{#each blogs}}
+                 <div class="blog">
+                   <h2>{{this.title}}</h2>
+                 </div>
+              {{/each}}
+            </div>      
+
+
+
+
+ --}}
+
+ {{!--they are the part of the boostrap that is why they are not using any css--}}
+
+<div class="container">
+  {{#each blogs}}
+   <div class="blog">
+     <a href="/blogpost/{{this.slug}}"><h2>{{this.title}}</h2></a>
+   </div>
+  {{/each}}
+</div>
+

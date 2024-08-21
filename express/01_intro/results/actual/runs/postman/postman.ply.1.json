@@ -1,0 +1,38 @@
+[
+  {
+    "name": "postman",
+    "test": "postman",
+    "type": "request",
+    "end": "2024-07-07T04:23:23.970Z",
+    "result": {
+      "status": "Submitted",
+      "message": "Request 'postman' SUBMITTED"
+    },
+    "request": {
+      "name": "postman",
+      "type": "request",
+      "url": "http://localhost:3000/abou",
+      "method": "GET",
+      "headers": {},
+      "submitted": "2024-07-07T04:23:23.917Z"
+    },
+    "response": {
+      "runId": "14f54487d7804",
+      "status": {
+        "code": 404,
+        "message": "Not Found"
+      },
+      "headers": {
+        "connection": "close",
+        "content-length": "143",
+        "content-security-policy": "default-src 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sun, 07 Jul 2024 04:23:23 GMT",
+        "x-content-type-options": "nosniff",
+        "x-powered-by": "Express"
+      },
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n      <title>Error</title>\n    </meta>\n    <body>\n      <pre>Cannot GET /abou</pre>\n    </body>\n  </head>\n</html>",
+      "time": 36
+    }
+  }
+]

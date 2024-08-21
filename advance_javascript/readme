@@ -1,3 +1,0 @@
-if we write:-
- console.log(document.body)/*then ye hume pura html code he dedeta hai but if we write*/
-console.dir(document.body)/*then it gives the directory of the page */

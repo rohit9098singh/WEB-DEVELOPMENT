@@ -1,0 +1,15 @@
+// 1====>TO insert a particulat data
+
+// *) db.(collection name).insertOne({name:"rohit"...... soON});
+
+// 2====>to see the data of the particular collection then 
+
+// *) db.(collectionName).find();
+
+// 3===> To update a pericular collection in that case
+
+// *) db.(collectionName).updateOne({name:"rohit"},{$set{brand:"oppo"}}) // first argument is update kise karna hai and the second argument is update karna kya hai
+
+// 4===> To delete a particular collection of a database
+
+// *)db.(collectioname).deleteOne({brand:"apple"})

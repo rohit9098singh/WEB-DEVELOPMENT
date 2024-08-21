@@ -1,0 +1,43 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <h1 id="countdown">30 </h1>
+
+            <script>
+                let countdownValue = 30;
+
+        function updateCountdown() { // Corrected the function name
+        document.getElementById("countdown").innerText=countdownValue; // Display the countdown value (you can use alert or update an HTML element if needed)
+            countdownValue--;
+            if (countdownValue >= 0) {
+                setTimeout(updateCountdown, 1000); // Corrected the function name here as well
+            }
+        }
+
+        updateCountdown(); // Start the countdown
+
+            </script>
+        </body>
+        </html>
+ 
+
+ //================================== OR  for js file=====================================================
+
+ <!-- let countdownValue = 30;
+
+ function updateCountdown() { // Corrected the function name
+     console.log(countdownValue); // Display the countdown value (you can use alert or update an HTML element if needed)
+     countdownValue--;
+     if (countdownValue >= 0) {
+         setTimeout(updateCountdown, 1000); // Corrected the function name here as well
+     }
+ }
+ 
+ updateCountdown(); // Start the countdown
+  -->

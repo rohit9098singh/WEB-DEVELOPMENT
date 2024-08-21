@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Form Validation</h2> 
+    <form id="myForm" onsubmit="return validateForm()"> 
+        <label for="name">Name:</label><br> 
+        <input type="text" id="name" name="name"><br> 
+        <label for="email">Email:</label><br> 
+        <input type="text" id="email" name="email"><br> 
+        <label for="password">Password:</label><br> 
+        <input type="password" id="password" name="password"><br><br> 
+        <input type="submit" value="Submit"> 
+    </form> 
+
+    <div id="error" class="error"></div> 
+
+    <script> 
+        function validateForm() { 
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value; 
+            var password = document.getElementById('password').value; 
+            var errorElement = document.getElementById('error'); 
+
+            // Reset previous error messages 
+            errorElement.innerHTML = ''; 
+
+            // Name validation 
+            if (name === '') { 
+                errorElement.innerHTML += 'Name is required.<br>'; 
+            } 
+
+            // Email validation 
+            if (!isValidEmail(email)) { 
+                errorElement.innerHTML += 'Invalid email address.<br>'; 
+            } 
+
+            // Password validation 
+            if (password === '') { 
+                errorElement.innerHTML += 'Password is required.<br>'; 
+            } 
+
+            // Prevent form submission if there are errors 
+            if (errorElement.innerHTML !== '') { 
+                return false; 
+            } 
+
+            return true; 
+        } 
+
+        // Function to validate email format 
+        function isValidEmail(email) { 
+            var emailRegex = /^\S+@\S+\.\S+$/; 
+            return emailRegex.test(email); 
+        } 
+    </script> 
+</body> 
+</html>

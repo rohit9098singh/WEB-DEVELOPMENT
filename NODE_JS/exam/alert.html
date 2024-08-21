@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog Boxes Example</title>
+</head>
+<body>
+    <script>
+        // Display an alert box
+        alert("This is an alert dialog box");
+
+        // Display a confirmation box and handle user response
+        var confirmation = confirm("Do you want to proceed?");
+        if (confirmation) {
+            alert("You clicked the OK button.");
+        } else {
+            alert("You clicked Cancel or closed the dialog box.");
+        }
+
+        // Display a prompt box and handle user input
+        var userInput = prompt("Please enter your name:", "Rohit Singh");
+        if (userInput !== null && userInput.trim() !== "") {
+            alert("Hello, " + userInput + "!");
+        } else {
+            alert("You did not enter a name.");
+        }
+    </script>
+</body>
+</html>

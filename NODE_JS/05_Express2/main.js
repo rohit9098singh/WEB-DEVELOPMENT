@@ -13,6 +13,8 @@ app.use("/blog",shop)
 
 app
   .get("/", (req, res) => {
+    //suppose some data is comming from the browwer then at that case
+     console.log(req.query); 
     console.log("hey hits a get request");
     res.send("Hello World!");
   })
