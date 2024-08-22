@@ -39,7 +39,7 @@ function getSubstring(str, start, end) {
     console.log("Original String:", str);
     console.log("After substring:", str.substring(start, end));
   }
-  getSubstring("Hello World", 0, 5);
+  getSubstring("Hellohits World", 0, 5);
 
 // 5==> replacing the orginal given with the desired string
 
