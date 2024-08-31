@@ -16,3 +16,8 @@ Feel free to start doing these in any order you like.
 #### Development Setup
 1. If you have Node.js locally, you should run these on your machine 
 2. If you don't, you can copy these over to repl.it and run it there. Tests wont be automated there so you will have to make use judgement to ensure if your code is correct
+
+
+======  links ===
+1)postgresql://Test_owner:************@ep-lingering-sun-a5br4n9s.us-east-2.aws.neon.tech/Test?sslmode=require
+2)mongodb+srv://rohit:%3CbKwSvD3LXL3CKWMH%3E@cluster0.q8b4u.mongodb.net/

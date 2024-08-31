@@ -44,3 +44,55 @@ Q)what are the impoertant status code ?
    500- mid surgery light went away
    411- imputs are incorrect 
    403-you were not allowed in the hospital
+
+
+============================================================
+Q) what is the difference between a normal function and an arrow function ?
+==> 1) does  uses function keyword to define the function .
+syntax= function add(a, b) {
+    return a + b;
+}
+
+      .) where as arrow funnction does not uses the function keyword to define the function..
+
+    syntax=const add = (a, b) => a + b;
+
+2)has its own this context.
+ex: const obj = {
+    value: 10,
+    normalFunction: function() {
+        console.log(this.value); // Logs 10
+    }
+};
+obj.normalFunction();
+
+     .)  Does not have its own this context
+    eg: const obj = {
+        value: 10,
+        arrowFunction: () => {
+            console.log(this.value); // Logs undefined, because `this` is not bound to `obj`
+        }
+    };
+    obj.arrowFunction();
+
+3) Can be used as a constructor and invoked with the new    keyword to create instances
+ function Person(name) {
+    this.name = name;
+}
+const person = new Person('Alice'); // Works fine
+
+    .)Cannot be used as constructors and will throw an error if used with new.
+    const Person = (name) => {
+        this.name = name;
+    };
+    const person = new Person('Alice'); // Throws error
+
+4) function logArgs() {
+    console.log(arguments); // Logs the arguments passed to the function
+}
+logArgs(1, 2, 3);
+  
+     .) const logArgs = () => {
+        console.log(arguments); // Throws an error
+    };
+
