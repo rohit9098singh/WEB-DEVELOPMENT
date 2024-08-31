@@ -63,11 +63,26 @@
 
 //============================================  cleaner way of doing it ===========================================================================
 
-const express=require("express");
+// app.use(express.json()) jo humlog use kar rahe the uska kam ye tha ke supose hume koi middkeware ko har place pe use karna tha to usko app.use ke andar pass on kar dynge 
+// jasie ke is programme me hume number of request ko calukate karna tha har request je abdar
+
+
+
+
 const express = require("express"); // Include express
 const app = express();
 
+
 app.use(express.json()); // To parse JSON bodies
+
+let numberOfRequest=0;
+function calnumberOfRequest(req,res,next){
+    numberOfRequest++;
+    console.log(numberOfRequest);
+    
+    next();
+}
+app.use(numberOfRequest);// it is same as including the numberof request in argument of every request
 
 // Middleware for user validation
 function userMiddleware(req, res, next) {
@@ -97,17 +112,17 @@ function kidneyMiddleware(req, res, next) {
 }
 
 // Route for health check, requiring both user and kidney validation
-app.get("/health-check", userMiddleware, kidneyMiddleware, function(req, res) {
+app.get("/health-check",  userMiddleware, kidneyMiddleware, function(req, res) {
     res.send("Your kidney is healthy");
 });
 
 // Route for kidney check, requiring both user and kidney validation
-app.get("/kidney-check", userMiddleware, kidneyMiddleware, function(req, res) {
+app.get("/kidney-check",   userMiddleware, kidneyMiddleware, function(req, res) {
     res.send("Your kidney is healthy");
 });
 
 // Route for heart check, requiring only user validation
-app.get("/heart-check", userMiddleware, function(req, res) { // No kidney validation needed
+app.get("/heart-check",   userMiddleware, function(req, res) { // No kidney validation needed
     res.send("Your heart is healthy");
 });
 
