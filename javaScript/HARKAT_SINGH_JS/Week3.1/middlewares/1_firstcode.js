@@ -66,6 +66,7 @@
 // app.use(express.json()) jo humlog use kar rahe the uska kam ye tha ke supose hume koi middkeware ko har place pe use karna tha to usko app.use ke andar pass on kar dynge 
 // jasie ke is programme me hume number of request ko calukate karna tha har request je abdar
 
+// therefore app.use takes a middleware only as a input 
 
 
 
