@@ -1,38 +1,43 @@
+const zod = require("zod");
 const express = require("express");
 const app = express();
 
-// Ensures that any data passed in the body, which could be in any format such as text or JSON,
-// is parsed and available as JSON format in req.body for easy access and manipulation.
-app.use(express.json());
+app.use(express.json()); // To parse JSON bodies in requests
 
-const zod = require("zod");
+function validateInput(obj) {
+    const schema = zod.object({
+        email: zod.string().email(), // Ensures the email is a valid format
+        password: zod.string().min(8) // Ensures the password is at least 8 characters long
+    });
 
-const schema = zod.array(zod.number());
+    const response = schema.safeParse(obj);
+    return response; // Return the response so it can be used in route handling
+}
 
-const schema_2 = zod.object({
-    email: zod.string(),
-    password: zod.string(), // Ensure consistent usage of zod.
-    country: zod.literal("IN").or(zod.literal("us")), // z.literal() method is used to define a schema that allows only a specific, fixed value.
-    kidneys: zod.array(zod.number()) // When you use z.literal("IN"), for example, it means the value must exactly be the string "IN". No other values are allowed.
-});
+// Example usage of validateInput function
+validateInput({
+    email: "rohitsingh95724@gmail.com",
+    password: "12345678"
+}); // This will log the response to the console
 
-app.post("/health-checkup", function (req, res) {
-    const kidneys = req.body.kidneys;
-    const response = schema.safeParse(kidneys);
+// Changed route to POST since GET requests do not typically have a body
+app.post("/login", function (req, res) {
+    const response = validateInput(req.body);
     if (!response.success) {
-        res.status(400).json({
-            msg: "input is invalid"
+        res.json({
+            msg: "Your inputs are invalid."
         });
+        return;
     } else {
-        res.send({
-            response
+        res.json({
+            msg: "Validation successful",
+            data: response.data // Include the validated data in the response
         });
     }
 });
 
-app.listen(3000);
-console.log("your app is listening at 3000");
+const PORT = 3000;
 
-/**
- * zod does nothing it gives you all the errors that occur due to invalid input for better understanding.
- */
+app.listen(PORT, () => {
+    console.log(`Your app is listening at port ${PORT}`);
+});
