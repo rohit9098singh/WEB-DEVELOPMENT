@@ -48,7 +48,7 @@ app.post("/signup", async (req, res) => {
         const user = new User({
             name: name,
             email: username,
-            password: password // In a real application, hash the password before saving
+            password: password // In a real application, hash the password before savi
         });
 
         // Save the user and handle the promise
