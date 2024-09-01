@@ -13,31 +13,55 @@
  *             GET THE DETAILS OF ALL THE USER AT HERE 
  *        }
  */
-const express=require("express");
-const app=express();
+const express = require("express");
+const app = express();
 app.use(express.json());
+
 const mongoose = require('mongoose');
 
 // Updated connection string with database name
-mongoose.connect('mongodb+srv://rohit:GZG7rPz9qOuyGOsU@cluster0.q8b4u.mongodb.net/userappnew');
+mongoose.connect('mongodb+srv://rohit:GZG7rPz9qOuyGOsU@cluster0.q8b4u.mongodb.net/user_app');
 
 // Define the User model
-const User = mongoose.model('User', { name: String, email: String, password: String });
+const User = mongoose.model('Users', { name: String, email: String, password: String });
 
-// Create an instance of the User model
-app.post("/",function(req,res){
-    const username=req.body.username;
-    const passsword=req.body.passsword;
-    const name=req.body.name
-    const user = new User({
-        name: name,
-        email: username,
-        password: password
-    });
-    
-    //Save the user and handle the promise
-    user.save()
-        .then(() => console.log('User saved successfully!'))
-        .catch(error => console.error('Error saving user:', error));
-    
-})
+// Post request handler for signup
+app.post("/signup", async (req, res) => {
+    const { username, password, name } = req.body; // Destructure values from req.body
+    /**
+     * same as
+     *  const username = req.body.username;
+        const password = req.body.password;
+        const name = req.body.name;
+
+     */
+
+    try {
+        // Check if the user already exists
+        const existingUser = await User.findOne({ email: username });// similarly user.update,user.delete methods are also there 
+
+        if (existingUser) {
+            return res.status(400).json({ message: 'User already exists' }); // Respond if user exists
+        }
+
+        // Create a new user instance
+        const user = new User({
+            name: name,
+            email: username,
+            password: password // In a real application, hash the password before saving
+        });
+
+        // Save the user and handle the promise
+        await user.save();
+        res.status(201).json({ message: 'User saved successfully!' }); // Respond on success
+    } catch (error) {
+        console.error('Error saving user:', error);
+        res.status(500).json({ message: 'Internal server error' }); // Respond on error
+    }
+});
+
+// Start the server
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
