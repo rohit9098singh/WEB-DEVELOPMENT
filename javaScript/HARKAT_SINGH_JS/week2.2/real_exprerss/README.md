@@ -96,3 +96,9 @@ logArgs(1, 2, 3);
         console.log(arguments); // Throws an error
     };
 
+====================================================================
+Q) why do we need only the datbase to store the data why dont can we store it in the notepad?
+=>  1. you dont have a standard way to store the data
+    2.hard to distribute
+    3.dbs are optimesed for read and write 
+    4.contais logic for indexing to make some quries faster
