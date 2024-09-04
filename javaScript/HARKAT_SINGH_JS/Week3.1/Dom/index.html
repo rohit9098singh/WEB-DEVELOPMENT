@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicle of Dom</title>
+</head>
+<body>
+     <form id="loginForm" action="/action_page.php">
+        first name: <input type="text" name="fname" value="Donald"><br><br> <!--The name attribute is used as the key when sending form data to the server-->
+        last name: <input type="text" name="lname" value="Duck" ><br><br><!-- Sets the default value of the text fields. In this case, the first name field will have "Donald" and the last name field will have "Duck" as pre-filled values when the form loads.-->
+        <input type="submit" value="submit">
+     </form>
+
+     <p>click the "Try it " button to display the number of elements in the form</p>
+     <button onclick="myFUnction()">Try it</button>
+
+     <p id="displayspace"></p>
+</body>
+<script>
+       function myFUnction(){
+        let x=document.getElementById("loginForm").elements.length;
+        let y=document.getElementById("loginForm").elements[1].value;
+        document.getElementById("displayspace").innerHTML="found "+ x +" element in the form " + " last name entered is " + y;
+
+       // Create a new paragraph element
+    const para = document.createElement("p");
+    
+    // Corrected to use innerText or textContent
+    para.innerText = "This is a paragraph created via DOM"; // or para.textContent = "This is a paragraph created via DOM";
+
+    // Append the paragraph to the document body
+    document.body.appendChild(para);
+       }
+</script>
+</html>
