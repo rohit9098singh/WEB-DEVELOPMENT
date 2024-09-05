@@ -11,7 +11,8 @@ let revStr="";
 
 
 for(let i=strLen-1;i>=0;i--){
-       revStr +=str[i];
+       revStr +=str[i] // hidden files are there 
+       ;
 }
 
 console.log("the length of the string is as follow :",revStr);
