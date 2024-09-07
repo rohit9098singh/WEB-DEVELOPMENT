@@ -22,3 +22,4 @@ console.log("the maximum element from your array is = ",maxEement);
 }
 
 maxArraysize();
+console.log("hello world");
