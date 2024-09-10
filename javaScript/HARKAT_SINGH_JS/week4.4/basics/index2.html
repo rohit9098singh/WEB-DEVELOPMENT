@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="first number" class="first"> <br> <br>
+    <input type="text" placeholder="second number" class="second"> <br> <br>
+    <button onclick="populateFunction()">Evaluate</button> <br> <br>
+    <div id="finalSum"></div>
+</body>
+<script>
+   function populateFunction() {
+    const first = document.getElementsByClassName("first")[0].value;
+    const second = document.getElementsByClassName("second")[0].value;
+    const element = document.getElementById("finalSum");
+
+    // Log input values for debugging
+    console.log("Input values:", { first, second });
+
+    // Validate if inputs are numeric
+    if (isNaN(first) || isNaN(second) || first.trim() === '' || second.trim() === '') {
+        element.textContent = "Please enter valid numbers.";
+        console.error("Invalid input: Inputs must be numeric.");
+        return;
+    }
+
+    // Correct API endpoint format
+    const url = `https://sum-server.100xdevs.com/sum?a=${first}&b=${second}`;
+
+    // Fetch the result from the server
+    fetch(url)
+        .then(function(response) {
+            console.log("Response object:", response);
+
+            // Check for HTTP response status
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Convert the response to text
+            return response.text();
+        })
+        .then(function(ans) {
+            //Yes, the ans argument in the .then(function(ans) { ... }) function contains the value returned from the return response.text() statement.
+            // Log and display the result
+            console.log("Result received:", ans);
+            element.innerHTML = "Result: " + ans;
+        })
+        .catch(function(error) {
+            // Log fetch errors
+            console.error("Fetch error:", error);
+            element.textContent = "Error fetching the result. Please try again.";
+        });
+}
+
+</script>
+</html>
+
+<!--
+               <script>
+    
+   <script>
+    async function populateFunction() {
+        const first = document.getElementsByClassName("first")[0].value;
+        const second = document.getElementsByClassName("second")[0].value;
+        const element = document.getElementById("finalSum");
+
+        // Log input values for debugging
+        console.log("Input values:", { first, second });
+
+        // Validate if inputs are numeric
+        if (isNaN(first) || isNaN(second) || first.trim() === '' || second.trim() === '') {
+            element.textContent = "Please enter valid numbers.";
+            console.error("Invalid input: Inputs must be numeric.");
+            return;
+        }
+
+        // Correct API endpoint format
+        const url = `https://sum-server.100xdevs.com/sum?a=${first}&b=${second}`;
+
+        try {
+            // Fetch the result from the server
+            const response = await fetch(url);
+
+            // Log the response object
+            console.log("Response object:", response);
+
+            // Check for HTTP response status
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Convert the response to text
+            const ans = await response.text();
+
+            // Log and display the result
+            console.log("Result received:", ans);
+            element.innerHTML = "Result: " + ans;
+        } catch (error) {
+            // Log fetch errors
+            console.error("Fetch error:", error);
+            element.textContent = "Error fetching the result. Please try again.";
+        }
+    }
+</script>
+</script>
+
+
+-->
