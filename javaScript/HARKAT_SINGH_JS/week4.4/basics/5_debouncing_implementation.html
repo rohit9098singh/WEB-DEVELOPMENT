@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input oninput="debouncePopulateDiv2()" type="text" id="firstnumber" placeholder="first number"> <br><br>
+    <input oninput="debouncePopulateDiv2()" type="text" id="secondnumber" placeholder="second number"> <br><br>
+    <div id="finalSum"></div>
+</body>
+<script>
+         function debouncePopulateDiv2(){
+            // the call has dilated to here from populatediv2 until i have nopt been called for 100ms;
+            // note ise hoga ye ke 100 millisec ke baadh he request send but suppose ek or no enter kare to ye clock vapas se suru hona chaheye na 
+            // jaise first 4 time start next 5 again time start next 4 again time start and this time no new no gets enterd for next min then it 
+            // aab usko bhj dena chaheye request 
+
+            // now how do we cnacel a particular clock to start a new one ==> clearTimeout()
+          const timeout=  setTimeout(()=>{
+                populateDiv2();
+            },100);
+            clearTimeout(timeout)
+         }
+
+
+
+            function populateDiv2(){
+                const a = document.getElementById("firstnumber").value;
+                const b = document.getElementById("secondnumber").value;
+
+                fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`)
+                  .then(function(response){
+                    response.text()
+                     .then(function(ans){
+                        document.getElementById("finalSum").innerHTML=ans
+                     })
+                  })
+            }
+</script>
+</html>
