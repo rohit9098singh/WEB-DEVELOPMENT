@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"] {
+             width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+          
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .todo-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .todo-item div {
+            flex-grow: 1;
+            padding: 0 10px;
+        }
+
+        .todo-item button {
+            background-color: #ffc107;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .todo-item button:hover {
+            background-color: #e0a800;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <input id="title" type="text" placeholder="Title"> <br>
+        <input id="description" type="text" placeholder="Description">
+        <button onclick="addTodo()">Add Todo</button>
+
+        <div id="container"></div>
+    </div>
+
+    <script>
+        let globalId = 1;
+
+        function addTodo() {
+            const title = document.getElementById("title");
+            const description = document.getElementById("description");
+            const parent = document.getElementById("container");
+
+            // Create and append a new todo item
+            parent.appendChild(createChild(title.value, description.value, globalId++));
+
+            // Clear input fields after adding the todo
+            title.value = "";
+            description.value = "";
+        }
+
+        function createChild(title, description, id) {
+            const child = document.createElement("div");
+            child.className = 'todo-item';
+
+            const firstGrandChild = document.createElement("div");
+            firstGrandChild.innerHTML = title;
+
+            const secondGrandChild = document.createElement("div");
+            secondGrandChild.innerHTML = description;
+
+            const thirdGrandChild = document.createElement("button");
+            thirdGrandChild.innerHTML = "Mark as done";
+            thirdGrandChild.setAttribute("onclick", `markAsDone(${id})`);
+
+            child.appendChild(firstGrandChild);
+            child.appendChild(secondGrandChild);
+            child.appendChild(thirdGrandChild);
+            child.setAttribute("id", id);
+
+            return child;
+        }
+
+        function markAsDone(todoId) {
+            const parent = document.getElementById(todoId);
+            if (parent) {
+                parent.children[2].innerHTML = "Done!";
+                parent.classList.add('done');
+            }
+        }
+    </script>
+</body>
+</html>
