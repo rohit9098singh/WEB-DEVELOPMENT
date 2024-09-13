@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+
+    <input type="text" id="title" placeholder="Title">
+    <input type="text" id="description" placeholder="Description">
+    <button onclick="addTodo()">Add To-Do</button>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        let globalId = 1;
+        let todoState = [];
+        let oldTodoState = [];
+
+        function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+
+            const newTodo = {
+                title: title,
+                description: description,
+                id: globalId++,
+                completed: false
+            };
+
+            todoState.push(newTodo);
+            updateState(todoState);
+        }
+
+        function removeTodo(todoId) {
+            const element = document.getElementById(todoId);
+            element.parentElement.removeChild(element);
+
+            // Remove from the state
+            todoState = todoState.filter(todo => todo.id !== todoId);
+            updateState(todoState);
+        }
+
+        function updateTodo(oldTodo, newTodo) {
+            const element = document.getElementById(oldTodo.id);
+            element.children[0].innerHTML = newTodo.title;
+            element.children[1].innerHTML = newTodo.description;
+            element.children[2].innerHTML = newTodo.completed ? "Done" : "Mark as done";
+
+            // Update the state
+            const index = todoState.findIndex(todo => todo.id === oldTodo.id);
+            if (index !== -1) {
+                todoState[index] = newTodo;
+                updateState(todoState);
+            }
+        }
+
+        function updateState(newTodos) {
+            // Calculate the difference between newTodos and oldTodos
+            const added = newTodos.filter(newTodo => !oldTodoState.some(oldTodo => oldTodo.id === newTodo.id));
+            const deleted = oldTodoState.filter(oldTodo => !newTodos.some(newTodo => newTodo.id === oldTodo.id));
+            const updated = newTodos.filter(newTodo => oldTodoState.some(oldTodo => oldTodo.id === newTodo.id && (oldTodo.title !== newTodo.title || oldTodo.description !== newTodo.description || oldTodo.completed !== newTodo.completed)));
+
+            // Apply the changes
+            added.forEach(todo => addTodoToDOM(todo));
+            deleted.forEach(todo => removeTodoFromDOM(todo.id));
+            updated.forEach(todo => {
+                const oldTodo = oldTodoState.find(old => old.id === todo.id);
+                updateTodoInDOM(oldTodo, todo);
+            });
+
+            // Update old state
+            oldTodoState = [...newTodos];
+        }
+
+        function addTodoToDOM(todo) {
+            const todoList = document.getElementById("todoList");
+            const todoElement = document.createElement("li");
+            todoElement.id = todo.id;
+
+            todoElement.innerHTML = `
+                <span>${todo.title}</span>
+                <span>${todo.description}</span>
+                <button onclick="toggleComplete(${todo.id})">${todo.completed ? "Done" : "Mark as done"}</button>
+                <button onclick="removeTodo(${todo.id})">Remove</button>
+            `;
+
+            todoList.appendChild(todoElement);
+        }
+
+        function removeTodoFromDOM(todoId) {
+            const element = document.getElementById(todoId);
+            if (element) {
+                element.remove();
+            }
+        }
+
+        function updateTodoInDOM(oldTodo, newTodo) {
+            const element = document.getElementById(oldTodo.id);
+            element.children[0].innerHTML = newTodo.title;
+            element.children[1].innerHTML = newTodo.description;
+            element.children[2].innerHTML = newTodo.completed ? "Done" : "Mark as done";
+        }
+
+        function toggleComplete(todoId) {
+            const todo = todoState.find(todo => todo.id === todoId);
+            if (todo) {
+                todo.completed = !todo.completed;
+                updateState(todoState);
+            }
+        }
+    </script>
+</body>
+</html>

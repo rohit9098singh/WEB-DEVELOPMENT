@@ -46,7 +46,7 @@
             padding: 10px;
             background-color: #28a745;
             color: white;
-            border: none;
+            border: none; 
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
@@ -93,7 +93,7 @@
 <body>
     <div class="container">
         <h1>Todo List</h1>
-        <input id="title" type="text" placeholder="Title"> <br>
+        <input id="title" type="text" pl aceholder="Title"> <br>
         <input id="description" type="text" placeholder="Description">
         <button onclick="addTodo()">Add Todo</button>
 
@@ -109,7 +109,8 @@
             const parent = document.getElementById("container");
 
             // Create and append a new todo item
-            parent.appendChild(createChild(title.value, description.value, globalId++));
+            parent.appendChild(createChild(title.value, description.value, globalId));
+            globalId=globalId+1;
 
             // Clear input fields after adding the todo
             title.value = "";

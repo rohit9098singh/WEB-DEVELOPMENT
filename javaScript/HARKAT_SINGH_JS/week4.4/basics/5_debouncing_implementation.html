@@ -11,32 +11,46 @@
     <div id="finalSum"></div>
 </body>
 <script>
-         function debouncePopulateDiv2(){
-            // the call has dilated to here from populatediv2 until i have nopt been called for 100ms;
-            // note ise hoga ye ke 100 millisec ke baadh he request send but suppose ek or no enter kare to ye clock vapas se suru hona chaheye na 
-            // jaise first 4 time start next 5 again time start next 4 again time start and this time no new no gets enterd for next min then it 
-            // aab usko bhj dena chaheye request 
+    // Global timeout variable to store the debounce timeout ID
+    let timeout;
 
-            // now how do we cnacel a particular clock to start a new one ==> clearTimeout()
-          const timeout=  setTimeout(()=>{
-                populateDiv2();
-            },100);
-            clearTimeout(timeout)
-         }
+    function debouncePopulateDiv2() {
+        // the call has dilated to here from populateDiv2 until I have not been called for 100ms;
+        // note ise hoga ye ke 100 millisec ke baadh he request send but suppose ek or no enter kare to ye clock vapas se suru hona chaheye na 
+        // jaise first 4 time start next 5 again time start next 4 again time start and this time no new no gets entered for next min then it 
+        // aab usko bhj dena chaheye request 
 
+        // now how do we cancel a particular clock to start a new one ==> clearTimeout()
+        clearTimeout(timeout); // clearing the old one starting the new one at here 
 
+        // Setting the timeout to call populateDiv2 after 100ms of inactivity
+        timeout = setTimeout(() => {
+            populateDiv2();
+        }, 100);
+    }
 
-            function populateDiv2(){
-                const a = document.getElementById("firstnumber").value;
-                const b = document.getElementById("secondnumber").value;
+    function populateDiv2() {
+        const a = document.getElementById("firstnumber").value;
+        const b = document.getElementById("secondnumber").value;
 
-                fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`)
-                  .then(function(response){
-                    response.text()
-                     .then(function(ans){
-                        document.getElementById("finalSum").innerHTML=ans
-                     })
-                  })
-            }
+        // Check if both inputs have values
+        if (a === '' || b === '') {
+            document.getElementById("finalSum").innerHTML = 'Please enter both numbers';
+            return;
+        }
+
+        // Fetching the sum from the server
+        fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`)
+            .then(function(response) {
+              return response.text()
+                    .then(function(ans) {
+                        document.getElementById("finalSum").innerHTML = ans;
+                    });
+            })
+            .catch(error => {
+                console.error('Error fetching the sum:', error);
+                document.getElementById("finalSum").innerHTML = 'Failed to fetch data';
+            });
+    }
 </script>
 </html>
