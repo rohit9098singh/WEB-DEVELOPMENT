@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #todoList {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+        }
+
+        li.done {
+            text-decoration: line-through;
+            background-color: #d4edda;
+        }
+
+        span {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .todo-buttons button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>To-Do List</h1>
+
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="description" placeholder="Description">
+        <button onclick="addTodo()">Add To-Do</button>
+
+        <ul id="todoList"></ul>
+    </div>
+
+    <script>
+        let globalId = 1;
+        let todoState = [];
+        let oldTodoState = [];
+
+        // Add new to-do item
+        function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+
+            if (!title || !description) {
+                alert('Both fields are required.');
+                return;
+            }
+
+            const newTodo = {
+                title: title,
+                description: description,
+                id: globalId++,
+                completed: false
+            };
+
+            // Update state and clear input fields
+            todoState.push(newTodo);
+            updateState(todoState);
+
+            document.getElementById("title").value = '';
+            document.getElementById("description").value = '';
+        }
+
+        // Remove to-do item
+        function removeTodo(todoId) {
+            const element = document.getElementById(todoId);
+            if (element) {
+                element.remove();
+            }
+
+            // Update state
+            todoState = todoState.filter(todo => todo.id !== todoId);
+            updateState(todoState);
+        }
+
+        // Toggle to-do completion
+        function toggleComplete(todoId) {
+            const todo = todoState.find(todo => todo.id === todoId);
+            if (todo) {
+                todo.completed = !todo.completed;
+                updateState(todoState);
+            }
+        }
+
+        // Update the DOM and state
+        function updateState(newTodos) {
+            const added = newTodos.filter(newTodo => !oldTodoState.some(oldTodo => oldTodo.id === newTodo.id));
+            const deleted = oldTodoState.filter(oldTodo => !newTodos.some(newTodo => newTodo.id === oldTodo.id));
+            const updated = newTodos.filter(newTodo => oldTodoState.some(oldTodo => oldTodo.id === newTodo.id && (oldTodo.completed !== newTodo.completed)));
+
+            // Apply the changes to the DOM
+            added.forEach(todo => addTodoToDOM(todo));
+            deleted.forEach(todo => removeTodoFromDOM(todo.id));
+            updated.forEach(todo => updateTodoInDOM(todo));
+
+            // Sync old state
+            oldTodoState = [...newTodos];
+        }
+
+        // Add a to-do item to the DOM
+        function addTodoToDOM(todo) {
+            const todoList = document.getElementById("todoList");
+            const todoElement = document.createElement("li");
+            todoElement.id = todo.id;
+
+            todoElement.className = todo.completed ? "done" : "";
+
+            todoElement.innerHTML = `
+                <span>${todo.title}</span>
+                <span>${todo.description}</span>
+                <div class="todo-buttons">
+                    <button onclick="toggleComplete(${todo.id})">${todo.completed ? "Done" : "Mark as done"}</button>
+                    <button onclick="removeTodo(${todo.id})">Remove</button>
+                </div>
+            `;
+
+            todoList.appendChild(todoElement);
+        }
+
+        // Remove to-do item from the DOM
+        function removeTodoFromDOM(todoId) {
+            const element = document.getElementById(todoId);
+            if (element) {
+                element.remove();
+            }
+        }
+
+        // Update the to-do item in the DOM
+        function updateTodoInDOM(todo) {
+            const element = document.getElementById(todo.id);
+            if (element) {
+                element.className = todo.completed ? "done" : "";
+                const toggleButton = element.querySelector('.todo-buttons button:first-child');
+                toggleButton.innerHTML = todo.completed ? "Done" : "Mark as done";
+            }
+        }
+    </script>
+</body>
+</html>
