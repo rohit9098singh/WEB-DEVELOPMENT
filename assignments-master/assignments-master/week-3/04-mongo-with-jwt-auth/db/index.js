@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://rohit:GZG7rPz9qOuyGOsU@cluster0.q8b4u.mongodb.net/');
+mongoose.connect('mongodb+srv://rohit:GZG7rPz9qOuyGOsU@cluster0.q8b4u.mongodb.net/ourse_selling_app2');
 
 // Define schemas
 const AdminSchema = new mongoose.Schema({
@@ -12,7 +12,7 @@ const AdminSchema = new mongoose.Schema({
         unique:true
     },
     password:{
-        type:string,
+        type:String,
         required:true
     }
 });
@@ -20,12 +20,12 @@ const AdminSchema = new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
     // Schema definition here
     username:{
-        type:string,
+        type:String,
         required:true,
         unique:true,
     },
     password:{
-        type:string,
+        type:String,
         required:true 
     },
     purchasedCourse:{
@@ -37,11 +37,11 @@ const UserSchema = new mongoose.Schema({
 const CourseSchema = new mongoose.Schema({
     // Schema definition here
     title:{
-        type:string,
+        type:String,
         required:true,
     },
     description:{
-        type:string,
+        type:String,
         required:true
     },
     price:{
@@ -49,7 +49,7 @@ const CourseSchema = new mongoose.Schema({
         required:true
     },
     imageLink:{
-        type:string,
+        type:String,
         required:true
     },
     published:{

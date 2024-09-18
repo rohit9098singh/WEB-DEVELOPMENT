@@ -4,7 +4,7 @@ const router = Router();
 const userMiddleware = require("../middleware/user"); // Correct import
 const { User, Course } = require("../db");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../index");
+const { JWT_SECRET } = require("../config");
 
 // User Routes
 router.post('/signup', async (req, res) => {
@@ -77,7 +77,9 @@ router.get('/courses', async (req, res) => {
 
 router.post('/courses/:courseId', userMiddleware, async (req, res) => {
     const { courseId } = req.params;
-    const userId = req.user._id;
+    const user=req.user;
+    console.log(user);
+    
 
     try {
         const course = await Course.findById(courseId);
