@@ -1,0 +1,41 @@
+<!--have a state variable as a global on top define a function called as buttonComponent(count) which takes count as an input 
+    which underthe hood cretaes the button element puts the inner html and attaches an onclick handler -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttonParent"></div>
+</body>
+<script>
+    // defined a global state structure 
+    let state ={
+        count:0
+    }
+    
+    function onButtonPress(){
+        state.count++;
+        buttonComponentReRender();
+    }
+
+    function buttonComponentReRender(){
+        document.getElementById("buttonParent").innerHTML="";
+        const componet=buttonComponent(state.count);
+        document.getElementById("buttonParent").appendChild(component);
+    }
+
+    function buttonComponent(count){
+        const button =document.createElement("button");
+        button.innerHTML=`counter ${count}`;
+        button.setAttribute("onclick","onButtonPress()");
+        return button
+    }
+
+    buttonComponentReRender();
+    //Every time onButtonPress() is triggered (i.e., when the button is clicked), it calls buttonComponentReRender().
+    //buttonComponentReRender() calls buttonComponent(state.count) to create a new button with the updated count.
+</script>
+</html>
