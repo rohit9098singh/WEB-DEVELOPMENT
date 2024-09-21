@@ -16,3 +16,5 @@ for(let i=strLen-1;i>=0;i--){
 }
 
 console.log("the length of the string is as follow :",revStr);
+console.log("logging just to push this code ");
+
