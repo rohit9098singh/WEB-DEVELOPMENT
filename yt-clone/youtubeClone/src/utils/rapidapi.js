@@ -1,3 +1,6 @@
+
+import axios from 'axios'; 
+
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const BASE_URL = "https://youtube138.p.rapidapi.com";
 
@@ -16,5 +19,3 @@ export const fetchData = async (url) => {
     console.error("Error fetching data:", error);  // Log the error for debugging
   }
 };
-
-//context we make to globally state ko manage karne liye or data to pass karne ke liye components ke liye 
