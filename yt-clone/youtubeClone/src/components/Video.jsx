@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Time from "../loader/Time"; // Make sure the path is correct
+import { BsFillCheckCircleFill } from 'react-icons/bs';
+import { abbreviateNumber } from 'js-abbreviation-number'; // Importing with curly braces
 
 function Video({ video }) {
   console.log(video);
@@ -20,6 +22,9 @@ function Video({ video }) {
       ? video.author.avatar[0].url
       : "default-avatar.jpg";
 
+  // Ensure views data exists and is a number before formatting
+  const views = video?.stats?.views ? abbreviateNumber(video.stats.views, 2) : "No views";
+
   return (
     <div>
       <Link to={`/video/${video.videoId}`}>
@@ -34,7 +39,6 @@ function Video({ video }) {
             {video?.lengthSeconds != null && (
               <Time time={video.lengthSeconds} />
             )}
-            {/* Check lengthSeconds */}
           </div>
           <div className="flex mt-3 space-x-2">
             <div className="flex items-start">
@@ -52,8 +56,15 @@ function Video({ video }) {
               </span>
               <span className="flex items-center font-semibold mt-2 text-[12px]">
                 {video?.author?.title}
-                {video?.author?.badges[0]?.type==="VERIFIED_CHANNEL" && (<BsfillCheckCircleFill className="text-gray-600 ml-1 text-[12px]"/>)}
+                {video?.author?.badges?.length > 0 && video.author.badges[0]?.type === "VERIFIED_CHANNEL" && (
+                  <BsFillCheckCircleFill className="text-gray-600 ml-1 text-[12px]" />
+                )}
               </span>
+              <div className="flex text-gray-500 text-[12px]">
+                <span>{`${views} views`}</span>
+                <span className="flex text-[24px] leading-none font-bold realtive mx-1 ">.</span>
+                <span>{video?.publishedTimeText}</span>
+              </div>
             </div>
           </div>
         </div>

@@ -20,12 +20,12 @@ function NavBar() {
       </div>
 
       {/* Center section: Search box */}
-      <div className="searchbox-area flex items-center w-1/2">
+      <div className="searchbox-area flex items-center w-1/2 px-6">
         {/* Search input field */}
         <input
           type="text"
           placeholder="Search"
-          className="w-full h-10 px-4  border border-gray-300 rounded-l-full outline-none"
+          className="w-full h-10 px-6  border border-gray-300 rounded-l-full outline-none"
         />
         {/* Search button */}
         <button className="h-10 w-16 flex justify-center items-center bg-gray-100 border border-l-0 border-gray-300 rounded-r-full">

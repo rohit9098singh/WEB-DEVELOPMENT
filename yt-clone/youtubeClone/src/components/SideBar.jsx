@@ -66,7 +66,7 @@ function SideBar() {
   ];
 
   return (
-    <div className="px-6 w-[15%] h-[calc(100vh-6.525rem)] overflow-y-auto overflow-x-hidden">
+    <div className="px-6 w-[26%] h-[calc(100vh-6.525rem)] overflow-y-auto overflow-x-hidden">
       {/* HOME */}
       <div className="space-y-3">
         {sideBarItems.map((item) => (
