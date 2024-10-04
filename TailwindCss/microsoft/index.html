@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microsoft Layout</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar flex justify-between items-center p-4">
+      
+      <!-- Left Side: Hamburger and Search Icon -->
+      <div class="flex justify-center items-center gap-4 ">
+        <!-- Hamburger Menu (visible below md) -->
+        <div class="hamburger cursor-pointer block md:hidden">
+          <div class="line h-0.5 w-6 my-1 bg-black"></div>
+          <div class="line h-0.5 w-6 my-1 bg-black"></div>
+          <div class="line h-0.5 w-6 my-1 bg-black"></div>
+        </div>
+        <!-- Search (small screens and also visible from medium screens) -->
+        <div class="search block md:hidden">Search</div>
+      </div>
+
+      <!-- Center: Logo -->
+      <div class="logo text-center flex justify-center  md:justify-start w-full mx-6">
+        <!-- Logo -->
+           <div class="logo ">
+              <img src="pictures/mi.png" class="h-7 mb-2" >
+           </div>
+        <!-- Navigation Links (visible from medium screens) -->
+        <div class="microsoft-features hidden md:flex md:ml-4 md:space-x-8 ">
+          <div class="features">Microsoft 365</div>
+          <div class="features">Office</div>
+          <div class="features">Windows</div>
+          <div class="features">Surface</div>
+          <div class="features">Xbox</div>
+          <div class="features">Support</div>
+        </div>
+      </div>
+
+      <!-- Right Side: Search and Cart (visible from medium screens) -->
+      <div class="cart text-center  flex  w-2/3 justify-evenly ">
+            <div class="flex items-center">
+              <div class="search hidden md:block">All Microsoft </div>
+              <img src="pictures/dropdown-svgrepo-com.svg " class="h-8 hidden md:block" >
+            </div>
+            <div class=" search flex items-center gap-2">
+              <p class="hidden md:hidden custom:block">Search</p>
+              <img src="pictures/icons8-search.svg" class="h-6 hidden md:block">
+            </div>
+            <div class="cart flex gap-2 items-center">
+              <p class="hidden md:hidden custom:block">Cart</p>
+              <img src="pictures/shopping-cart-outline-svgrepo-com.svg" class="h-6" alt="">
+            </div>
+            <div class="signin flex items-center">
+                <p class="hidden md:hidden custom:block">Signin</p>
+                <img src="pictures/profile-svgrepo-com.svg" class="h-8">
+            </div>
+          </div>
+      </div>
+
+    <div class="slider flex flex-col-reverse md:flex-row justify-center items-center mx-8 border py-8 px-20 bg-gray-100">
+      <div class="left py-5 flex flex-col justify-center items-center md:items-baseline">
+         <h1 class="text-4xl mb-6 font-semibold ">Surface Laptop 4</h1>
+         <p class="w-3/4 mx-5 ">Do it all with a perfect balance of sleek, ultra-thin design, multitasking speed, and improved performance</p>
+         <button class="bg-black text-white mt-4 p-2 rounded-md">shop now</button>
+      </div>
+      <div class="right">
+        <img src="pictures/download.png "  alt="an image"  >
+      </div>
+    </div>
+   <div class="promo">
+      <div class="item">
+        <img src="" alt="">
+      </div>
+   </div>
+    
+  </body>
+</html>

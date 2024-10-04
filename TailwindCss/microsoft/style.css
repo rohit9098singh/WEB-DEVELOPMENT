@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+.btn{
+    @apply text-white bg-red-600 rounded-xl px-2 py-1
+}
+@tailwind utilities;
