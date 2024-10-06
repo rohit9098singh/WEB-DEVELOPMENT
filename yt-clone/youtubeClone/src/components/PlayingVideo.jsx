@@ -28,8 +28,9 @@ function PlayingVideo() {
     <div className='flex justify-center flex-row h-[calc(100%-56px)] mt-16'>
       <div className='w-full max-w-[1500px] flex flex-col lg:flex-row'>
          <div className='flexflex-col lg:w-[cal(100%-350px)] xl:w-[100%-400px] px-4 py-3 lg:py-6'>
-              <div className='h-[200px] md:h-[700px] ml-[-16px] mr-[-16px] lg:ml '>
-
+              <div className='h-[200px] md:h-[700px] ml-[-16px] mr-[-16px] lg:ml  '>
+                         console.log("helo");
+                         
               </div>
           </div>{/* We will need this to let the video play */}
       </div>
