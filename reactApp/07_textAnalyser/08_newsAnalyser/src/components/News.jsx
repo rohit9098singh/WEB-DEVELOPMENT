@@ -2,72 +2,95 @@ import React, { Component } from "react";
 import { NewsItem } from "./NewsItem";
 
 export default class News extends Component {
-  articles=[
-    {
-      "status": "ok",
-      "totalResults": 3,
-      "articles": [
-        {
-          "source": {
-            "id": "bbc-sport",
-            "name": "BBC Sport"
-          },
-          "title": "Pakistan vs England LIVE: first Test, day four, Multan Cricket Stadium – cricket score, radio commentary and text updates",
-          "description": "Pakistan host England in the first Test at Multan Cricket Stadium – follow text & score updates plus radio commentary.",
-          "url": "http://www.bbc.co.uk/sport/cricket/live/cnd0pp64ld3t",
-          "urlToImage": "https://static.files.bbci.co.uk/ws/simorgh-assets/public/sport/images/metadata/poster-1024x576.png",
-          "publishedAt": "2024-10-10T06:07:17.0877619Z"
-        },
-        {
-          "source": {
-            "id": "espn-cric-info",
-            "name": "ESPN Cric Info"
-          },
-          "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
-          "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
-          "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
-          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
-          "publishedAt": "2020-04-27T11:41:47Z"
-        },
-        {
-          "source": {
-            "id": "espn-cric-info",
-            "name": "ESPN Cric Info"
-          },
-          "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
-          "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
-          "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
-          "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
-          "publishedAt": "2020-03-30T15:26:05Z"
-        }
-      ]
-    }
-    
-  ]
-  constructor(){
+  constructor() {
     super();
-    console.log("hello");
-    this.state={
-      articles:this.state,
-      loading:false
-    }
-    
+    this.state = {
+      articles: [],
+      loading: false,
+      page: 1,
+      totalArticles: 0,
+      articlesPerPage: 20, // Assuming 20 articles per page
+    };
   }
+
+  // Common function to fetch articles based on page number
+  fetchArticles = async (page) => {
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0757ee6a029948a49c1e8f9cf626cbcd&page=${page}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    this.setState({
+      articles: data.articles || [],
+      page: page,
+      totalArticles: data.totalResults, // Update totalArticles
+    });
+  };
+
+  async componentDidMount() {
+    // Fetch articles when the component mounts for the first time
+    this.fetchArticles(this.state.page);
+  }
+
+  handlePrevClick = () => {
+    console.log("previous");
+    this.fetchArticles(this.state.page - 1);
+  };
+
+  handleNextClick = () => {
+    console.log("next");
+    this.fetchArticles(this.state.page + 1);
+  };
+
   render() {
+    const totalPages = Math.ceil(this.state.totalArticles / this.state.articlesPerPage);
+
     return (
       <>
         <div className="container my-3">
-          <h2>Top headlines </h2>
+          <h2>Top headlines</h2>
           <div className="row">
-            <div className="col-md-4">
-              <NewsItem title="hello" description="world" imageUrl="https://static.files.bbci.co.uk/ws/simorgh-assets/public/sport/images/metadata/poster-1024x576.png" />
-            </div>
-            <div className="col-md-4">
-              <NewsItem title="hello" description="world" />
-            </div>
-            <div className="col-md-4">
-              <NewsItem title="hello" description="world" />
-            </div>
+            {this.state.articles.map((element) => {
+              return (
+                <div className="col-md-4" key={element.url}>
+                  <NewsItem
+                    title={
+                      element.title?.length > 42
+                        ? element.title.slice(0, 42) + "..."
+                        : element.title || "No Title Available"
+                    }
+                    description={
+                      element.description?.length > 88
+                        ? element.description.slice(0, 88) + "..."
+                        : element.description || "No Description Available"
+                    }
+                    imageUrl={
+                      element.urlToImage
+                        ? element.urlToImage
+                        : "https://media.licdn.com/dms/image/C5112AQG6uehN0HhBjg/article-cover_image-shrink_600_2000/0/1520202860542?e=2147483647&v=beta&t=6dzvX1sAh6XH2t_8LYGnshUNGrX7utp4WqvmSEGo9TA"
+                    }
+                    url={element.url}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <div className="container d-flex justify-content-between">
+            <button
+              disabled={this.state.page <= 1}
+              type="button"
+              className="btn btn-dark px-3 py-1"
+              onClick={this.handlePrevClick}
+            >
+              &larr; Previous
+            </button>
+            <button
+              disabled={this.state.page >= totalPages}
+              type="button"
+              className="btn btn-dark"
+              onClick={this.handleNextClick}
+            >
+              Next &rarr;
+            </button>
           </div>
         </div>
       </>
