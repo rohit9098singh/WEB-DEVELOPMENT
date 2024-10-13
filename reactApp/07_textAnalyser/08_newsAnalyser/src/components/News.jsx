@@ -15,7 +15,7 @@ export default class News extends Component {
 
   // Common function to fetch articles based on page number
   fetchArticles = async (page) => {
-    // const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0757ee6a029948a49c1e8f9cf626cbcd&page=${page}&pageSize=${this.props.articlesPerPage}`;
+    
 
     this.setState({
       loading: true, // Set loading to true before the fetch call
