@@ -1,0 +1,8 @@
+{
+    "editor.acceptSuggestionOnEnter": "on",
+    "liveServer.settings.port": 5501,
+    "files.associations": {
+        "*.ejs": "html",
+        "plyconfig.json": "jsonc"
+    }
+}
