@@ -20,8 +20,6 @@ export default class News extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  document.title = this.capitalizeFirstLetter(this.props.category);
-
   constructor(props) {
     super(props);
     this.state = {
@@ -30,13 +28,27 @@ export default class News extends Component {
       page: 1,
       totalArticles: 0,
     };
+  }
+
+  // Lifecycle method to change the title when component mounts
+  componentDidMount() {
+    this.fetchArticles(this.state.page);
     document.title = `${this.capitalizeFirstLetter(this.props.category)} - newsApp`;
+  }
+
+  // Update title and fetch new articles when the category or country changes
+  componentDidUpdate(prevProps) {
+    if (this.props.category !== prevProps.category || this.props.country !== prevProps.country) {
+      this.fetchArticles(1);
+      this.setState({ page: 1 });
+      document.title = `${this.capitalizeFirstLetter(this.props.category)} - newsApp`;
+    }
   }
 
   // Common function to fetch articles based on page number
   fetchArticles = async (page) => {
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=0757ee6a029948a49c1e8f9cf626cbcd&page=${page}&pageSize=${this.props.articlesPerPage}`;
-    
+
     this.setState({
       loading: true, // Set loading to true before the fetch call
     });
@@ -57,20 +69,6 @@ export default class News extends Component {
       this.setState({ loading: false }); // Ensure loading state is reset
     }
   };
-
-  async componentDidMount() {
-    // Fetch articles when the component mounts
-    this.fetchArticles(this.state.page);
-  }
-
-  // Use componentDidUpdate to fetch new articles when props change
-  componentDidUpdate(prevProps) {
-    // Check if the category or country has changed
-    if (this.props.category !== prevProps.category || this.props.country !== prevProps.country) {
-      this.fetchArticles(1); // Reset to page 1 when changing category
-      this.setState({ page: 1 }); // Reset page state to 1
-    }
-  }
 
   handlePrevClick = () => {
     this.fetchArticles(this.state.page - 1);
