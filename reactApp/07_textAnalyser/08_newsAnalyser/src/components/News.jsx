@@ -25,7 +25,7 @@ export default class News extends Component {
     super(props);
     this.state = {
       articles: [],
-      loading: false,
+      loading: true,
       page: 1,
       totalArticles: 0,
     };
@@ -33,7 +33,9 @@ export default class News extends Component {
 
   componentDidMount() {
     this.fetchArticles(this.state.page);
-    document.title = `${this.capitalizeFirstLetter(this.props.category)} - newsApp`;
+    document.title = `${this.capitalizeFirstLetter(
+      this.props.category
+    )} - newsApp`;
   }
 
   componentDidUpdate(prevProps) {
@@ -43,7 +45,9 @@ export default class News extends Component {
     ) {
       this.fetchArticles(1);
       this.setState({ page: 1 });
-      document.title = `${this.capitalizeFirstLetter(this.props.category)} - newsApp`;
+      document.title = `${this.capitalizeFirstLetter(
+        this.props.category
+      )} - newsApp`;
     }
   }
 
@@ -58,7 +62,10 @@ export default class News extends Component {
       console.log(data);
 
       this.setState((prevState) => ({
-        articles: page === 1 ? data.articles : [...prevState.articles, ...data.articles], // Append articles on load more
+        articles:
+          page === 1
+            ? data.articles
+            : [...prevState.articles, ...data.articles], // Append articles on load more
         totalArticles: data.totalResults,
         loading: false, // Set loading to false after data is fetched
       }));
@@ -81,17 +88,17 @@ export default class News extends Component {
   render() {
     return (
       <>
-        <div className="container my-3">
-          <h1 className="text-center">
-            Top Headlines on {this.capitalizeFirstLetter(this.props.category)}
-          </h1>
-
-          <InfiniteScroll
-            dataLength={this.state.articles.length}
-            next={this.fetchMoreData}
-            hasMore={this.state.articles.length !== this.state.totalArticles}
-            loader={<Spinner />} // Show spinner while fetching more data
-          >
+        <h1 className="text-center">
+          Top Headlines on {this.capitalizeFirstLetter(this.props.category)}
+        </h1>
+        {this.state.loading && <Spinner />}
+        <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.articles.length !== this.state.totalArticles}
+          // loader={<Spinner />} Show spinner while fetching more data
+        >
+          <div className="container">
             <div className="row">
               {this.state.articles.map((element) => {
                 return (
@@ -121,11 +128,10 @@ export default class News extends Component {
                 );
               })}
             </div>
-          </InfiniteScroll>
-
-          {/* Show Spinner at the bottom when loading more data */}
-          {this.state.loading && <Spinner />}
-        </div>
+          </div>
+        </InfiniteScroll>
+        {/* Show Spinner at the bottom when loading more data */}
+        {this.state.loading && <Spinner />}
       </>
     );
   }
