@@ -52,29 +52,31 @@ export default class News extends Component {
   }
 
   fetchArticles = async (page) => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=0757ee6a029948a49c1e8f9cf626cbcd&page=${page}&pageSize=${this.props.articlesPerPage}`;
-
-    this.setState({ loading: true }); // Set loading to true before the fetch call
-
+    this.props.setProgress(10);  // Start loading
+  
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${page}&pageSize=${this.props.articlesPerPage}`;
+  
+    this.setState({ loading: true });
+  
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
-
+  
       this.setState((prevState) => ({
         articles:
-          page === 1
-            ? data.articles
-            : [...prevState.articles, ...data.articles], // Append articles on load more
+          page === 1 ? data.articles : [...prevState.articles, ...data.articles],
         totalArticles: data.totalResults,
-        loading: false, // Set loading to false after data is fetched
+        loading: false,
       }));
+  
+      this.props.setProgress(100);  // Finish loading
     } catch (error) {
       console.error("Error fetching articles:", error);
-      this.setState({ loading: false }); // Ensure loading state is reset
+      this.setState({ loading: false });
+      this.props.setProgress(100);  // Handle error, and finish loading
     }
   };
-
+  
   fetchMoreData = () => {
     this.setState(
       (prevState) => ({ page: prevState.page + 1, loading: true }),
@@ -136,3 +138,4 @@ export default class News extends Component {
     );
   }
 }
+  

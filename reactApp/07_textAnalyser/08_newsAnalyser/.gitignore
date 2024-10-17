@@ -12,9 +12,6 @@ dist
 dist-ssr
 *.local
 
-# Ignore specific component file
-components/news.jsx
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -25,3 +22,6 @@ components/news.jsx
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files
+.env
