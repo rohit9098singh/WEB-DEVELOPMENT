@@ -16,7 +16,7 @@ class teacher extends user{
    constructor(username,email){
     super(username);
          this.email=email;
-         console.log("got the email");
+         console.log("got the email fpr");
          
    }
 }
