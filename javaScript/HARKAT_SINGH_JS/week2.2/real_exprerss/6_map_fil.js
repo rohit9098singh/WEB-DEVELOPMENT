@@ -33,3 +33,5 @@ const ans_2=myArray.map(function(i){
     return i*2;
 })
 console.log("the second ans with same value is ",ans_2);
+
+

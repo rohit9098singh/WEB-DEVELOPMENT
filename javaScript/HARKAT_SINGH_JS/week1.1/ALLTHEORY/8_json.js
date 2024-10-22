@@ -12,9 +12,13 @@ const user = {
 
 // Convert the object to a JSON string
 const convertedUser = JSON.stringify(user);
+console.log(convertedUser);
+
 
 // Parse the JSON string back to a JavaScript object
 const user_1 = JSON.parse(convertedUser);
+console.log(user_1);
+
 
 // Now you can access the properties
-console.log(user_1["gender"]);  // Output: "male"
+console.log(user_1.gender);  // Output: "male"

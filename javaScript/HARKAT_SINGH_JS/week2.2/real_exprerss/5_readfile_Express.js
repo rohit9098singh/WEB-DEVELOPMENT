@@ -6,6 +6,8 @@ app.use(express.json());
 
 // Directory where files are stored
 const filesDirectory = path.join(__dirname, 'files');
+console.log(filesDirectory);
+
 
 // Endpoint to list all files in the ./files/ directory
 app.get("/files", (req, res) => {
