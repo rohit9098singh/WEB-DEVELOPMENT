@@ -36,5 +36,5 @@ console.log("B",myArray);
 
 const myn2=myArray.splice(1,3);
 console.log("c",myArray);//splice ky karta hai ke vo pura value metioned index ka nikla deta hai vaha se
-console.log("myn2");
+console.log("myn2 hg");
 
