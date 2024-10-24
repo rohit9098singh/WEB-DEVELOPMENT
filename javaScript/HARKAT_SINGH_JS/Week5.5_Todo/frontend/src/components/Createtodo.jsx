@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Createtodo() {
+function Createtodo(props) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
     <div>
       <input
         type="text"
-        placeholder="title"
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+        placeholder="Title"
         style={{
           padding: 10,
           margin: 10,
@@ -14,7 +20,10 @@ function Createtodo() {
       <br />
       <input
         type="text"
-        placeholder="description"
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
+        placeholder="Description"
         style={{
           padding: 10,
           margin: 10,
@@ -26,8 +35,25 @@ function Createtodo() {
           padding: 10,
           margin: 10,
         }}
-        onClick={()=>{
-            
+        onClick={() => {
+          fetch("http://localhost:3000/todo", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: title,
+              description: description,
+            }),
+          })
+            .then(async (res) => {
+              const json = await res.json();
+              alert("Todo added");
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Failed to add todo");
+            });
         }}
       >
         Add todo

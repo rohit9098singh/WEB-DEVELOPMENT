@@ -61,6 +61,8 @@ rohit bola amit ko ke mai tumse vada karta hoon kuch karne ka jab mai vo kar loo
      console.log("before promise is called");
  
      const filePath = path.join(__dirname, "a.txt"); // Corrected __dirname
+     console.log(filePath);
+     
      let p = new Promise((resolve, reject) => { // Fixed Promise syntax
          fs.readFile(filePath, "utf-8", function(err, data) { // Use filePath without quotes
              if (err) {

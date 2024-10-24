@@ -12,9 +12,9 @@ setTimeout(function(){
 
 let b=0;
 for(let i=0;i<10;i++){
-    a=a+i;
+    b=b+i;
 }
-console.log(b);
+console.log("b logged",b);
 
 
 // 2nd 
@@ -29,7 +29,7 @@ for (let i = 0; i < 100; i++) { // Declared variable 'i' using 'let'
     a = a + i;
 }
 
-console.log(a); // This will print the sum of numbers from 0 to 99
+console.log("a logged",a); // This will print the sum of numbers from 0 to 99
 
 // 3rd
 
