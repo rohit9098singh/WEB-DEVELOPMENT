@@ -1,0 +1,17 @@
+{
+  "name": "week5_part_2",
+  "version": "1.0.0",
+  "description": "This  project just contains a TODO application \r it has the following features :-",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "rohit singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.7.2",
+    "zod": "^3.23.8"
+  }
+}
