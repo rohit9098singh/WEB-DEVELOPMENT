@@ -24,3 +24,4 @@ class teacher extends user{
 const iphone =new teacher("iphone","i@phone.com")
 iphone.logMe();
 iphone.createId();
+console.log("hello");
