@@ -1,10 +1,13 @@
 const express = require("express");
 const app = express();
-const task = require("./db");
+const { task } = require("./db");  // Correct import by destructuring
 const { createTodo,updateTodo } = require("./types");
 app.use(express.json());
 
 app.post("/todo", async function (req, res) {
+  // res.json({
+  //   msg:"hello"
+  // })
   const createPayload = req.body;
   const safeParsedPayload = createTodo.safeParse(createPayload);
 
@@ -33,26 +36,28 @@ app.post("/todo", async function (req, res) {
   }
 });
 
-app.get("/todos", function (req, res) {
+app.get("/todos", async function (req, res) {
   try {
-    const tasks = task.find();
+    const tasks = await task.find({}); // Use find() with lowercase 'f'
     console.log(tasks);
-    
-    if (task.length > 0) {
+
+    if (tasks.length > 0) {
       res.json({
-        tasks: task,
+        task: tasks,
       });
     } else {
       res.status(404).json({
-        msg: "no task found at there ",
+        msg: "No task found.",
       });
     }
   } catch (error) {
-    res.json({
-      msg: `${error} has been occured`,
+    console.error(error); // Log the error
+    res.status(500).json({
+      msg: `${error.message} has been occurred`,
     });
   }
 });
+
 
 app.put("/updateTodo", async function (req, res) {
   const updatedPayload = req.body;
@@ -64,11 +69,19 @@ app.put("/updateTodo", async function (req, res) {
           msg: "Invalid input." 
       });
   }
+ 
+   const updateFields={completed:"true"}
+  if(updatedPayload.title){
+    updateFields.title=updatedPayload.title
+  }
+  if(updatedPayload.description){
+    updateFields.description=updatedPayload.description
+  }
 
   try {
       const updating = await task.updateOne(
           { _id: req.body.id }, 
-          { completed: true } 
+          { $set: updateFields } 
       );
 
       if (updating.modifiedCount === 0) {
@@ -80,5 +93,10 @@ app.put("/updateTodo", async function (req, res) {
       console.error(error); 
       res.status(500).json({ msg: "An error occurred while updating the task." });
   }
+});
+
+const port = 3000; // Define the port
+app.listen(port, () => {
+    console.log(`App is listening at port ${port}`);
 });
 
