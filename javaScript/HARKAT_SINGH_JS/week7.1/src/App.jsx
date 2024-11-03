@@ -36,7 +36,7 @@ export default App;
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'; // Import correctly
 import { lazy, Suspense } from "react"; // Don't forget to import Suspense
 
-const Dashboard = lazy(() => import('../components/Dashboard')); // Fixed typo in component name
+const Dashboard = lazy(() => import('../components/Dashboad')); // Fixed typo in component name
 const Landing = lazy(() => import('../components/Landing')); 
 
 function App() {

@@ -44,7 +44,9 @@
 
 //=========================================== USING RECOIL METHOD ====================================================
 
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilValue,useRecoilState} from "recoil";
+import { evenSelector } from "./store/atoms/count";
+import {countAtom} from "./store/atoms/count"
 
 function App(){
   return(
@@ -65,18 +67,28 @@ function Count(){
   )
 }
 
-function countRenderer(){
+function CountRenderer(){
   const count=useRecoilValue(countAtom); // because here only i need the value not the full state  const [count,setCOunt]=useRecoilState(countAtom);
   return(
     <div>
        <b>
          {count}
        </b>
+       <EvenCountRenderer/>
     </div>
   )
 }
 
-function Button(){
+function EvenCountRenderer(){
+  const isEven=useRecoilValue(evenSelector);
+  return(
+    <div>
+       {isEven? "it is an even number ":"it is a odd number "}
+    </div>
+  )
+}
+
+function Buttons(){
   const [count,setCount]=useRecoilState(countAtom);
     return(
       <div>
