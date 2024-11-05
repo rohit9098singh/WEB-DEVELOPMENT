@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import loginLogo from "../assets/login.webp";
 import { BiHide, BiShow } from "react-icons/bi";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { imagetoBase64 } from "../utility/imagetoBase64";
 
 function SignUp() {
@@ -13,7 +12,8 @@ function SignUp() {
     lastName: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    image: ""
   });
 
   function togglePasswordVisibility() {
@@ -27,66 +27,90 @@ function SignUp() {
       [name]: value
     }));
   };
-  
-  const handleUploadProfileImage =async (e) => {
-    console.log("inside the profile image ");
-    
-    const data=await imagetoBase64(e.target.files[0])
-    console.log(data.json);
-    
+
+  const handleUploadProfileImage = async (e) => {
+    const data = await imagetoBase64(e.target.files[0]);
+    setData((prev) => ({
+      ...prev,
+      image: data
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const serverDomain=import.meta.env.VITE_SERVER_DOMAIN
+  console.log(serverDomain);
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { firstName, email, password, confirmPassword } = data;
+    console.log("Form Data:", data); // Debug: Log data before sending it
+  
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
-        alert("Successfully added your account");
-        navigate("/login");
+        try {
+          console.log("inside fetch");
+          
+          const fetchData = await fetch(`${serverDomain}/signup`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+  
+          const resdata = await fetchData.json();
+  
+          // Debug output
+          console.log("Response Data:", resdata);
+          console.log("Fetch Data Status:", fetchData.status);
+  
+          if (fetchData.ok) {
+            alert("Successfully added your account");
+            navigate("/login");
+          } else {
+            const errorMessage = resdata.message || "Unknown error";
+            alert(`Error creating account: ${errorMessage}`);
+          }
+        } catch (error) {
+          console.error("Network error:", error);
+          alert("A network error occurred. Please try again later.");
+        }
       } else {
-        alert("Check your password");
+        alert("Passwords do not match.");
       }
     } else {
-      alert("Please enter required fields");
+      alert("Please fill in all required fields.");
     }
   };
 
   return (
     <div className="p-4 md:p-6 flex items-center justify-center">
       <div className="w-full max-w-md bg-white rounded-2xl drop-shadow-md shadow-md p-6">
-        {/* Logo and Title */}
         <div className="flex flex-col items-center mb-6">
           <div className="w-20 h-20 overflow-hidden rounded-full shadow-md mb-2 relative">
             <img
-              src={loginLogo}
+              src={data.image ? data.image: loginLogo}
               alt="Login Logo"
               className="w-full h-full object-cover"
             />
             <label htmlFor="profileImage">
-              <div className="absolute bottom-0 h-1/3 bg-slate-500 w-full text-center cursor-pointer">
+              <div className="absolute bottom-0 h-1/3 bg-slate-500 bg-opacity-25 w-full text-center cursor-pointer ">
                 <p className="text-sm p-1 text-white">Upload</p>
               </div>
               <input
                 type="file"
                 id="profileImage"
                 accept="images/*"
-                className="hidden"
-                onChange={handleUploadProfileImage} // Changed to onChange
+                className="hidden hover:"
+                onChange={handleUploadProfileImage}
               />
             </label>
           </div>
-          <h1 className="text-center text-2xl font-bold text-gray-800">
-            Sign Up
-          </h1>
+          <h1 className="text-center text-2xl font-bold text-gray-800">Sign Up</h1>
         </div>
 
-        {/* Form */}
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label
-              htmlFor="firstName"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
               First Name
             </label>
             <input
@@ -101,10 +125,7 @@ function SignUp() {
           </div>
 
           <div>
-            <label
-              htmlFor="lastName"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
               Last Name
             </label>
             <input
@@ -119,10 +140,7 @@ function SignUp() {
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
             </label>
             <input
@@ -137,10 +155,7 @@ function SignUp() {
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
               Password
             </label>
             <div className="relative flex items-center mt-1">
@@ -164,10 +179,7 @@ function SignUp() {
           </div>
 
           <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
               Confirm Password
             </label>
             <div className="relative flex items-center mt-1">
@@ -190,7 +202,6 @@ function SignUp() {
             </div>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full mt-4 bg-blue-500 text-white p-2 rounded-md font-semibold hover:bg-blue-600 transition-colors duration-200"
@@ -198,11 +209,10 @@ function SignUp() {
             Sign Up
           </button>
         </form>
+        
         <p className="flex justify-center mt-2 font-semibold">
           Already have an account?
-          <Link to="/login" className="text-red-500 ml-1">
-            Log In
-          </Link>
+          <Link to="/login" className="text-red-500 ml-1">Log In</Link>
         </p>
       </div>
     </div>
