@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom"; // Ensure to import Link
-import login from "../assets/login.webp";
-import { BiShow, BiHide } from "react-icons/bi";
-import { imagetoBase64 } from "../utility/imagetoBase64"; // Import the function from its correct path
+import loginLogo from "../assets/login.webp";
+import { BiHide, BiShow } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
+import { imagetoBase64 } from "../utility/imagetoBase64";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Signup() {
-  const [passwordVisible, setPasswordVisible] = useState(false); // Fixed duplicate declaration
+function SignUp() {
   const navigate = useNavigate();
-  
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -30,29 +31,61 @@ function Signup() {
   };
 
   const handleUploadProfileImage = async (e) => {
-    const data = await imagetoBase64(e.target.files[0]);
+    const base64Data = await imagetoBase64(e.target.files[0]);
     setData((prev) => ({
       ...prev,
-      image: data
+      image: base64Data
     }));
   };
 
-  const handleSubmit = (e) => {
+  const serverDomain = import.meta.env.VITE_SERVER_DOMAIN;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic (e.g., validation, API call)
-    console.log(data); // For testing purposes
-    // You might want to navigate to another page after successful signup
-    // navigate("/some-path");
+    const { firstName, email, password, confirmPassword } = data;
+
+    if (firstName && email && password && confirmPassword) {
+      if (password === confirmPassword) {
+        if (password.length < 6) {
+          toast.error("Password must be at least 6 characters long");
+          return;
+        }
+        try {
+          const response = await fetch(`${serverDomain}/signup`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            const resData = await response.json();
+            toast.success("Account created successfully!");
+            localStorage.setItem("user", JSON.stringify(resData));
+            navigate("/login");
+          } else {
+            const errorData = await response.json();
+            toast.error(`Error: ${errorData.message || "Failed to create account"}`);
+          }
+        } catch (error) {
+          console.error("Network error:", error);
+          toast.error("A network error occurred. Please try again later.");
+        }
+      } else {
+        toast.error("Passwords do not match.");
+      }
+    } else {
+      toast.error("Please fill in all required fields.");
+    }
   };
 
   return (
     <div className="p-4 md:p-6 flex items-center justify-center">
-      <div className="w-full max-w-md bg-white rounded-2xl drop-shadow-md shadow-md p-6">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-md p-6">
         <div className="flex flex-col items-center mb-6">
           <div className="w-20 h-20 overflow-hidden rounded-full shadow-md mb-2 relative">
             <img
-              src={data.image ? data.image : login} // Changed to use `login`
-              alt="Login Logo"
+              src={data.image || loginLogo}
+              alt="Profile"
               className="w-full h-full object-cover"
             />
             <label htmlFor="profileImage">
@@ -62,8 +95,8 @@ function Signup() {
               <input
                 type="file"
                 id="profileImage"
-                accept="image/*" // Fixed accept attribute
-                className="hidden hover:"
+                accept="image/*"
+                className="hidden"
                 onChange={handleUploadProfileImage}
               />
             </label>
@@ -72,98 +105,52 @@ function Signup() {
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-              First Name
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              value={data.firstName}
-              id="firstName"
-              placeholder="Enter your first name"
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              onChange={handleOnChange}
-            />
-          </div>
+          <InputField
+            label="First Name"
+            name="firstName"
+            type="text"
+            placeholder="Enter your first name"
+            value={data.firstName}
+            onChange={handleOnChange}
+          />
 
-          <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-              Last Name
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              value={data.lastName}
-              id="lastName"
-              placeholder="Enter your last name"
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              onChange={handleOnChange}
-            />
-          </div>
+          <InputField
+            label="Last Name"
+            name="lastName"
+            type="text"
+            placeholder="Enter your last name"
+            value={data.lastName}
+            onChange={handleOnChange}
+          />
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={data.email}
-              id="email"
-              placeholder="Enter your email"
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              onChange={handleOnChange}
-            />
-          </div>
+          <InputField
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="Enter your email"
+            value={data.email}
+            onChange={handleOnChange}
+          />
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <div className="relative flex items-center mt-1">
-              <input
-                type={passwordVisible ? "text" : "password"}
-                name="password"
-                value={data.password}
-                id="password"
-                placeholder="Enter your password"
-                className="w-full p-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                onChange={handleOnChange}
-              />
-              <button
-                type="button"
-                onClick={togglePasswordVisibility}
-                className="absolute right-2 top-2 text-gray-500 hover:text-gray-700 focus:outline-none"
-              >
-                {passwordVisible ? <BiHide size={20} /> : <BiShow size={20} />}
-              </button>
-            </div>
-          </div>
+          <PasswordField
+            label="Password"
+            name="password"
+            value={data.password}
+            placeholder="Enter your password"
+            passwordVisible={passwordVisible}
+            togglePasswordVisibility={togglePasswordVisibility}
+            onChange={handleOnChange}
+          />
 
-          <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-              Confirm Password
-            </label>
-            <div className="relative flex items-center mt-1">
-              <input
-                type={passwordVisible ? "text" : "password"}
-                name="confirmPassword"
-                value={data.confirmPassword}
-                id="confirmPassword"
-                placeholder="Confirm your password"
-                className="w-full p-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                onChange={handleOnChange}
-              />
-              <button
-                type="button"
-                onClick={togglePasswordVisibility}
-                className="absolute right-2 top-2 text-gray-500 hover:text-gray-700 focus:outline-none"
-              >
-                {passwordVisible ? <BiHide size={20} /> : <BiShow size={20} />}
-              </button>
-            </div>
-          </div>
+          <PasswordField
+            label="Confirm Password"
+            name="confirmPassword"
+            value={data.confirmPassword}
+            placeholder="Confirm your password"
+            passwordVisible={passwordVisible}
+            togglePasswordVisibility={togglePasswordVisibility}
+            onChange={handleOnChange}
+          />
 
           <button
             type="submit"
@@ -172,14 +159,54 @@ function Signup() {
             Sign Up
           </button>
         </form>
-        
+
         <p className="flex justify-center mt-2 font-semibold">
           Already have an account?
           <Link to="/login" className="text-red-500 ml-1">Log In</Link>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 }
 
-export default Signup;
+const InputField = ({ label, name, type, placeholder, value, onChange }) => (
+  <div>
+    <label htmlFor={name} className="block text-sm font-medium text-gray-700">{label}</label>
+    <input
+      type={type}
+      name={name}
+      id={name}
+      placeholder={placeholder}
+      value={value}
+      className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      onChange={onChange}
+    />
+  </div>
+);
+
+const PasswordField = ({ label, name, value, placeholder, passwordVisible, togglePasswordVisibility, onChange }) => (
+  <div>
+    <label htmlFor={name} className="block text-sm font-medium text-gray-700">{label}</label>
+    <div className="relative flex items-center mt-1">
+      <input
+        type={passwordVisible ? "text" : "password"}
+        name={name}
+        id={name}
+        value={value}
+        placeholder={placeholder}
+        className="w-full p-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        onChange={onChange}
+      />
+      <button
+        type="button"
+        onClick={togglePasswordVisibility}
+        className="absolute right-2 top-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+      >
+        {passwordVisible ? <BiHide size={20} /> : <BiShow size={20} />}
+      </button>
+    </div>
+  </div>
+);
+
+export default SignUp;

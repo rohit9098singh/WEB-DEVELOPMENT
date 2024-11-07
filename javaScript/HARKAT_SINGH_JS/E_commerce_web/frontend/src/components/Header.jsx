@@ -3,12 +3,25 @@ import logo from "../assets/singhlogo.jpg";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { useSelector, useDispatch } from "react-redux"; // Import useDispatch
+import { logoutRedux } from "../redux/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const userData = useSelector((state) => state.user);
+  const dispatch = useDispatch(); 
+  console.log("inside header", userData);
 
   const handleShowMenu = () => {
     setShowMenu((prev) => !prev); // Toggle the state correctly here
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutRedux()); // Correctly dispatch the logout action
+    toast(` logged out succesfully`)
+
   };
 
   return (
@@ -22,7 +35,7 @@ function Header() {
         </Link>
         <div className="flex items-center gap-4 md:gap-7 z-50">
           <nav className="flex space-x-4 md:space-x-6 text-base md:text-lg font-semibold">
-            <Link to={"/"}>Home</Link>
+            <Link to={"/home"}>Home</Link>
             <Link to={"/menu"}>Menu</Link>
             <Link to={"/about"}>About</Link>
             <Link to={"/contact"}>Contact</Link>
@@ -42,13 +55,22 @@ function Header() {
               <FaUserAlt />
             </div>
             {showMenu && (
-              <div className="flex flex-col absolute right-2 bg-white mt-2 py-2 px-2 shadow drop-shadow-md">
+              <div className="flex flex-col absolute right-2 bg-white mt-2 py-2 px-2 shadow drop-shadow-md rounded-md">
                 <Link to={"newproduct"} className="whitespace-nowrap text-sm cursor-pointer">
                   New Product
                 </Link>
-                <Link to={"login"} className="whitespace-nowrap text-sm cursor-pointer">
-                  LogIn
-                </Link>
+                {userData.image ? (
+                  <p
+                    className="whitespace-nowrap text-sm cursor-pointer text-red-600"
+                    onClick={handleLogout} // Add logout handler
+                  >
+                    Logout
+                  </p>
+                ) : (
+                  <Link to={"login"} className="whitespace-nowrap text-sm cursor-pointer">
+                    Log In
+                  </Link>
+                )}
               </div>
             )}
           </div>

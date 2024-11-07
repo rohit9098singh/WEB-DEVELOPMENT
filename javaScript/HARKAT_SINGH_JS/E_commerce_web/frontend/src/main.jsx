@@ -9,6 +9,8 @@ import Home from "../src/pages/Home.jsx"
 import Login from "../src/pages/Login.jsx"
 import NewProduct from "../src/pages/NewProduct.jsx"
 import SignUp from "./pages/SignUp.jsx";
+import store from "./redux/index.js"
+import {Provider} from "react-redux"
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
       {
         index: true,  // Default home route
         element: <Home />, // Assuming you have a Home component
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/menu",
@@ -48,5 +54,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Provider  store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );
