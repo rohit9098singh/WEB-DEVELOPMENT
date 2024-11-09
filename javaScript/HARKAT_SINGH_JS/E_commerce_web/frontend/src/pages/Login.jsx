@@ -54,7 +54,9 @@ function Login() {
         
 
         if (response.ok) {
-          toast.success(`${resdata.user.firstName} ${resdata.message}`);
+          toast.success(`${resdata.user.firstName} ${resdata.message}`,{
+             autoClose: 3000,
+          });
           localStorage.setItem("user", JSON.stringify(resdata));
           dispatch(loginRedux(resdata)); // jab login hora hai to hum data ko set kar rahe hai redux ke madat se.......
           setTimeout(() => {

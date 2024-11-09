@@ -31,7 +31,7 @@ const loginController=async (req,res)=>{
         // agar authentication complete hpogya then uska jwt create kar do
         const token=jwt.sign({email:user.email,userId:user._id},Secret,{expiresIn:"24h"});
 
-        res.status(200).json({message:"loged In succesfull",
+        res.status(200).json({message:"loged In succesfully",
             token,
             user
         })

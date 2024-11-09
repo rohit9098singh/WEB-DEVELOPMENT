@@ -33,9 +33,11 @@ function NewProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, image, category, price } = data;
-
+    console.log("Submitting this data", data);
+     console.log(typeof(price));
     // Validate required fields
     if (!name || !image || !category || !price) {
+      console.log("I received an error");
       toast.error("Please fill in all required fields.");
       return;
     }
@@ -49,10 +51,12 @@ function NewProduct() {
         body: JSON.stringify(data),
       });
       const result = await response.json();
+      console.log("First log - server result", result);
 
       if (response.ok) {
         toast.success("Product uploaded successfully!");
-        // Reset form after successful submission
+         console.log("Second log - success result", result);
+
         setData({
           name: "",
           category: "",
@@ -61,6 +65,7 @@ function NewProduct() {
           description: "",
         });
       } else {
+        console.error("Here I got an error", result);
         toast.error(result.message || "Failed to upload product.");
       }
     } catch (error) {
@@ -81,6 +86,7 @@ function NewProduct() {
         <input
           type="text"
           name="name"
+          value={data.name}  // Use value for the input field
           className="border border-gray-300 p-2 rounded-md mb-4"
           placeholder="Enter product name"
           onChange={handleOnChange}
@@ -91,6 +97,7 @@ function NewProduct() {
         </label>
         <select
           name="category"
+          value={data.category}  // Use value for the select field
           className="border border-gray-300 p-2 rounded-md mb-3"
           onChange={handleOnChange}
         >
@@ -100,12 +107,16 @@ function NewProduct() {
           <option value="Icecream">Icecream</option>
           <option value="Dosa">Dosa</option>
           <option value="Pizza">Pizza</option>
+          <option value="Rice">Rice</option>
+          <option value="Cake">Cake</option>
+          <option value="Burger">Burger</option>
+          <option value="Sandwitch">Sandwitch</option>
+          <option value="Chicken">Chicken</option>
+          <option value="Idly_Dosa">Idly_Dosa</option>
+          <option value="Paneer">Paneer</option>
         </select>
 
-        <label
-          htmlFor="image"
-          className="text-gray-700 font-medium cursor-pointer"
-        >
+        <label htmlFor="image" className="text-gray-700 font-medium cursor-pointer">
           Image
           <div className="h-40 w-full my-2 rounded-md flex items-center justify-center bg-gray-100">
             {data.image ? (
@@ -136,6 +147,7 @@ function NewProduct() {
         <input
           type="text"
           name="price"
+          value={data.price}  // Use value for the input field
           className="border border-gray-300 p-2 rounded-md mb-2"
           placeholder="Price"
           onChange={handleOnChange}
@@ -146,6 +158,7 @@ function NewProduct() {
         </label>
         <textarea
           name="description"
+          value={data.description}  // Use value for the textarea field
           rows={2}
           className="border border-gray-300 p-2 rounded-md mb-4"
           onChange={handleOnChange}
@@ -158,6 +171,7 @@ function NewProduct() {
           Save
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

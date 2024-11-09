@@ -3,7 +3,7 @@ import logo from "../assets/singhlogo.jpg";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
-import { useSelector, useDispatch } from "react-redux"; // Import useDispatch
+import { useSelector, useDispatch } from "react-redux";
 import { logoutRedux } from "../redux/userSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,22 +11,21 @@ import "react-toastify/dist/ReactToastify.css";
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const userData = useSelector((state) => state.user);
-  const dispatch = useDispatch(); 
-  console.log("inside header", userData);
+  const dispatch = useDispatch();
 
   const handleShowMenu = () => {
-    setShowMenu((prev) => !prev); // Toggle the state correctly here
+    setShowMenu((prev) => !prev);    
   };
 
   const handleLogout = () => {
-    dispatch(logoutRedux()); // Correctly dispatch the logout action
-    toast(` logged out succesfully`)
-
+    dispatch(logoutRedux());
+    toast("Logged out successfully");
   };
+
+  const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
 
   return (
     <header className="fixed shadow-md w-full h-16 px-2 md:px-4 bg-green-200">
-      {/* desktop */}
       <div className="flex items-center h-full justify-between">
         <Link to={"/"}>
           <div className="h-12 w-12">
@@ -47,7 +46,7 @@ function Header() {
             </div>
           </div>
 
-          <div className="ml-4 text-2xl text-slate-600">
+          <div className="ml-4 text-2xl text-slate-600 relative">
             <div
               className="border border-solid border-slate-600 p-1 rounded-full cursor-pointer"
               onClick={handleShowMenu}
@@ -56,13 +55,18 @@ function Header() {
             </div>
             {showMenu && (
               <div className="flex flex-col absolute right-2 bg-white mt-2 py-2 px-2 shadow drop-shadow-md rounded-md">
-                <Link to={"newproduct"} className="whitespace-nowrap text-sm cursor-pointer">
-                  New Product
-                </Link>
+                {/* Show New Product only for admin */}
+                {userData.email === adminEmail && (
+                  <Link to={"newproduct"} className="whitespace-nowrap text-sm cursor-pointer">
+                    New Product
+                  </Link>
+                )}
+
+                {/* Show Logout if user is logged in, otherwise show Log In */}
                 {userData.image ? (
                   <p
                     className="whitespace-nowrap text-sm cursor-pointer text-red-600"
-                    onClick={handleLogout} // Add logout handler
+                    onClick={handleLogout}
                   >
                     Logout
                   </p>
@@ -76,7 +80,7 @@ function Header() {
           </div>
         </div>
       </div>
-      {/* for mobile */}
+      <ToastContainer />
     </header>
   );
 }

@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require('dotenv').config(); // Load environment variables
 const signupController = require("./controllers/signupController");
-const loginController =require("./controllers/loginController")
+const loginController =require("./controllers/loginController");
+const productController =require("./controllers/productController")
 
 const PORT = process.env.PORT || 8080;
 
@@ -15,12 +16,16 @@ app.use(express.json({ limit: "10mb" }));
   res.json("Server is running. Please wait while fetching the data.");
 });
 
-// SIGNUP CONTROLLER 
+// 1) SIGNUP CONTROLLER 
  app.post("/signup", signupController);
 
-// LOGIN CONTROLLER 
+//2) LOGIN CONTROLLER 
  app.post("/login",loginController)
-// Start the server
+
+// 3) PRODUCT SAVING CONTROLLER
+app.post("/uploadProduct", productController)
+
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
