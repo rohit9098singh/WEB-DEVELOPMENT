@@ -4,6 +4,7 @@ require('dotenv').config(); // Load environment variables
 const signupController = require("./controllers/signupController");
 const loginController =require("./controllers/loginController");
 const productController =require("./controllers/productController")
+const getProductDetails =require("./controllers/getProductDetails")
 
 const PORT = process.env.PORT || 8080;
 
@@ -25,6 +26,8 @@ app.use(express.json({ limit: "10mb" }));
 // 3) PRODUCT SAVING CONTROLLER
 app.post("/uploadProduct", productController)
 
+// TO GET ALL THE PRODUCT 
+app.get("/getProductDetails",getProductDetails)
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

@@ -8,6 +8,7 @@ import Contact from "../src/pages/Contact.jsx";
 import Home from "../src/pages/Home.jsx"
 import Login from "../src/pages/Login.jsx"
 import NewProduct from "../src/pages/NewProduct.jsx"
+import Cart from "./pages/cart.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import store from "./redux/index.js"
 import {Provider} from "react-redux"
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <Menu />,
       },
       {
+        path: "menu/:filterby",
+        element: <Menu />,
+      },
+      {
         path: "/about",
         element: <About />,
       },
@@ -48,6 +53,10 @@ const router = createBrowserRouter([
       {
         path:"/signup",
         element:<SignUp/>
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
       },
     ],
   },
