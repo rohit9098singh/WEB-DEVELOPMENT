@@ -1,61 +1,76 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 
 function Home() {
     const [loggedInUser, setLoggedInUser] = useState('');
-    const [products, setProducts] = useState('');
+    const [products, setProducts] = useState([]);
     const navigate = useNavigate();
+
+    // Fetch logged-in user on component mount
     useEffect(() => {
-        setLoggedInUser(localStorage.getItem('loggedInUser'))
-    }, [])
+        const user = localStorage.getItem('loggedInUser');
+        setLoggedInUser(user);
+    }, []);
 
-    const handleLogout = (e) => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('loggedInUser');
-        handleSuccess('User Loggedout');
+    // Handle Logout Function
+    const handleLogout = () => {
+        handleSuccess('User Logged out');
         setTimeout(() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('loggedInUser'); // Clear after navigating
             navigate('/login');
-        }, 1000)
-    }
+        }, 1000);
+    };
 
+    // Fetch Products Data
     const fetchProducts = async () => {
         try {
             const url = "https://deploy-mern-app-1-api.vercel.app/products";
-            const headers = {
+            const token = localStorage.getItem('token');
+            const response = await fetch(url, {
                 headers: {
-                    'Authorization': localStorage.getItem('token')
-                }
+                    Authorization: `Bearer ${token}`, // Ensure correct Bearer token format
+                },
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                setProducts(result);
+            } else {
+                handleError('Failed to fetch products');
             }
-            const response = await fetch(url, headers);
-            const result = await response.json();
-            console.log(result);
-            setProducts(result);
         } catch (err) {
-            handleError(err);
+            handleError('Error fetching products: ' + err.message);
         }
-    }
+    };
+
+    // Fetch products on component mount
     useEffect(() => {
-        fetchProducts()
-    }, [])
+        fetchProducts();
+    }, []);
 
     return (
         <div>
-            <h1>Welcome {loggedInUser}</h1>
-            <button onClick={handleLogout}>Logout</button>
+            <h1>Welcome {loggedInUser || 'Guest'}</h1>
+            {loggedInUser && <button onClick={handleLogout}>Logout</button>}
             <div>
-                {
-                    products && products?.map((item, index) => (
+                {products.length > 0 ? (
+                    products.map((item, index) => (
                         <ul key={index}>
-                            <span>{item.name} : {item.price}</span>
+                            <li>
+                                {item.name}: ${item.price}
+                            </li>
                         </ul>
                     ))
-                }
+                ) : (
+                    <p>No products available</p>
+                )}
             </div>
             <ToastContainer />
         </div>
-    )
+    );
 }
 
-export default Home
+export default Home;
