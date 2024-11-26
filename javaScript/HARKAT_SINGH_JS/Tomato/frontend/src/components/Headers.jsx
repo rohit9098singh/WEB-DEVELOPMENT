@@ -3,11 +3,11 @@ import React from 'react';
 function Headers() {
   return (
     <div
-      className="bg-cover min-h-[600px] mt-4 rounded-lg relative"
+      className="bg-cover min-h-[600px] mt-6 rounded-lg relative z-5"
       style={{ backgroundImage: 'url(/header_img.png)' }} // Correct path to image inside public folder
     >
       {/* Content inside the header */}
-      <div className="content flex flex-col items-start justify-center px-6 py-8 text-white relative z-10 max-w-3xl">
+      <div className="content flex flex-col items-start justify-center px-6 py-12 text-white relative z-10 max-w-3xl">
         <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-4">
           Order your favourite food here
         </h1>

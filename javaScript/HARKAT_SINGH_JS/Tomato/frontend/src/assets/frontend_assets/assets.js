@@ -12,6 +12,7 @@ import menu_6 from './menu_6.png'
 import menu_7 from './menu_7.png'
 import menu_8 from './menu_8.png'
 
+
 import food_1 from './food_1.png'
 import food_2 from './food_2.png'
 import food_3 from './food_3.png'
@@ -82,40 +83,49 @@ export const assets = {
     bag_icon,
     parcel_icon
 }
-
 export const menu_list = [
     {
         menu_name: "Salad",
-        menu_image: menu_1
+        menu_image: menu_1,
+        price: 8.99
     },
     {
         menu_name: "Rolls",
-        menu_image: menu_2
+        menu_image: menu_2,
+        price: 5.99
     },
     {
         menu_name: "Deserts",
-        menu_image: menu_3
+        menu_image: menu_3,
+        price: 6.99
     },
     {
         menu_name: "Sandwich",
-        menu_image: menu_4
+        menu_image: menu_4,
+        price: 7.99
     },
     {
         menu_name: "Cake",
-        menu_image: menu_5
+        menu_image: menu_5,
+        price: 12.99
     },
     {
         menu_name: "Pure Veg",
-        menu_image: menu_6
+        menu_image: menu_6,
+        price: 9.99
     },
     {
         menu_name: "Pasta",
-        menu_image: menu_7
+        menu_image: menu_7,
+        price: 10.99
     },
     {
         menu_name: "Noodles",
-        menu_image: menu_8
-    }]
+        menu_image: menu_8,
+        price: 9.49
+    },
+];
+
 
 export const food_list = [
     {
