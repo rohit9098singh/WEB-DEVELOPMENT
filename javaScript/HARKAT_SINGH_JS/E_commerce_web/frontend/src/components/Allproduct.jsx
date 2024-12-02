@@ -27,7 +27,7 @@ function Allproduct({ heading }) {
 
 
     return (
-        <div className="mt-10 px-4 md:px-8">
+        <div className="m-10 px-4 md:px-8">
             {/* Heading Section */}
             <div>
                 <h2 className="font-bold text-2xl text-slate-800 text-center">{heading}</h2>

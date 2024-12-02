@@ -14,9 +14,9 @@ function Homecard({ name, image, category, price,loading,id }) {
                   className="h-full w-full rounded-lg object-cover"
                 />
               </div>
-              <h3 className="font-bold text-lg text-center capitalize mb-1">{name}</h3>
-              <p className="text-gray-700 text-center font-medium mb-1">Price: ₹-{price}</p>
-              <p className="text-gray-700 text-center font-medium">Category: {category}</p>
+                  <h3 className="font-bold text-lg text-center capitalize mb-1">{name}</h3>
+                  <p className="text-gray-700 text-center font-medium mb-1">Price: ₹-{price}</p>
+                  <p className="text-gray-700 text-center font-medium">Category: {category}</p>
           </Link>
         </>
       )

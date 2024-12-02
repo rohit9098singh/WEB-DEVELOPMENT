@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const navigate=useNavigate();
-  const { cartItem, removeFromCart, food_list,calculateSubtotal,calculateTotal} = useContext(StoreContext);
+  const { cartItem,removeFromcart, food_list,calculateSubtotal,calculateTotal,url} = useContext(StoreContext);
   return (
     <div className="cart-container p-4 sm:p-6">
       <h2 className="text-xl sm:text-2xl font-bold mb-4">Your Cart</h2>
@@ -30,7 +30,7 @@ function Cart() {
                   className="cart-item grid grid-cols-2 sm:grid-cols-6 gap-4 items-center py-2 border-b text-sm sm:text-base"
                 >
                   <img
-                    src={item.image}
+                    src={url+"/images/"+item.image}
                     alt={item.name}
                     className="h-12 w-12 sm:h-16 sm:w-16 object-cover rounded"
                   />
@@ -39,7 +39,7 @@ function Cart() {
                   <p>{cartItem[item._id]}</p>
                   <p className="hidden sm:block">₹{(item.price * cartItem[item._id]).toFixed(2)}</p>
                   <button
-                    onClick={() => removeFromCart(item._id)}
+                    onClick={() => removeFromcart(item._id)}
                     className="bg-red-500 text-white px-2 sm:px-3 py-1 rounded hover:bg-red-600 text-xs sm:text-base"
                   >
                     Remove
@@ -69,7 +69,7 @@ function Cart() {
           <hr className="border-gray-300" />
           <div className="total_amount flex justify-between items-center">
             <p className="font-bold text-2xl sm:text-xl">Net Payable</p>
-            <p className="font-semibold">₹{calculateSubtotal===0 ? 0 : calculateTotal()}</p>
+            <p className="font-semibold">₹{calculateSubtotal()===0 ? 0 : calculateTotal()}</p>
           </div>
           <hr className="border-gray-300" />
           <div className="checkout_button mt-4 flex items-center">

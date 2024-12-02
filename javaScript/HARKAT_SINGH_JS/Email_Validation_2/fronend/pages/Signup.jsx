@@ -10,7 +10,8 @@ function Signup() {
         email: '',
         password: ''
     })
-
+    console.log("hello workd nkndaf asd");
+    
     const navigate = useNavigate();
     const handleChange = (e) => {
       const { name, value } = e.target;

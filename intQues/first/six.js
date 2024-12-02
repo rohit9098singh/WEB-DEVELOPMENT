@@ -1,5 +1,7 @@
 function curryFunction(a){
-    retrun function (b){
+    return function (b){
         const mult= a*b;
     }
 }
+
+curryFunction(5)

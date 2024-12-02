@@ -3,13 +3,13 @@ import { assets } from '../assets/frontend_assets/assets'; // Ensure the path is
 import { StoreContext } from '../context/StoreContext';
 
 function Fooditem({ id, name, price, description, image }) {
-  const { cartItem, addToCart, removeFromcart } = useContext(StoreContext);
+  const { cartItem, addToCart, removeFromcart,url } = useContext(StoreContext);
 
   return (
-    <div className="food_item w-full drop-shadow-md rounded-lg overflow-hidden hover:shadow-lg">
+    <div className="food_item w-full bg-gray-50 drop-shadow-md rounded-lg overflow-hidden hover:shadow-lg">
       <div className="food_item_image relative">
         <img
-          src={image}
+          src={url+"/images/"+image}
           alt={name}
           className="w-full h-60 object-cover rounded-t-xl bg-black opacity-90"
         />

@@ -18,7 +18,7 @@ function ExploreMenu({category,setCategory}) {
                 {menu_list.map((item,index) => (
                     <div onClick={()=>{setCategory((prev)=>{
                         prev === item.menu_name ?"All":item.menu_name
-                    })}} key={item.id || index} className='menu-item flex flex-col items-center bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105 min-w-[200px]'>
+                    })}} key={item.id || index} className='menu-item flex flex-col items-center bg-gray-50 shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105 min-w-[200px]'>
                         {/* Menu Image */}
                         <img
                             src={item.menu_image}

@@ -7,14 +7,17 @@ import PlaceOrder from "./pages/PlaceOrder"
 import Footer from './components/Footer'
 import { useState } from 'react'
 import UserLogDetails from './components/UserLogDetails'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 function App() {
   const [login,setLogin]=useState(false);
   return (
     <>
+    <ToastContainer/>
     {login ? <UserLogDetails setLogin={setLogin}/> :<></>}
-      <div className='mx-[10%]'>
-        <Navbar setLogin={setLogin}/>
+      <Navbar setLogin={setLogin}/>
+      <div className='mx-[10%] '>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/cart" element={<Cart />}></Route>

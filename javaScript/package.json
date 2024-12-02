@@ -12,5 +12,20 @@
     "punycode": "^2.3.1",
     "react-router-dom": "^6.27.0",
     "zod": "^3.23.8"
-  }
+  },
+  "name": "javascript",
+  "description": "REACT IS JUST A ESIER WAY TO WRITE NORMAL HTML AND CSS AND JS ..",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

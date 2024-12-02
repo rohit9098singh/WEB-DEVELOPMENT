@@ -57,7 +57,7 @@ function SignUp() {
             body: JSON.stringify(data),
           });
           const resdata = await response.json();
-          console.log(resdata)
+          console.log(resdata);
   
           if (response.ok) {
             toast.success(`${resdata.newUser.firstName} ${resdata.message}`);

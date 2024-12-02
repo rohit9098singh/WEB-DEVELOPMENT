@@ -4,7 +4,7 @@ function Headers() {
   return (
     <div
       className="bg-cover min-h-[600px] mt-6 rounded-lg relative z-5"
-      style={{ backgroundImage: 'url(/header_img.png)' }} // Correct path to image inside public folder
+      style={{ backgroundImage: 'url(/header_image.avif)' }}
     >
       {/* Content inside the header */}
       <div className="content flex flex-col items-start justify-center px-6 py-12 text-white relative z-10 max-w-3xl">
