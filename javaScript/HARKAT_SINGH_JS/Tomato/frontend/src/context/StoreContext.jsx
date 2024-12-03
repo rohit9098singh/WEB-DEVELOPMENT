@@ -11,6 +11,12 @@ const StoreContextProvider = (props) => {
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
 
+    const discountPercentage = 10; 
+
+    const calculateDiscount = () => {
+      return ((calculateSubtotal() * discountPercentage) / 100).toFixed(2);
+    };
+
     const addToCart = async (itemId) => {
         if (!cartItem[itemId]) {
             setCartItem((prev) => ({ ...prev, [itemId]: 1 }));
@@ -42,17 +48,17 @@ const StoreContextProvider = (props) => {
         }
     };
 
-    const loadCartData = async (token) => {
-        try {
-            const response = await axios.post(url + "/api/cart/get",
-                { itemId },
-                { headers: { Authorization: `Bearer ${token}` } }
-            );
-            setCartItem(response.data.cartData);
-        } catch (error) {
-            console.error("Error fetching the data:", error);
-        }
-    }
+    // const loadCartData = async (token) => {
+    //     try {
+    //         const response = await axios.post(url + "/api/cart/get",
+    //             { itemId },
+    //             { headers: { Authorization: `Bearer ${token}` } }
+    //         );
+    //         setCartItem(response.data.cartData);
+    //     } catch (error) {
+    //         console.error("Error fetching the data:", error);
+    //     }
+    // }
     const fetchFoodList = async () => {
         const response = await axios.get(url + "/api/food/allfood");
         setFoodList(response.data.data)
@@ -64,7 +70,7 @@ const StoreContextProvider = (props) => {
             const savedToken = localStorage.getItem("token");
             if (savedToken) {
                 setToken(savedToken);
-                await loadCartData(savedToken);
+                // await loadCartData(savedToken);
             } else {
                 const savedCart = localStorage.getItem("cartItem");
                 if (savedCart) {
@@ -97,7 +103,9 @@ const StoreContextProvider = (props) => {
         calculateSubtotal,
         url,
         token,
-        setToken
+        setToken,
+        calculateDiscount,
+        discountPercentage
     };
     useEffect(() => {
         console.log("useState data", cartItem);

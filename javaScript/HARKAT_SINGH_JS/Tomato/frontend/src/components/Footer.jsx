@@ -3,7 +3,7 @@ import { assets } from '../assets/frontend_assets/assets';
 
 function Footer() {
   return (
-    <div className="footer bg-[#323232] text-[#d9d9d9] flex flex-col gap-8 p-10" id="Footer">
+    <div className="footer bg-[#323232] text-[#d9d9d9] flex flex-col gap-8 p-8 md:p-6" id="Footer">
         {/* Main footer content */}
         <div className="footer_content w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             

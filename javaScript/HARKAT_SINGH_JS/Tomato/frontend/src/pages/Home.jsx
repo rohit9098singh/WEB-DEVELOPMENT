@@ -3,6 +3,7 @@ import Headers from "../components//Headers"
 import ExploreMenu from '../components/ExploreMenu'
 import FoodDisplay from '../components/FoodDisplay'
 import Appdownload from '../components/Appdownload'
+
 function Home() {
   const [category,setCategory]=useState("All")
   return (
@@ -11,6 +12,7 @@ function Home() {
       <ExploreMenu category={category} setCategory={setCategory}/>
       <FoodDisplay category={category}/>
       <Appdownload/>
+     
     </div>
   )
 }

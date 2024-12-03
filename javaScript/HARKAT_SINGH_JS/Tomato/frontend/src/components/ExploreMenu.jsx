@@ -3,7 +3,7 @@ import { menu_list } from "../assets/frontend_assets/assets";
 
 function ExploreMenu({category,setCategory}) {
     return (
-        <div className='mt-8 flex flex-col gap-[20px] mb-4'>
+        <div className='mt-8 flex flex-col gap-[20px] mb-4' id="explore-menu"> 
             {/* Title and Description */}
             <h1 className='text-3xl md:text-4xl font-bold text-[#262626] text-center'>
              Explore Our Menu
