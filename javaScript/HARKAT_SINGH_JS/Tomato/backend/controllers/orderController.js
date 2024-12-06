@@ -1,54 +1,76 @@
-// import orderModel from "../models/orderModel";
-// import userModel from "../models/userModel";
-// import Stripe from "stripe";
+import orderModel from "../models/orderModel.js";
+import userModel from "../models/userModel.js";
+import Razorpay from "razorpay";
+import crypto from "crypto";
 
-// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY } = process.env;
 
-// // Placing user order from frontend
-// const placeOrder = async (req, res) => {
-//   const userId = req.userId; // Retrieved from the middleware
-//   try {
-//     // Step 1: Create a new order
-//     const newOrder = new orderModel({
-//       userId: userId, // User ID from middleware
-//       items: req.body.items, // List of items in the order
-//       amount: req.body.amount, // Total amount
-//       address: req.body.address, // Shipping address
-//     });
+// Create a Razorpay Order
+const createRazorpayOrder = async (req, res) => {
+  try {
+    const razorpay = new Razorpay({
+      key_id: RAZORPAY_ID_KEY,
+      key_secret: RAZORPAY_SECRET_KEY,
+    });
 
-//     await newOrder.save();
+    const { amount } = req.body;
 
-//     // Step 2: Clear the user's cart
-//     await userModel.findByIdAndUpdate(userId, { cartData: {} });
+    const options = {
+      amount: amount * 100, // Convert to paise
+      currency: "INR",
+      receipt: `receipt_${format(new Date(), "yyyyMMdd_HHmmss")}`,
+    };
 
-//     // Step 3: Create line items for Stripe
-//     const line_items = req.body.items.map((item) => ({
-//       price_data: {
-//         currency: "inr",
-//         product_data: {
-//           name: item.name, // Product name
-//         },
-//         unit_amount: item.price * 100, // Price in the smallest currency unit (e.g., paise for INR)
-//       },
-//       quantity: item.quantity, // Quantity of the product
-//     }));
+    const order = await razorpay.orders.create(options);//.orders.create(options) is a method provided by the Razorpay API to create a new order.
+    res.status(200).json({ success: true, order });
+  } catch (error) {
+    console.error("Error creating Razorpay order:", error);
+    res.status(500).json({ success: false, error: "Failed to create order" });
+  }
+};
 
-//     // Step 4: Create a Stripe session
-//     const session = await stripe.checkout.sessions.create({
-//       payment_method_types: ["card"], // Allow card payments
-//       line_items: line_items,
-//       mode: "payment", // Payment mode
-//       success_url: `${process.env.FRONTEND_URL}/success`, // Redirect URL on success
-//       cancel_url: `${process.env.FRONTEND_URL}/cancel`, // Redirect URL on cancel
-//     });
+// Verify Razorpay Payment
+const verifyPayment = async (req, res) => {
+  try {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
-//     // Step 5: Send the session URL to the frontend
-//     res.status(200).json({ sessionUrl: session.url });
-//   } catch (error) {
-//     // Handle errors
-//     console.error(error);
-//     res.status(500).json({ error: "Failed to place order" });
-//   }
-// };
+    const generatedSignature = crypto
+      .createHmac("sha256", RAZORPAY_SECRET_KEY)
+      .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+      .digest("hex");
 
-// export { placeOrder };
+    if (generatedSignature === razorpay_signature) {
+      res.status(200).json({ success: true, message: "Payment verified successfully" });
+    } else {
+      res.status(400).json({ success: false, message: "Invalid payment signature" });
+    }
+  } catch (error) {
+    console.error("Error verifying payment:", error);
+    res.status(500).json({ success: false, error: "Failed to verify payment" });
+  }
+};
+
+// Place an order
+const placeOrder = async (req, res) => {
+  const userId = req.userId;
+
+  try {
+    const newOrder = new orderModel({
+      userId: userId,
+      items: req.body.items,
+      amount: req.body.amount,
+      address: req.body.address,
+    });
+
+    await newOrder.save();
+
+    await userModel.findByIdAndUpdate(userId, { cartData: {} });
+
+    res.status(200).json({ success: true, message: "Order placed successfully" });
+  } catch (error) {
+    console.error("Error placing order:", error);
+    res.status(500).json({ success: false, error: "Failed to place order" });
+  }
+};
+
+export { placeOrder, createRazorpayOrder, verifyPayment };

@@ -6,7 +6,7 @@ import { StoreContext } from "../context/StoreContext";
 
 
 
-function Navbar({ setLogin }) {
+function Navbar({ setLogin }) {   
   const { calculateSubtotal, token, setToken } = useContext(StoreContext);
   const navigate=useNavigate()
   const logoutHandler=()=>{
