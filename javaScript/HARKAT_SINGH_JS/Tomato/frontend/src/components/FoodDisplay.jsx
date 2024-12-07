@@ -17,7 +17,6 @@ function FoodDisplay({ category = "All" }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {food_list.map((item) => {
                     if (category === "All" || category.toLowerCase() === item.category.toLowerCase()) {
-
                         return (
                             <Fooditem
                                 key={item._id}

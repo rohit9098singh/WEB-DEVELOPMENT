@@ -22,6 +22,7 @@ const addFood = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.json({
+            error:error,
             success: false,
             message: "Error while adding food",
         });
@@ -39,6 +40,7 @@ const getAllFood = async (req, res) => {
     } catch (error) {
          console.log(Error);
          res.json({
+            error:error,
             success:false,
             message:"some error occured"
          })

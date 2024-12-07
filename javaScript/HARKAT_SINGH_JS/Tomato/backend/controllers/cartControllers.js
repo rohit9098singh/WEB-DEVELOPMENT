@@ -5,6 +5,8 @@ const addToCart = async (req, res) => {
     // see first we will access the user_id which is comming from the middleware after aurhentication which 
     // we have passed through decoded._id or can send email also
     const userId = req.userId;
+  
+    
 
     // now with that id we will find the user detail in the mogodb 
     const userData = await UserModel.findById(userId); 

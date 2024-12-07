@@ -3,12 +3,14 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
-import PlaceOrder from "./pages/PlaceOrder"
+import PlaceOrder from "./pages/Address"
 import Footer from './components/Footer'
 import { useState } from 'react'
 import UserLogDetails from './components/UserLogDetails'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
+import Payment from "./pages/Payment";
+import Confirmationpage from './pages/ConfirmationPage'
 
 function App() {
   const [login,setLogin]=useState(false);
@@ -23,6 +25,7 @@ function App() {
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/placeorder" element={<PlaceOrder />}></Route>
           <Route path="/payment" element={<Payment />} />
+          <Route path='/confirm_Order' element={<Confirmationpage />}/>
         </Routes>
       </div>
       <Footer  />

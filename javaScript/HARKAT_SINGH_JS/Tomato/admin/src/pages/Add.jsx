@@ -20,10 +20,13 @@ const Add = ({url}) => {
     console.log('Form Data (before processing):', data);
 
     const formData = new FormData();
+    
     formData.append("name", data.name);
     formData.append("description", data.description);
     formData.append("price", Number(data.price));
     formData.append("category", data.category);
+
+    
 
     if (imageFile) {
       formData.append("image", imageFile);
@@ -185,5 +188,4 @@ const Add = ({url}) => {
     </div>
   );
 };
-
 export default Add;
