@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import User01 from "../../assets/images/user/user-01.png";
 import { LinkSimple, PaperPlaneTilt, Smiley } from '@phosphor-icons/react';
+import { Minimize } from 'lucide-react';
+import Dropdown from "../../components/Dropdown"
 
-const Inbox = () => {
+const Inbox = (isminimized,toggleMinimized) => {
     const [message, setMessage] = useState("");
     const handleSubmit = (e) => {
         if (e.key === "Enter") {
@@ -13,9 +15,9 @@ const Inbox = () => {
     }
 
     return (
-        <div className='flex h-full w-[95%] flex-col lg:w-3/4'>
+        <div className={`flex h-full w-[95%] flex-col lg:w-3/4 dark:bg-boxdark `}>
             {/** HEADERS */}
-            <div className='sticky top-0 z-20 flex items-center justify-between border-b border-stroke dark:border-strokedark px-5 py-4'>
+            <div className='sticky top-0 z-20 flex items-center justify-between border-b border-stroke dark:bg-boxdark dark:border-strokedark px-5 py-4'>
                 <div className='flex items-center gap-3'>
                     <div className='h-12 w-12 rounded-full object-cover'>
                         <img src={User01} alt={"Avatar"} className='h-full w-full' />
@@ -27,6 +29,11 @@ const Inbox = () => {
                         <p className='text-sm'>Reply To Message</p>
                     </div>
                 </div>
+                <div className='flex space-x-4 mr-5'>
+                   <Minimize size={24} className='text-black dark:text-white'/>
+                   <Dropdown/>
+                </div>
+                
             </div>
             {/** MESSAGES */}
             <div className="max-h-full overflow-auto px-9  py-7.5 no-scrollbar space-y-3.5 grow">

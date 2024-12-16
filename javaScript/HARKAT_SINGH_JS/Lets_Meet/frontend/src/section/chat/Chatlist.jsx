@@ -54,9 +54,9 @@ const List = [
 
 const Chatlist = () => {
   return (
-    <div className="hidden h-full flex-col lg:flex lg:w-1/4 border-r border-stroke dark:border-strokedark">
+    <div className="hidden h-full flex-col lg:flex lg:w-1/4 border-r border-stroke dark:bg-boxdark dark:border-strokedark dark:">
       {/* Header */}
-      <div className="sticky top-0 bg-white dark:bg-boxdark-2 flex items-center justify-between border-b border-stroke dark:border-strokedark px-6 py-4 z-10">
+      <div className="sticky top-0 bg-white dark:bg flex items-center justify-between border-b border-stroke dark:bg-boxdark dark:border-strokedark dark:bg-boxdark-1 px-6 py-4 z-10">
         <h3 className="text-lg font-medium text-black dark:text-white">Active Conversation</h3>
         <span className="rounded-md border-[.5px] border-stroke dark:border-strokedark bg-stone-200 px-2 py-0.5  font-medium text-black dark:text-white dark:bg-boxdark-2 cursor-pointer">
           8
