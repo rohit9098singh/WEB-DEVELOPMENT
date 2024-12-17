@@ -3,6 +3,7 @@ import User01 from "../../assets/images/user/user-01.png";
 import { LinkSimple, PaperPlaneTilt, Smiley } from '@phosphor-icons/react';
 import { Minimize } from 'lucide-react';
 import Dropdown from "../../components/Dropdown"
+import EmojiPicker from '@/components/EmojiPicker';
 
 const Inbox = (isminimized,toggleMinimized) => {
     const [message, setMessage] = useState("");
@@ -71,16 +72,14 @@ const Inbox = (isminimized,toggleMinimized) => {
                             <button aria-label="Attach a file" className='hover:text-blue-600'>
                                 <LinkSimple size={26} />
                             </button>
-                            <button aria-label="Add an emoji" className='hover:text-blue-600'>
-                                <Smiley size={26} />
-                            </button>
+                            <EmojiPicker size={24}  />
                         </div>
                     </div>
                     <button
                         className='flex items-center justify-center bg-blue-500 text-white rounded-md h-9 max-w-9 w-full hover:bg-blue-600'
                         aria-label="Send message"
                     >
-                        <PaperPlaneTilt size={24} />
+                        <PaperPlaneTilt size={24} bg-white-600/>
                     </button>
                 </div>
             </div>
