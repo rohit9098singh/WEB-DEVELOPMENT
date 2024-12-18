@@ -9,11 +9,13 @@ import User06 from "../../assets/images/user/user-07.png";
 import User07 from "../../assets/images/user/user-08.png";
 import User08 from "../../assets/images/user/user-09.png";
 
+import default_avatar from "../../assets/images/user/default_avatar.png"
+
 const List = [
   {
     imgSrc: User01,
     name: "Henry Dholi",
-    message: "I cam across your profile and...",
+    message: "I came across your profile and...",
   },
   {
     imgSrc: User02,
@@ -21,7 +23,6 @@ const List = [
     message: "I like your confidence 💪",
   },
   {
-    imgSrc: User03,
     name: "Robert Jhon",
     message: "Can you share your offer?",
   },
@@ -53,12 +54,18 @@ const List = [
 ];
 
 const Chatlist = () => {
+  const [selected, setSelected] = useState(0);
+
+  const handleSubmit = (index) => {
+    setSelected(index)
+  }
+
   return (
     <div className="hidden h-full flex-col lg:flex lg:w-1/4 border-r border-stroke dark:bg-boxdark dark:border-strokedark dark:">
       {/* Header */}
       <div className="sticky top-0 bg-white dark:bg flex items-center justify-between border-b border-stroke dark:bg-boxdark dark:border-strokedark dark:bg-boxdark-1 px-6 py-4 z-10">
         <h3 className="text-lg font-medium text-black dark:text-white">Active Conversation</h3>
-        <span className="rounded-md border-[.5px] border-stroke dark:border-strokedark bg-stone-200 px-2 py-0.5  font-medium text-black dark:text-white dark:bg-boxdark-2 cursor-pointer">
+        <span className="rounded-md border-[.5px] border-stroke dark:border-strokedark bg-stone-200 px-2 py-0.5 font-medium text-black dark:text-white dark:bg-boxdark-2 cursor-pointer">
           8
         </span>
       </div>
@@ -69,9 +76,9 @@ const Chatlist = () => {
           <input
             type="text"
             placeholder="Search..."
-            className="w-full rounded-xl border  border-stroke bg-stone-200 py-2.5 pl-9 text-sm outline-none focus:ring-1 focus:ring-blue-500  dark:border-strokedark dark:bg-boxdark-2 dark:text-white"
+            className="w-full rounded-xl border border-stroke bg-stone-200 py-2.5 pl-9 text-sm outline-none focus:ring-1 focus:ring-blue-500 dark:border-strokedark dark:bg-boxdark-2 dark:text-white"
           />
-          <button type="button" className="absolute right-4 top-1/2 -translate-y-1/2 ">
+          <button type="button" className="absolute right-4 top-1/2 -translate-y-1/2">
             <MagnifyingGlass size={20} />
           </button>
         </form>
@@ -82,22 +89,29 @@ const Chatlist = () => {
         {List.map((user, index) => (
           <div
             key={index}
-            className="relative flex items-center gap-4 py-3 px-4 rounded-xl hover:bg-stone-200 dark:hover:bg-boxdark-2 cursor-pointer"
+            onClick={() => {
+              handleSubmit(index);
+            }}
+            className={`${selected === index
+                ? "bg-stone-200 text-blue-500 dark:bg-boxdark-2 dark:text-blue-500"
+                : "hover:bg-stone-100 dark:hover:bg-black"
+              } relative flex items-center gap-4 py-3 px-4 rounded-xl cursor-pointer transition-colors duration-300`}
+
           >
             {/* Profile Image */}
             <img
-              src={user.imgSrc}
+              src={user.imgSrc || default_avatar}
               alt={user.name}
               className="w-12 h-12 rounded-full object-cover"
             />
-            <div className="relative top-3 right-6 -tranlate-y-1/2 w-2.5 h-2.5 rounded-full bg-green-500"></div>
+            <div className="relative top-3 right-6 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-green-500"></div>
 
             {/* User Info */}
             <div className="flex-1 min-w-0">
               <p className="font-medium text-sm text-black dark:text-white truncate">
                 {user.name}
               </p>
-              <p className="text-xs  text-gray-500 dark:text-gray-400 truncate">
+              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                 {user.message}
               </p>
             </div>
@@ -108,7 +122,6 @@ const Chatlist = () => {
         ))}
       </div>
     </div>
-   
   );
 };
 

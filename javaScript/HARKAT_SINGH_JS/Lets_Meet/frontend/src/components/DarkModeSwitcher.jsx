@@ -25,7 +25,7 @@ const DarkModeSwitcher = () => {
           className={`absolute top-1/2 left-[3px] -translate-y-1/2 h-6 w-6 duration-150 ease-linear flex items-center justify-center bg-white rounded-full ${colorMode === "dark" && '!right-[3px] !translate-x-full'}`} // THE (!) USED HERE IS NOT THE NOT SYMBOL BUT THE IMPORTANT SYMBOL
         >
           <span className="dark:hidden">
-            <Sun size={24}/>
+            <Sun size={24} className="text-yellow-500"/>
           </span>
           <span className="hidden dark:inline-block">
             <Moon size={24} className="text-black"/>

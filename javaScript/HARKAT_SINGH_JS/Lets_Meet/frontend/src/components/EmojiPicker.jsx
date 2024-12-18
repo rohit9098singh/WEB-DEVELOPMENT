@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Smiley } from "@phosphor-icons/react";
 
 const EmojiPicker = () => {
+    const colorMode = JSON.parse(window.localStorage.getItem("color-theme"));
   const [pickerOpen, setPickerOpen] = useState(false);
   const smileyButtonRef = useRef(null);
   const smileyPickerRef = useRef(null);
@@ -39,7 +40,7 @@ const EmojiPicker = () => {
       <button
         ref={smileyButtonRef}
         onClick={handleTrigger}
-        className="text-black hover:text-black-2"
+        className="text-black  dark:text-white hover:text-blue-500"
       >
         <Smiley size={24} />
       </button>
@@ -50,7 +51,7 @@ const EmojiPicker = () => {
           className="absolute bottom-5 right-1"
         
         >
-          <Picker data={data} onEmojiSelect={console.log}  />
+          <Picker theme={colorMode} data={data} onEmojiSelect={console.log}  />
         </div>
       )}
     </div>

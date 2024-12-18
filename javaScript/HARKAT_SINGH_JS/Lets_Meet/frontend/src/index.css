@@ -86,6 +86,13 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  .hide-placeholder::placeholder {
+    opacity: 0; /* Hide placeholder text */
+  }
+  .show-placeholder::placeholder {
+    opacity: 1; /* Hide placeholder text */
+  }
+  
 }
 
 @layer base {
