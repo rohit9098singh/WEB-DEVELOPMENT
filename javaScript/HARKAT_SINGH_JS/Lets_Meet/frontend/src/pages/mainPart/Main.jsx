@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sidebar,Chatlist, Inbox } from '../../section/chat';
-
+import GifModel from '../../components/GIfModel';
+import VoiceRecorder from "../../components/VoiceRecorder";
 
 const Main = () => {
   const [isminimized,setIsMinimized]=useState(true)
@@ -20,6 +21,9 @@ const Main = () => {
         {/* Inbox */}
            <Inbox isminimized={isminimized} toggleMinimized={toggleMinimized}/>
        
+       {/**GIFmodal the modal window over here  */}
+       <GifModel/>
+       <VoiceRecorder/>
       </div>
     </div>
   );

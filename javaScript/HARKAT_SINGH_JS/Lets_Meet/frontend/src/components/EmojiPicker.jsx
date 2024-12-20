@@ -1,11 +1,10 @@
-import { Smile } from "lucide-react";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import React, { useEffect, useRef, useState } from "react";
 import { Smiley } from "@phosphor-icons/react";
 
 const EmojiPicker = () => {
-    const colorMode = JSON.parse(window.localStorage.getItem("color-theme"));
+  const colorMode = JSON.parse(window.localStorage.getItem("color-theme"));
   const [pickerOpen, setPickerOpen] = useState(false);
   const smileyButtonRef = useRef(null);
   const smileyPickerRef = useRef(null);
