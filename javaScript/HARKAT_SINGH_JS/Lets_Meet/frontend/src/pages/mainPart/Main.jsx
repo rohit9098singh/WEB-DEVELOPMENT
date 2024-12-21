@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Sidebar,Chatlist, Inbox } from '../../section/chat';
 import GifModel from '../../components/GIfModel';
 import VoiceRecorder from "../../components/VoiceRecorder";
+import MediaPicker from '../../components/MediaPicker';
+import DocumentPicker from '../../components/DocumentPicker';
 
 const Main = () => {
   const [isminimized,setIsMinimized]=useState(true)
@@ -24,6 +26,8 @@ const Main = () => {
        {/**GIFmodal the modal window over here  */}
        <GifModel/>
        <VoiceRecorder/>
+       <MediaPicker/>
+       <DocumentPicker/>
       </div>
     </div>
   );

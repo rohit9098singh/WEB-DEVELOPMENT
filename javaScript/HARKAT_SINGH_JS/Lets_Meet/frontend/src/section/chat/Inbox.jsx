@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import User01 from "../../assets/images/user/user-01.png";
-import { Gif, LinkSimple, Microphone, PaperPlaneTilt, Phone, VideoCamera } from "@phosphor-icons/react";
+import { Gif, Microphone, PaperPlaneTilt, Phone, VideoCamera } from "@phosphor-icons/react";
 import Dropdown from "../../components/Dropdown";
 import EmojiPicker from "../../components/EmojiPicker";
 import ProfileInfo from "../../components/ProfileInfo";
 import Giphy from "../../components/Giphy";
 import { useDispatch } from "react-redux";
 import { ToggleAudioModal } from "../../redux/slices/app";
+import Attachment from "@/components/Attachment";
 
 
 const Inbox = () => {
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
   const [message, setMessage] = useState("");
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isGifSearchOpen, setIsGifSearchOpen] = useState(false);
@@ -123,7 +124,7 @@ const Inbox = () => {
                   <Microphone size={24}/> 
                </button>
                 <button aria-label="Attach a file" className="hover:text-blue-600">
-                  <LinkSimple size={24} />
+                  <Attachment size={24} />
                 </button>
                 <button onClick={toggleGifSearchBar} ref={buttonRef} className="hover:text-blue-600">
                   <Gif size={24} />

@@ -36,21 +36,26 @@ const EmojiPicker = () => {
 
   return (
     <div className="relative flex">
+      {/* Trigger Button */}
       <button
         ref={smileyButtonRef}
         onClick={handleTrigger}
-        className="text-black  dark:text-white hover:text-blue-500"
+        className="text-black dark:text-white hover:text-blue-500"
       >
         <Smiley size={24} />
       </button>
 
+      {/* Emoji Picker (not inside a button) */}
       {pickerOpen && (
         <div
           ref={smileyPickerRef}
           className="absolute bottom-5 right-1"
-        
         >
-          <Picker theme={colorMode} data={data} onEmojiSelect={console.log}  />
+          <Picker
+            theme={colorMode}
+            data={data}
+            onEmojiSelect={(emoji) => console.log(emoji)} // Use a proper emoji select handler
+          />
         </div>
       )}
     </div>
