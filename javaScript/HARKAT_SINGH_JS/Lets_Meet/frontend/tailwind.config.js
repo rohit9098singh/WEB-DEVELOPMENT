@@ -265,6 +265,7 @@ module.exports = {
       keyframes: {
         linspin: {
           '100%': { transform: 'rotate(360deg)' },
+          
         },
         easespin: {
           '12.5%': { transform: 'rotate(135deg)' },

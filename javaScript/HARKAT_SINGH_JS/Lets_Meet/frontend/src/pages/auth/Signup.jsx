@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import signupimage from "../../assets/images/user/chat-signup.svg";
 import googleimage from "../../assets/images/user/googleimage.svg";
-import { LockKeyhole, Mail, User } from "lucide-react";
+import { LockKeyhole, LockOpen, Mail, User } from "lucide-react";
 import { motion } from "framer-motion";
 import Logo from "../../components/Logo.jsx";
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Toggle password visibility
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <div>
-      <div className="border border-stroke dark:border-strokedark shadow-default bg-white dark:bg-boxdark h-screen bg-[url()] flex items-center">
+      <motion.div
+        className="border border-stroke dark:border-strokedark shadow-default bg-white dark:bg-boxdark h-screen bg-[url()] flex items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Left Section */}
         <motion.div
           className="hidden w-full lg:w-1/2 lg:block"
@@ -27,7 +38,7 @@ const Signup = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              join Lets_meet & experience the modern way to connect with the people 
+              Join Lets_meet & experience the modern way to connect with people
             </motion.p>
             <motion.div
               className="inline-block"
@@ -37,7 +48,7 @@ const Signup = () => {
             >
               <img
                 src={signupimage}
-                className="mt-4  h-40 w-auto object-cover object-center"
+                className="mt-4 h-40 w-auto object-cover object-center"
                 alt="Login"
               />
             </motion.div>
@@ -67,7 +78,8 @@ const Signup = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-               <motion.div
+              {/* Name Input */}
+              <motion.div
                 className="mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -79,19 +91,25 @@ const Signup = () => {
                 >
                   Name
                 </label>
-                <div className="relative">
+                <motion.div
+                  className="relative"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.7 }}
+                >
                   <input
                     type="text"
                     id="name"
                     placeholder="Enter your full name"
-                    className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none
-                 focus:border-primary  dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   />
                   <span className="absolute right-4 top-4">
                     <User />
                   </span>
-                </div>
-              </motion.div>  
+                </motion.div>
+              </motion.div>
+
+              {/* Email Input */}
               <motion.div
                 className="mb-4"
                 initial={{ opacity: 0 }}
@@ -104,20 +122,25 @@ const Signup = () => {
                 >
                   Email
                 </label>
-                <div className="relative">
+                <motion.div
+                  className="relative"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.7 }}
+                >
                   <input
                     type="email"
                     id="email"
                     placeholder="Enter your email"
-                    className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none
-                 focus:border-primary  dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   />
                   <span className="absolute right-4 top-4">
                     <Mail />
                   </span>
-                </div>
+                </motion.div>
               </motion.div>
 
+              {/* Password Input */}
               <motion.div
                 className="relative mt-6"
                 initial={{ opacity: 0 }}
@@ -130,17 +153,24 @@ const Signup = () => {
                 >
                   Password
                 </label>
-                <input
-                  type="password"
+                <motion.input
+                  type={showPassword ? "text" :"password"}
                   id="password"
                   placeholder="Enter your password"
-                  className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none
-               focus:border-primary  dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                  className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
                 />
-                <span className="absolute right-4 top-8">
-                  <LockKeyhole />
+                <span 
+                  className="absolute right-4 top-8 cursor-pointer"
+                  onClick={togglePassword}
+                >
+                 {showPassword ? <LockOpen/>:<LockKeyhole />} 
                 </span>
               </motion.div>
+
+              {/* Retype Password Input */}
               <motion.div
                 className="relative mt-6"
                 initial={{ opacity: 0 }}
@@ -148,23 +178,29 @@ const Signup = () => {
                 transition={{ delay: 0.7, duration: 0.6 }}
               >
                 <label
-                  htmlFor="password"
+                  htmlFor="retype-password"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-200"
                 >
                   Retype Password
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="retype your password"
-                  className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none
-               focus:border-primary  dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                <motion.input
+                  type={showPassword ? "text" :"password"}
+                  id="retype-password"
+                  placeholder="Retype your password"
+                  className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
                 />
-                <span className="absolute right-4 top-8">
-                  <LockKeyhole />
+                <span
+                  className="absolute right-4 top-8 cursor-pointer"
+                   onClick={togglePassword}
+                  >
+                  {showPassword ? <LockOpen/>:<LockKeyhole />}
                 </span>
               </motion.div>
 
+              {/* Sign up Button */}
               <motion.div
                 className="mt-4"
                 initial={{ opacity: 0 }}
@@ -173,13 +209,14 @@ const Signup = () => {
               >
                 <button
                   type="submit"
-                  value="Sign in"
+                  value="Sign up"
                   className="cursor-pointer w-full mt-4 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
                   Sign up
                 </button>
               </motion.div>
 
+              {/* Sign up with Google */}
               <motion.button
                 className="mt-4 flex w-full items-center justify-center space-x-2 border border-stroke bg-stone-100 p-4 rounded-lg hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50"
                 initial={{ opacity: 0 }}
@@ -189,9 +226,10 @@ const Signup = () => {
                 <span>
                   <img src={googleimage} alt="Google" />
                 </span>
-                <p>Sign in with google</p>
+                <p>Sign up with Google</p>
               </motion.button>
 
+              {/* Already have an account */}
               <motion.div
                 className="mt-4 text-center"
                 initial={{ opacity: 0 }}
@@ -199,16 +237,16 @@ const Signup = () => {
                 transition={{ delay: 1.2, duration: 0.7 }}
               >
                 <p>
-                  Already have any account?{" "}
+                  Already have an account?{" "}
                   <span className="text-blue-600">
-                    <Link to="/auth/Login">sign in</Link>
+                    <Link to="/auth/Login">Sign in</Link>
                   </span>
                 </p>
               </motion.div>
             </motion.form>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 };

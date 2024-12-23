@@ -21,7 +21,7 @@ const Main = () => {
           <Chatlist isminimized={isminimized}/>
 
         {/* Inbox */}
-           <Inbox isminimized={isminimized} toggleMinimized={toggleMinimized}/>
+           <Inbox isminimized={isminimized} toggleMinimized={toggleMinimized} />
        
        {/**GIFmodal the modal window over here  */}
        <GifModel/>

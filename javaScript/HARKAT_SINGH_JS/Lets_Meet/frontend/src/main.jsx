@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";  // Corrected the import
 import { store } from "./redux/store.js";
+import "dropzone/dist/dropzone.css"
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>

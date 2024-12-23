@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PaperPlaneTilt } from "@phosphor-icons/react";
 import { ToggleDocumentModal } from "../redux/slices/app";
+import FileDropZone from "./FileDropzone";
 
 const DocumentPicker = () => {
   const modalRef = useRef(null);
@@ -53,6 +54,12 @@ const DocumentPicker = () => {
             <X />
           </button>
         </div>
+
+          {/*Document Dropzone */}
+        <FileDropZone
+           acceptedFiles=".pdf,.ppt,.doc,.xls,.xlsr,.txt,.csv,.fig"
+           maxFileSize={64 *1024 *1024}
+         />
 
         {/* File Dropzone / Content Area */}
         <div className="flex items-center space-x-2 justify-between mt-4">

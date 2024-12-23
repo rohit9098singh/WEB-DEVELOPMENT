@@ -1,6 +1,12 @@
 import { Chat, DotsThreeCircle, Shapes, SignOut, UserCircle, Users } from "@phosphor-icons/react";
 import React, { useState } from "react";
 import DarkModeSwitcher from "../../components/DarkModeSwitcher";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 const Navigation = [
   {
@@ -64,12 +70,24 @@ const Sidebar = () => {
         </div>
 
         {/* Logout button */}
-        <div className="mx-auto rounded-md dark:opacity-60 p-2 dark:border-strokedark cursor-pointer">
-          <SignOut
-            size={24}
-            className="text-[#212121] dark:text-blue-500 dark:font-bold"
-          />
-        </div>
+        <TooltipProvider>
+          <Tooltip >
+            <TooltipTrigger>
+              <div className="mx-auto rounded-md dark:opacity-60 p-2 dark:border-strokedark cursor-pointer">
+                <SignOut
+                  size={24}
+                  className="text-[#212121] dark:text-blue-500 dark:font-bold"
+                />
+              </div>
+            </TooltipTrigger>
+            <TooltipContent
+              side="right"
+              className="mb-6 border-none bg-blue-500 dark:bg-boxdark-2 dark:text-white text-white rounded-md px-2 py-1 text-sm font-medium shadow-lg0"
+            >
+              Log Out
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </div>
   );
