@@ -5,12 +5,20 @@ import loginImage from "../../assets/images/user/person.avif";
 import googleimage from "../../assets/images/user/googleimage.svg";
 import { LockKeyhole, LockOpen, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const [showPassword,setShowPassword]=useState(false);
-  const togglePassword=()=>{
-    setShowPassword(!showPassword)
-  }
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data) => {
+    // Handle form submission here
+    console.log(data);
+  };
+
   return (
     <div className="border border-stroke dark:border-strokedark shadow-default bg-white dark:bg-boxdark h-screen bg-[url()] flex items-center">
       {/* Left Section */}
@@ -37,8 +45,7 @@ const Login = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Hey there👋, Welcome Back, Login to chat with your friends &
-            colleagues
+            Hey there👋, Welcome Back, Login to chat with your friends & colleagues
           </motion.p>
           <motion.div
             className="inline-block"
@@ -74,6 +81,7 @@ const Login = () => {
 
           {/* Form */}
           <motion.form
+            onSubmit={handleSubmit(onSubmit)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
@@ -95,12 +103,16 @@ const Login = () => {
                   type="email"
                   id="email"
                   placeholder="Enter your email"
+                  {...register("email", { required: "Email is required" })}
                   className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none
-                 focus:border-primary  dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.7, duration: 0.5 }}
                 />
+                {errors.email && (
+                  <p className="text-[rgb(138,29,25)] text-sm">{errors.email.message}</p>
+                )}
                 <motion.span
                   className="absolute right-4 top-4"
                   initial={{ opacity: 0 }}
@@ -125,15 +137,19 @@ const Login = () => {
                 Password
               </label>
               <motion.input
-                type={showPassword ? "text" :"password"}
+                type={showPassword ? "text" : "password"}
                 id="password"
-                placeholder="6+ character with 1 capital"
+                placeholder="Enter your password"
+                {...register("password", { required: "Password is required" })}
                 className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none
-               focus:border-primary  dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                  focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
               />
+              {errors.password && (
+                <p className="text-[rgb(138,29,25)] text-sm">{errors.password.message}</p>
+              )}
               <motion.span
                 onClick={togglePassword}
                 className="absolute right-4 top-8 cursor-pointer"
@@ -141,7 +157,7 @@ const Login = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
-               {showPassword ? <LockOpen/> :<LockKeyhole /> } 
+                {showPassword ? <LockOpen /> : <LockKeyhole />}
               </motion.span>
             </motion.div>
 
@@ -182,7 +198,7 @@ const Login = () => {
               transition={{ delay: 1.6, duration: 0.7 }}
             >
               <p>
-                Don't have any account?{" "}
+                Don't have an account?{" "}
                 <span className="text-blue-600">
                   <Link to="/auth/Signup">Sign up</Link>
                 </span>

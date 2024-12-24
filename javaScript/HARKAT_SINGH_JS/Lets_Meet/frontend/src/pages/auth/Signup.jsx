@@ -5,6 +5,7 @@ import googleimage from "../../assets/images/user/googleimage.svg";
 import { LockKeyhole, LockOpen, Mail, User } from "lucide-react";
 import { motion } from "framer-motion";
 import Logo from "../../components/Logo.jsx";
+import { useForm } from "react-hook-form";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +14,13 @@ const Signup = () => {
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data); // Replace with actual form submission logic
+  };
+
   return (
     <div>
       <motion.div
@@ -74,6 +82,7 @@ const Signup = () => {
 
             {/* Form */}
             <motion.form
+              onSubmit={handleSubmit(onSubmit)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
@@ -97,12 +106,14 @@ const Signup = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7, duration: 0.7 }}
                 >
-                  <input
+                   <input
                     type="text"
                     id="name"
                     placeholder="Enter your full name"
+                    {...register("name", { required: "Name is required" })}
                     className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   />
+                  {errors.name && <p className="text-[rgb(138,29,25)] text-sm">{errors.name.message}</p>}
                   <span className="absolute right-4 top-4">
                     <User />
                   </span>
@@ -132,8 +143,10 @@ const Signup = () => {
                     type="email"
                     id="email"
                     placeholder="Enter your email"
+                    {...register("email", { required: "Email is required" })}
                     className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   />
+                  {errors.email && <p className="text-[rgb(138,29,25)] text-sm">{errors.email.message}</p>}
                   <span className="absolute right-4 top-4">
                     <Mail />
                   </span>
@@ -154,14 +167,13 @@ const Signup = () => {
                   Password
                 </label>
                 <motion.input
-                  type={showPassword ? "text" :"password"}
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   placeholder="Enter your password"
+                  {...register("password", { required: "Password is required" })}
                   className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
                 />
+                {errors.password && <p className="text-[rgb(138,29,25)] text-sm">{errors.password.message}</p>}
                 <span 
                   className="absolute right-4 top-8 cursor-pointer"
                   onClick={togglePassword}
@@ -184,14 +196,13 @@ const Signup = () => {
                   Retype Password
                 </label>
                 <motion.input
-                  type={showPassword ? "text" :"password"}
+                  type={showPassword ? "text" : "password"}
                   id="retype-password"
                   placeholder="Retype your password"
+                  {...register("retypePassword", { required: "Please retype your password" })}
                   className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
                 />
+                {errors.retypePassword && <p className="text-[rgb(138,29,25)] text-sm">{errors.retypePassword.message}</p>}
                 <span
                   className="absolute right-4 top-8 cursor-pointer"
                    onClick={togglePassword}
