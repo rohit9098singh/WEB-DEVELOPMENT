@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <!-- Background speech bubble -->
+  <path d="M10 10 Q 30 0, 60 10 Q 90 20, 80 40 Q 60 50, 40 40 Q 20 35, 10 30 Z" fill="#4CAF50"/>
+  <text x="15" y="30" font-family="Arial" font-size="18" fill="white">Meet Me</text>
+</svg>
