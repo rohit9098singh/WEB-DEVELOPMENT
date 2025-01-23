@@ -25,85 +25,101 @@
 
   // }
 
-  //   FIRST USECASE
-//   let val = useRef(1);
+    // FIRST USECASE
+    import React, { useState, useEffect, useRef } from "react";
 
-//   function handleIncrement() {
-//     setCount(count + 1);
-//     val.current += 1;
-//     console.log(val);
+    function App() {
+      // Using useState to track the count state
+      const [count, setCount] = useState(0);
+    
+      // useRef to persist a value across renders
+      let val = useRef(1);
+    
+      // Function to increment count and also update the val reference
+      function handleIncrement() {
+        setCount(count + 1);  // Increment the count state
+        val.current += 1;  // Increment the val ref (without causing re-render)
+        console.log(val.current);  // Log the value of val
+      }
+    
+      // useRef to store reference to the button element
+      let btnRef = useRef(); 
+    
+      // Function to change the color of the first button using the reference
+      function changeColor() {
+        btnRef.current.style.backgroundColor = "red";  // Change button's background color
+      }
+    
+      // useEffect hook to log when the component re-renders
+      useEffect(() => {
+        console.log("Component re-rendered!");
+      }, []);  // Empty dependency array, meaning this effect runs once on mount
+    
+      return (
+        <>
+          {/* Button that increments the count and logs val */}
+          <button
+            onClick={handleIncrement}
+            ref={btnRef}  // Assign btnRef to this button to directly interact with it
+          >
+            Increment
+          </button>
+          <br />
+    
+          {/* Button to change the background color of the first button */}
+          <button onClick={changeColor}>
+            Change 1st button color
+          </button>
+          <br />
+    
+          {/* Display the current count */}
+          <div>Count: {count}</div>
+        </>
+      );
+    }
+    
+    export default App;
+    
+
+// import { useEffect, useRef,useState } from "react";
+// import './App.css';
+ 
+
+// function App(){
+
+//   const [time,setTime]=useState(0);
+//   let timerRef=useRef(null);
+
+//   function startTimer(){
+//      timerRef.current=setInterval(()=>{
+//       setTime(time=>time+1);
+//      },1000)
+//   };
+//   function stopTimer(){
+//      clearInterval(timerRef.current);
+//     //  timerRef.current=null;
 //   }
-
-//   let btnRef = useRef(); // TAKI HUM KISE SE BHI LINK KAR SAKE OR USKO USE KAR SAKE **
-//   // SECOND USECASE
-//   function changeColor() {
-//     btnRef.current.style.backgroundColor = "red";
+//   function resetTimer(){
+//       stopTimer();
+//       setTime(0);
 //   }
-
-//   useEffect(() => {
-//     console.log("mai fir se rerender hogya hoon ");
-//   });
-
-//   return (
+//   const minutes=Math.floor(time/60);
+//   const seconds=time%60;
+//   return(
 //     <>
-//       <button
-//         onClick={handleIncrement}
-//         ref={btnRef} // ** YAHA HAMNE USE USE KIYA HUA HAI
-//       >
-//         increment
-//       </button>
-//       <br />
+//         <h1> Stopwatch: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1> 
 
-//       <button onClick={changeColor}>change 1st button color</button>
-//       <br />
-
-//       <div>count:{count}</div>
+//         <button onClick={startTimer}>
+//           start
+//         </button>
+//         <button onClick={stopTimer}>
+//           stop
+//         </button>
+//         <button onClick={resetTimer}>
+//           Reset
+//         </button>
 //     </>
-//   );
+//   )
 // }
 
 // export default App;
-
-
-import { useEffect, useRef,useState } from "react";
-import './App.css';
- 
-
-function App(){
-
-  const [time,setTime]=useState(0);
-  let timerRef=useRef(null);
-
-  function startTimer(){
-     timerRef.current=setInterval(()=>{
-      setTime(time=>time+1);
-     },1000)
-  };
-  function stopTimer(){
-     clearInterval(timerRef.current);
-    //  timerRef.current=null;
-  }
-  function resetTimer(){
-      stopTimer();
-      setTime(0);
-  }
-  const minutes=Math.floor(time/60);
-  const seconds=time%60;
-  return(
-    <>
-        <h1> Stopwatch: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1> 
-
-        <button onClick={startTimer}>
-          start
-        </button>
-        <button onClick={stopTimer}>
-          stop
-        </button>
-        <button onClick={resetTimer}>
-          Reset
-        </button>
-    </>
-  )
-}
-
-export default App;
