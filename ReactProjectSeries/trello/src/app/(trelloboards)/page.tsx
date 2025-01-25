@@ -1,7 +1,8 @@
 
 import Productivity from "@/components/Productivity"
 import Header2 from "../../components/Header2"
-import WorkFlow from "@/components/WorkFlow"
+import {WorkFlow} from "@/components/WorkFlow"
+import PlansComponent from "@/components/PlansComponent"
 
 const page = () => {
   return (
@@ -12,6 +13,7 @@ const page = () => {
          <div className="py-14 bg-[#e6eafc]">
             <Productivity/>
             <WorkFlow/>
+            <PlansComponent/>
          </div>
     </div>
   )

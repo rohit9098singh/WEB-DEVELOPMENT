@@ -4,7 +4,7 @@ import React from 'react'
 
 const Header2 = () => {
     return (
-        <div className='px-4 sm:px-8 md:px-16 lg:px-[10%] py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gradient-to-br from-pink-400 to-[#0055D1]'>
+        <div className='px-4 sm:px-8 md:px-16 lg:px-[10%] py-1 grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gradient-to-br from-pink-400 to-[#0055D1]'>
             <div className='text-white p-2'>
                 <h1 className='font-extrabold text-3xl sm:text-4xl md:text-5xl'>
                     Trello Brings all Your Tasks, Team Mates, and Tools Together
