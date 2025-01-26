@@ -44,7 +44,7 @@ export const CardWrap = ({
           } 
           <CardFooter>
              <BackButton
-                label={"Don't have an account ? "+backButtonLabel} 
+                label={backButtonLabel} 
                 href={backButtonHref}
              />
           </CardFooter>
