@@ -7,7 +7,7 @@ export const Social =()=>{
         <div className="flex items-center w-full gap-x-2">
             <Button
             size="lg"
-            className="w-full"
+            className="w-full bg-white transition-all duration-1000 hover:bg-blue-200/80 "
             variant="outline"
             onClick={()=>{}}
             >
@@ -15,7 +15,7 @@ export const Social =()=>{
             </Button>
             <Button
             size="lg"
-            className="w-full"
+            className="w-full transition-all duration-1000 hover:bg-blue-200/80"
             variant="outline"
             onClick={()=>{}}
             >

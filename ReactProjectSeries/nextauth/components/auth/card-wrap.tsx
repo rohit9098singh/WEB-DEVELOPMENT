@@ -4,8 +4,6 @@ import {
     Card,
     CardHeader,
     CardFooter,
-    CardTitle,
-    CardDescription,
     CardContent
 } from "../ui/card";
 import { BackButton } from "./back-button";
