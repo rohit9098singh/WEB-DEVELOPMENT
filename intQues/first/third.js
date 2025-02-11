@@ -5,3 +5,7 @@ console.log(true == "hh");
 console.log(true == "hh");
 console.log(true == "hh");
 console.log(true == "hh");
+console.log(true == "hh");
+console.log(true == "hh");
+console.log(true == "hh");
+console.log(true == "hh");
