@@ -12,7 +12,7 @@ const PlaceOrder = () => {
   // Form submission handler
   const onSubmit = (formData) => {
     console.log("Form submitted:", formData);
-    navigate("/payment");
+    navigate("/Payment");
   };
 
   // Render input fields with error handling

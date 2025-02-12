@@ -20,7 +20,7 @@ export default function Home() {
       ) : (
         // Actual Content
         <div>
-          <img src="/window.svg" alt="radom check image" />
+          {/* <img src="/window.svg" alt="radom check image" /> */}
           <h1 className="text-xl font-bold mt-4">Welcome to Next.js!</h1>
           <p className="text-gray-600">Your content has loaded.</p>
         </div>
