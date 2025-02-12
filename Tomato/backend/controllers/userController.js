@@ -86,11 +86,13 @@ const login = async (req, res) => {
       process.env.JWT_SECRET || "default_secret",
       { expiresIn: "24h" }
     );
+    const userId = user._id
 
     res.status(200).json({
       message: "Login successful",
       success: true,
       jwtToken,
+      userId,
     });
   } catch (error) {
     res.status(500).json({

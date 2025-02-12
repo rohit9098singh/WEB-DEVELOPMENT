@@ -16,8 +16,10 @@ const StoreContextProvider = (props) => {
     const calculateDiscount = () => {
       return ((calculateSubtotal() * discountPercentage) / 100).toFixed(2);
     };
+    console.log("here is the token",token)
 
     const addToCart = async (itemId) => {
+
         setCartItem((prev) => {
             const updatedCart = { ...prev, [itemId]: (prev[itemId] || 0) + 1 };
             // Sync to localStorage for non-logged-in users
