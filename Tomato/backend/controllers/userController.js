@@ -22,13 +22,13 @@ const signup = async (req, res) => {
       });
     }
 
-    // Uncomment if you want to enforce strong password rules
-    // if (!validator.isStrongPassword(password, { minLength: 8, minSymbols: 1 })) {
-    //   return res.status(400).json({
-    //     message: "Password must be at least 8 characters long and include at least one symbol",
-    //     success: false,
-    //   });
-    // }
+    if (!validator.isEmail(email.trim())) {
+      return res.status(400).json({
+        message: "Invalid email format",
+        success: false,
+      });
+    }
+    
 
     const userExists = await UserModel.findOne({ email });
     if (userExists) {

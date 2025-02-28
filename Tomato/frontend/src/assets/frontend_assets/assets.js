@@ -12,10 +12,10 @@ import menu_7 from './menu_7.png'
 import menu_8 from './menu_8.png'
 
 
-// import food_1 from './food_1.png'
-// import food_2 from './food_2.png'
-// import food_3 from './food_3.png'
-// import food_4 from './food_4.png'
+import food_1 from './food_1.jpg'
+import food_2 from './food_2.jpg'
+import food_3 from './food_3.png'
+import food_4 from './food_4.png'
 import food_5 from './food_5.png'
 import food_6 from './food_6.png'
 import food_7 from './food_7.png'
@@ -131,7 +131,7 @@ export const food_list = [
     {
         _id: "1",
         name: "Greek salad",
-        image: food_6,
+        image: food_1,
         price: 12,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Salad"
@@ -139,21 +139,22 @@ export const food_list = [
     {
         _id: "2",
         name: "Veg salad",
-        image: food_7,
+        image: food_2,
         price: 18,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Salad"
-    }, {
+    },
+     {
         _id: "3",
         name: "Clover Salad",
-        image: food_8,
+        image: food_3,
         price: 16,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Salad"
     }, {
         _id: "4",
         name: "Chicken Salad",
-        image: food_8,
+        image: food_4,
         price: 24,
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Salad"

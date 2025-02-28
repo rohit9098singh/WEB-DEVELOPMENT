@@ -10,6 +10,7 @@ import UserLogDetails from './components/UserLogDetails'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Payment from './pages/Payment'
+import ConfirmationPage from './pages/ConfirmationPage'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/placeorder" element={<PlaceOrder />}></Route>
+          <Route path="/confirmpayment" element={<ConfirmationPage />}></Route>
           <Route path="/payment" element={<Payment/>}></Route>        
         </Routes>
       </div>

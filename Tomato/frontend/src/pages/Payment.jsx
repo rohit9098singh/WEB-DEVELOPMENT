@@ -55,7 +55,7 @@ console.log(cartItem)
 
       if (result.success) {
         toast.success(result.message);
-        navigate("/order-success");
+        navigate("/confirmpayment");
         localStorage.removeItem("cartItem");
       } else {
         toast.error(result.message);
