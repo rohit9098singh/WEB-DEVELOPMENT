@@ -152,7 +152,7 @@ const Login = () => {
               )}
               <motion.span
                 onClick={togglePassword}
-                className="absolute right-4 top-8 cursor-pointer"
+                className="absolute right-3 top-8 cursor-pointer"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
