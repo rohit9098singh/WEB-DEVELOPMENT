@@ -154,7 +154,7 @@ const Login = () => {
                 onClick={togglePassword}
                 className="absolute right-3 top-8 cursor-pointer"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                // animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
                 {showPassword ? <LockOpen /> : <LockKeyhole />}
