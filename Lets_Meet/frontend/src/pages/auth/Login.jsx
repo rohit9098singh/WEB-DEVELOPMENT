@@ -165,7 +165,7 @@ const Login = () => {
               className="mt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.7 }}
+              // transition={{ delay: 1.1, duration: 0.7 }}
             >
               <motion.button
                 type="submit"
