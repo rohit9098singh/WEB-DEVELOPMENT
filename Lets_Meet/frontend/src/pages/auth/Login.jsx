@@ -145,7 +145,7 @@ const Login = () => {
                   focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                // transition={{ delay: 0.9, duration: 0.6 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
               />
               {errors.password && (
                 <p className="text-[rgb(138,29,25)] text-sm">{errors.password.message}</p>
