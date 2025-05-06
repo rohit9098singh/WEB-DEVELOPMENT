@@ -33,13 +33,14 @@
 // var x=3
 
 function a(){
-    // console.log("first",x);
+    b();
     function b(){
-        // console.log("second",x);
+        c();
         function c(){
-            console.log("third",x);
+            console.log("third", x);
         }
     }
 }
-var x=10;
 a();
+let x = 10;
+
