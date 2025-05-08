@@ -143,9 +143,9 @@ export default function EmailVerification({ length }) {
 
           <motion.div
             className="flex justify-center items-center"
-            // initial={{ opacity: 0, y: 20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ delay: 1.2 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
           >
             <p className="mt-4 font-semibold text-sm text-[#FF0000] dark:text-white">
               Don't share the verification code with anyone!
